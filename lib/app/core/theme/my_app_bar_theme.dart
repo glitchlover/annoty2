@@ -1,22 +1,26 @@
-import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:flutter/material.dart';
 
-mixin MyAppBarTheme on AppBarTheme {
-  // Color? color,
+import 'package:annoty/app/core/constants/color/core.dart';
+
+class MyAppBarTheme extends AppBarTheme {
+  // final Color? color,
   @override
-  Color? backgroundColor = MyCoreColor.accent;
-  // Color? foregroundColor,
-  // double? elevation,
-  // double? scrolledUnderElevation,
-  // Color? shadowColor,
-  // Color? surfaceTintColor,
-  // ShapeBorder? shape,
-  // IconThemeData? iconTheme,
-  // IconThemeData? actionsIconTheme,
-  // bool? centerTitle,
-  // double? titleSpacing,
-  // double? toolbarHeight,
-  // TextStyle? toolbarTextStyle,
-  // TextStyle? titleTextStyle,
-  // SystemUiOverlayStyle? systemOverlayStyle
+  final Color? backgroundColor = MyCoreColor.backgroundDark;
+  @override
+  final Color? foregroundColor = MyCoreColor.accent;
+  @override
+  final double? elevation = 0;
+  // final double? scrolledUnderElevation,
+  // final Color? shadowColor,
+  // final Color? surfaceTintColor,
+  // final ShapeBorder? shape,
+  // final IconThemeData? iconTheme,
+  // final IconThemeData? actionsIconTheme,
+  @override
+  final bool? centerTitle = true;
+  // final double? titleSpacing,
+  // final double? toolbarHeight,
+  // final TextStyle? toolbarTextStyle,
+  // final TextStyle? titleTextStyle,
+  // final SystemUiOverlayStyle? systemOverlayStyle
 }
