@@ -1,24 +1,16 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/theme/my_app_bar_theme.dart';
+import 'package:annoty/app/core/theme/my_floating_action_button_theme.dart';
 import 'package:flutter/material.dart';
 
 mixin MyThemeData{
-  static var floatingActionButtonThemeData = const FloatingActionButtonThemeData(
-      backgroundColor: MyCoreColor.accent,
-      foregroundColor: MyCoreColor.activeBlack,
-      elevation: 30);
-  // static var appBarTheme = const AppBarTheme(
-  //   color: MyCoreColor.windowDark,
-  //   foregroundColor: MyCoreColor.accentWhite,
-  //   elevation: 0,
-  // );
-
+  
   static ThemeData get lightthemeData {
     return ThemeData(
       textTheme: buildTheme(Colors.black),
       primaryColor: MyCoreColor.accent,
       cardColor: Colors.white,
-      floatingActionButtonTheme: floatingActionButtonThemeData,
+      floatingActionButtonTheme: MyFloationActionButtonTheme(),
       appBarTheme: MyAppBarTheme(),
       shadowColor: const Color.fromARGB(161, 96, 125, 139),
       brightness: Brightness.light,
@@ -31,7 +23,7 @@ mixin MyThemeData{
         textTheme: buildTheme(Colors.white),
         primaryColor: MyCoreColor.accent,
         cardColor: MyCoreColor.muteBlack,
-        floatingActionButtonTheme: floatingActionButtonThemeData,
+        floatingActionButtonTheme: MyFloationActionButtonTheme(),
         appBarTheme: MyAppBarTheme(),
         scaffoldBackgroundColor: MyCoreColor.backgroundDark,
         shadowColor: const Color.fromARGB(255, 0, 0, 0),
