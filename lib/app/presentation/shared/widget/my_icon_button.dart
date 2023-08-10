@@ -1,26 +1,31 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyIconButton extends IconButton {
   @override
   final Widget icon;
   @override
   final VoidCallback? onPressed;
-  @override
-  final Color color;
+  final Color? color;
+  Color get defaultColor => Get.theme.brightness == Brightness.dark
+      ? Color.fromARGB(255, 216, 134, 40)
+      : MyCoreColor.activeBlack;
   @override
   final double iconSize;
   @override
   final Color hoverColor = Colors.transparent;
 
-  const MyIconButton(
+  MyIconButton(
       {super.key,
       required this.icon,
       required this.onPressed,
-      this.color = MyCoreColor.muteBlack,
+      this.color,
       this.iconSize = 20})
       : super(
-            onPressed: onPressed, icon: icon, color: color, iconSize: iconSize);
+            onPressed: onPressed, icon: icon, color: color, iconSize: iconSize){
+              color?? defaultColor;
+            }
 
   IconButton paint({double? size}) {
     return IconButton(
