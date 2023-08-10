@@ -1,44 +1,42 @@
+import 'package:annoty/app/core/theme/my_text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 
 class MyText extends Text {
   final String text;
-  final Color color;
 
-  static const Color _defaultColor = Colors.black;
-
-  const MyText(this.text, {super.key, this.color = _defaultColor}) : super(text);
+  const MyText(this.text, {super.key})
+      : super(text);
 
   Text temp(TextStyle? textstyle) {
     return Text(text, style: textstyle);
   }
 
   Text heading1() {
-    return Text(text, style: Get.textTheme.headlineLarge);
+    return Text(text, style: const MyTextTheme().headlineLarge);
   }
 
   Text heading2() {
-    return Text(text, style: Get.textTheme.headlineMedium);
+    return Text(text, style: const MyTextTheme().headlineMedium);
   }
 
   Text heading3() {
     return Text(
       text,
-      style: Get.textTheme.headlineSmall,
+      style: const MyTextTheme().headlineSmall,
     );
   }
 
   Text paragraph() {
     return Text(
       text,
-      style: Get.textTheme.bodyMedium,
+      style: const MyTextTheme().bodyMedium,
     );
   }
 
   Text captions() {
     return Text(
       text,
-      style: Get.textTheme.labelSmall,
+      style: const MyTextTheme().labelSmall,
     );
   }
 }

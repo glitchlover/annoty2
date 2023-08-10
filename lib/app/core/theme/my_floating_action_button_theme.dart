@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class MyFloationActionButtonTheme extends FloatingActionButtonThemeData{
   @override
   final Color? foregroundColor = ColorUtils.lighten(MyCoreColor.accent, 1);
-  final Color? backgroundColor = ColorUtils.darken(MyCoreColor.accent, .2);
+  final Color? backgroundColor = ColorUtils.darken(MyCoreColor.accent, .3);
   // final Color? focusColor;
   final Color? hoverColor = MyCoreColor.accent;
   // final Color? splashColor;

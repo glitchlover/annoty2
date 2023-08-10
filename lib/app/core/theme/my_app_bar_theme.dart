@@ -5,7 +5,7 @@ import 'package:annoty/app/core/constants/color/core.dart';
 class MyAppBarTheme extends AppBarTheme {
   // final Color? color,
   @override
-  final Color? backgroundColor = MyCoreColor.backgroundDark;
+  final Color? backgroundColor = MyCoreColor.windowDark;
   @override
   final Color? foregroundColor = MyCoreColor.accent;
   @override

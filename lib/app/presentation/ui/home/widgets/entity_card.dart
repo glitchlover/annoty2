@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 int level = 0;
 
@@ -42,7 +41,7 @@ class FolderTile extends StatelessWidget {
       expandedCrossAxisAlignment: CrossAxisAlignment.center,
       controlAffinity: ListTileControlAffinity.leading,
       title: MyText(name).paragraph(),
-      leading: const Icon(Iconsax.folder),
+      leading: const Icon(Icons.folder),
       trailing: MyPopUpMenu(entity),
       children: (entity as Directory).listSync().map((element) {
         level++;
@@ -67,7 +66,7 @@ class PdfTile extends StatelessWidget {
     return InkWell(
         child: ListTile(
           title: MyText(name).paragraph(),
-          leading: const Icon(Iconsax.document),
+          leading: const Icon(Icons.book_outlined),
           trailing: MyPopUpMenu(entity),
         ),
         onTap: () {

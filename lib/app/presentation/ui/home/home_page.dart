@@ -12,7 +12,7 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeAppBar().myHomeAppBar(),
+        appBar: HomeAppBar().paint(),
         floatingActionButton: floatingActionButton(),
         body: Obx(() => ListView.builder(
             shrinkWrap: true,

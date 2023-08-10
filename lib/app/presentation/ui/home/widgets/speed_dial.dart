@@ -3,7 +3,6 @@ import 'package:annoty/app/presentation/ui/home/widgets/entity_add_dialoges.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 SpeedDial floatingActionButton() {
     PdfDirectoryController pdfDirCtrl = Get.put(PdfDirectoryController());
@@ -28,6 +27,6 @@ SpeedDial floatingActionButton() {
               pdfDirCtrl.pickPdf();
             }),
       ],
-      child: const Icon(Iconsax.add),
+      child: const Icon(Icons.add),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:annoty/app/core/constants/color/text.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class MyTextField extends TextField {
   final String label;
@@ -37,7 +36,7 @@ class MyTextField extends TextField {
                       seepass = !seepass;
                     },
                     icon: const Icon(
-                      Iconsax.eye,
+                      Icons.remove_red_eye,
                     ),
                     padding: EdgeInsets.zero,
                     splashRadius: 20,
