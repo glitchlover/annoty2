@@ -91,9 +91,12 @@ flutter:
   fonts:
     - family: Quicksand
       fonts:
-        - asset: fonts/Quicksand.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+        - asset: assets/fonts/Quicksand.ttf
+    - family: Quicksand Bold
+      fonts:
+        - asset: assets/fonts/Quicksand_Bold.otf
   #         style: italic
+  #       - asset: fonts/Schyler-Italic.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

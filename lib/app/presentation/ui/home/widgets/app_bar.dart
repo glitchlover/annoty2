@@ -15,7 +15,7 @@ class HomeAppBar {
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(Assets.kAstImgIcon),
         ),
-        title: const MyText("Annoty").heading1(),
+        title: const MyText("Annoty").title(),
         actions: [
           Obx(() {
             return MyIconButton(

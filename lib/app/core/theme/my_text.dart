@@ -11,6 +11,10 @@ class MyText extends Text {
     return Text(text, style: textstyle);
   }
 
+  Text title() {
+    return Text(text, style: const MyTextTheme().titleLarge);
+  }
+
   Text heading1() {
     return Text(text, style: const MyTextTheme().headlineLarge);
   }
