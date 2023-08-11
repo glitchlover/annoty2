@@ -17,9 +17,9 @@ class EntityDialoges {
   void add(Directory dir, [bool? isFile]) {
     Get.dialog(AlertDialog(
       content: MyTextField(
-        label: 'File Name',
-        txtController: txtCtrl,
-      ).scaleton(),
+        labelText: 'File Name',
+        controller: txtCtrl,
+      ),
       actions: [
         MyIconButton(
                 onPressed: () {
