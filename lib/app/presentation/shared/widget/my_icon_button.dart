@@ -8,31 +8,42 @@ class MyIconButton extends IconButton {
   @override
   final VoidCallback? onPressed;
   final Color? color;
-  Color get defaultColor => Get.theme.brightness == Brightness.dark
-      ? Color.fromARGB(255, 216, 134, 40)
-      : MyCoreColor.activeBlack;
   @override
   final double iconSize;
   @override
   final Color hoverColor = Colors.transparent;
 
-  MyIconButton(
-      {super.key,
-      required this.icon,
+  const MyIconButton._(
+      {required this.icon,
       required this.onPressed,
       this.color,
       this.iconSize = 20})
       : super(
-            onPressed: onPressed, icon: icon, color: color, iconSize: iconSize){
-              color?? defaultColor;
-            }
+            onPressed: onPressed, icon: icon, color: color, iconSize: iconSize);
+
+  factory MyIconButton(
+      {required Icon icon,
+      required onPressed,
+      Color? color,
+      double iconSize = 20}) {
+    Color bcolor = color ??
+        (Get.theme.brightness == Brightness.dark
+            ? MyCoreColor.muteGrey
+            : MyCoreColor.muteBlack);
+    return MyIconButton._(
+      icon: icon,
+      onPressed: onPressed,
+      color: bcolor,
+      iconSize: iconSize
+    );
+  }
 
   IconButton paint({double? size}) {
     return IconButton(
       icon: icon,
       onPressed: onPressed,
       iconSize: size ?? 16,
-      // color: color,
+      color: color,
     );
   }
 
@@ -42,11 +53,10 @@ class MyIconButton extends IconButton {
         borderRadius: BorderRadius.circular(50),
       ),
       child: IconButton(
-        icon: icon,
-        onPressed: onPressed,
-        iconSize: size,
-        // color: color!.withOpacity(1)
-      ),
+          icon: icon,
+          onPressed: onPressed,
+          iconSize: size,
+          color: color!.withOpacity(1)),
     );
   }
 

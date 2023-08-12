@@ -22,7 +22,7 @@ class HomePage extends GetView<HomeController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MySearchBar(),
+                  const MySearchBar(),
                   MyIconButton(icon: const Icon(Icons.tune_rounded), onPressed: (){})
                 ],
               ),

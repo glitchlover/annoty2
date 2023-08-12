@@ -9,13 +9,18 @@ class MyTextField extends TextField {
   final VoidCallback? onPressed;
   final String? labelText;
   final String? helperText;
+  @override
   final TextEditingController? controller;
+  @override
   final ValueChanged<String>? onChanged;
+  @override
+  Color get cursorColor => MyCoreColor.activeGrey;
   Widget? get suffix => suffixIcon == null
       ? MyIconButton(icon: suffixIcon!, onPressed: onPressed)
       : null;
   @override
-  InputDecoration get decoration => MyInputDecoration(labelText: labelText, helperText: helperText);
+  InputDecoration get decoration =>
+      MyInputDecoration(labelText: labelText, helperText: helperText);
   const MyTextField({
     this.labelText,
     this.helperText,
@@ -75,9 +80,9 @@ class MyInputDecoration extends InputDecoration {
   @override
   Color? get fillColor => MyCoreColor.highlightBlack;
   @override
-  OutlineInputBorder get border => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(2),
-      );
+  InputBorder get border => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(width: 5, color: Colors.transparent));
   const MyInputDecoration({
     this.labelText,
     this.helperText,
