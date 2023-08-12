@@ -6,9 +6,11 @@ import 'package:annoty/app/core/constants/color/core.dart';
 
 class MyTextField extends TextField {
   final Icon? suffixIcon;
+  final Icon? preffixIcon;
   final VoidCallback? onPressed;
   final String? labelText;
   final String? helperText;
+  final String? hintText;
   @override
   final TextEditingController? controller;
   @override
@@ -19,57 +21,24 @@ class MyTextField extends TextField {
       ? MyIconButton(icon: suffixIcon!, onPressed: onPressed)
       : null;
   @override
-  InputDecoration get decoration =>
-      MyInputDecoration(labelText: labelText, helperText: helperText);
+  InputDecoration get decoration => MyInputDecoration(
+      labelText: labelText,
+      helperText: helperText,
+      hintText: hintText,
+      suffixIcon: suffixIcon,
+      prefixIcon: preffixIcon);
+
   const MyTextField({
     this.labelText,
     this.helperText,
+    this.hintText,
     this.onChanged,
     this.suffixIcon,
+    this.preffixIcon,
     this.onPressed,
     super.key,
     this.controller,
   });
-  // final String? value;
-  // final bool isPwd;
-  // final bool isUserId;
-
-  // const MyTextField(
-  //     {super.key,
-  //     required this.label,
-  //     this.helperTxt,
-  //     this.txtController,
-  //     this.value,
-  //     super.onChanged,
-  //     this.isUserId = false,
-  //     this.isPwd = false});
-
-  // Widget scaleton() {
-  //   var seepass = false;
-  //   return TextFormField(
-  //       controller: txtController,
-  //       obscureText: seepass,
-  //       onChanged: onChanged,
-  //       decoration: InputDecoration(
-  //           labelText: label,
-  //           helperText: helperTxt,
-  //           helperStyle: const TextStyle(color: TextColorsConstant.helper),
-  //           suffix: isPwd
-  //               ? IconButton(
-  //                   constraints: const BoxConstraints(),
-  //                   onPressed: () {
-  //                     seepass = !seepass;
-  //                   },
-  //                   icon: const Icon(
-  //                     Icons.remove_red_eye,
-  //                   ),
-  //                   padding: EdgeInsets.zero,
-  //                   splashRadius: 20,
-  //                 )
-  //               : null,
-  //           border:
-  //               OutlineInputBorder(borderRadius: BorderRadius.circular(10.0))));
-  // }
 }
 
 class MyInputDecoration extends InputDecoration {
@@ -78,13 +47,19 @@ class MyInputDecoration extends InputDecoration {
   @override
   final String? helperText;
   @override
-  Color? get fillColor => MyCoreColor.highlightBlack;
+  final Widget? prefixIcon;
   @override
-  InputBorder get border => OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(width: 5, color: Colors.transparent));
-  const MyInputDecoration({
-    this.labelText,
-    this.helperText,
-  });
+  final Widget? suffixIcon;
+  @override
+  final String? hintText;
+  @override
+  InputBorder? get border => InputBorder.none;
+  final BorderSide noBorder = const BorderSide(color: Colors.transparent);
+
+  const MyInputDecoration(
+      {this.labelText,
+      this.helperText,
+      this.hintText,
+      this.prefixIcon,
+      this.suffixIcon});
 }
