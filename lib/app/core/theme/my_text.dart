@@ -15,35 +15,35 @@ class MyText extends Text {
     Color? color,
     FontWeight? fontWeight
   }) {
-    return Text(text, style: const MyTextTheme().titleLarge);
+    return Text(text, style: MyTextTheme().titleLarge);
   }
 
   Text heading1() {
-    return Text(text, style: const MyTextTheme().headlineLarge);
+    return Text(text, style: MyTextTheme().headlineLarge);
   }
 
   Text heading2() {
-    return Text(text, style: const MyTextTheme().headlineMedium);
+    return Text(text, style: MyTextTheme().headlineMedium);
   }
 
   Text heading3() {
     return Text(
       text,
-      style: const MyTextTheme().headlineSmall,
+      style: MyTextTheme().headlineSmall,
     );
   }
 
   Text paragraph() {
     return Text(
       text,
-      style: const MyTextTheme().bodyMedium,
+      style: MyTextTheme().bodyMedium,
     );
   }
 
   Text captions() {
     return Text(
       text,
-      style: const MyTextTheme().labelSmall,
+      style: MyTextTheme().labelSmall,
     );
   }
 }

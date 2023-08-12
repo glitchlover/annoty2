@@ -1,4 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/core/constants/color/text.dart';
+import 'package:annoty/app/core/constants/misc/is_it.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,8 +9,11 @@ class MyTextTheme extends TextTheme {
   final Color? color;
   final FontWeight? fontWeight;
   @override
-  TextStyle? get titleLarge =>
-      MyTextStyle(fontSize: 34, fontFamily: fontFace??"Quicksand Bold", fontWeight: FontWeight.w700, color: color);
+  TextStyle? get titleLarge => MyTextStyle(
+      fontSize: 34,
+      fontFamily: fontFace ?? "Quicksand Bold",
+      fontWeight: FontWeight.w700,
+      color: color);
   @override
   TextStyle? get headlineLarge => MyTextStyle(fontSize: 24);
   @override
@@ -20,7 +25,17 @@ class MyTextTheme extends TextTheme {
   @override
   TextStyle? get labelSmall => MyTextStyle(fontSize: 10);
 
-  const MyTextTheme({this.fontFace = "QuickSand", this.color, this.fontWeight});
+  const MyTextTheme._(
+      {this.fontFace = "QuickSand", this.color, this.fontWeight});
+  factory MyTextTheme(
+      {String? fontFace, Color? color, FontWeight? fontWeight}) {
+    Color bcolor = color ??
+        (IsIt.dark
+            ? MyTextColorsConstantDark.primaryDark
+            : MyTextColorsConstantLight.primaryLight);
+    return MyTextTheme._(
+        fontFace: fontFace, color: bcolor, fontWeight: fontWeight);
+  }
 }
 
 class MyTextStyle extends TextStyle {
@@ -44,15 +59,19 @@ class MyTextStyle extends TextStyle {
           fontSize: fontSize,
         );
 
-  factory MyTextStyle({
-    required double fontSize,
-    String? fontFamily,
-    Color? color,
-    FontWeight? fontWeight
-  }) {
+  factory MyTextStyle(
+      {required double fontSize,
+      String? fontFamily,
+      Color? color,
+      FontWeight? fontWeight}) {
     final isLightTheme = Get.theme.brightness == Brightness.light;
-    final bcolor = color ?? (isLightTheme ? MyCoreColor.muteBlack : MyCoreColor.activeGrey);
+    final bcolor = color ??
+        (isLightTheme ? MyCoreColor.muteBlack : MyCoreColor.activeGrey);
 
-    return MyTextStyle._(color: bcolor, fontSize: fontSize, fontFamily: fontFamily,fontWeight: fontWeight);
+    return MyTextStyle._(
+        color: bcolor,
+        fontSize: fontSize,
+        fontFamily: fontFamily,
+        fontWeight: fontWeight);
   }
 }

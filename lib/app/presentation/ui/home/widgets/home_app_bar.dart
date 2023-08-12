@@ -18,6 +18,9 @@ class HomeAppBar {
   }
 
 
+
+
+
   List<Widget> myIconActions(ThemeToggleController thmCtrl) {
     return [
         Obx(() {
@@ -39,6 +42,9 @@ class HomeAppBar {
   }
 }
 
+
+
+
 class TitleWidget extends StatelessWidget {
   const TitleWidget({
     super.key,
@@ -46,7 +52,7 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyText("Annoty").temp(const MyTextTheme(
+    return const MyText("Annoty").temp(MyTextTheme(
                 color: MyCoreColor.accent, fontFace: "Quicksand Bold")
             .titleLarge);
   }

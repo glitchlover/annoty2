@@ -18,7 +18,7 @@ mixin MyThemeData implements ThemeData {
         brightness: Brightness.light,
         cardColor: Colors.white,
         shadowColor: const Color.fromARGB(161, 96, 125, 139),
-        textTheme: const MyTextTheme(),
+        textTheme: MyTextTheme(),
         appBarTheme: MyAppBarTheme(),
         floatingActionButtonTheme: MyFloationActionButtonTheme(),
       );
@@ -28,7 +28,7 @@ mixin MyThemeData implements ThemeData {
         cardColor: MyCoreColor.muteBlack,
         scaffoldBackgroundColor: MyCoreColor.backgroundDark,
         shadowColor: const Color.fromARGB(255, 0, 0, 0),
-        textTheme: const MyTextTheme(),
+        textTheme: MyTextTheme(),
         floatingActionButtonTheme: MyFloationActionButtonTheme(),
         appBarTheme: MyAppBarTheme(),
       );
