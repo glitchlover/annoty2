@@ -13,9 +13,7 @@ class HomeAppBar {
     ThemeToggleController thmCtrl = Get.find<ThemeToggleController>();
     return MyAppBar(
         leading: const Leading(),
-        title: const MyText("Annoty").temp(const MyTextTheme(
-                color: MyCoreColor.accent, fontFace: "Quicksand Bold")
-            .titleLarge),
+        title: const TitleWidget(),
         actions: myIconActions(thmCtrl));
   }
 
@@ -38,6 +36,19 @@ class HomeAppBar {
             onPressed: () {},
             icon: const Icon(Icons.face_outlined, color: MyCoreColor.green))
       ];
+  }
+}
+
+class TitleWidget extends StatelessWidget {
+  const TitleWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const MyText("Annoty").temp(const MyTextTheme(
+                color: MyCoreColor.accent, fontFace: "Quicksand Bold")
+            .titleLarge);
   }
 }
 
