@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 class MyText extends Text {
   final String text;
 
-  const MyText(this.text, {super.key})
-      : super(text);
+  const MyText(this.text, {super.key}) : super(text);
 
   Text temp(TextStyle? textstyle) {
     return Text(text, style: textstyle);
   }
 
-  Text title() {
+  Text title({
+    String? fontFamily,
+    Color? color,
+    FontWeight? fontWeight
+  }) {
     return Text(text, style: const MyTextTheme().titleLarge);
   }
 
