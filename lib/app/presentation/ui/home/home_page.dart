@@ -1,8 +1,6 @@
-import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/ui/home/home_controller.dart';
+import 'package:annoty/app/presentation/ui/home/widgets/annoty_search_tool.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/home_app_bar.dart';
-import 'package:annoty/app/presentation/ui/home/widgets/my_search_bar.dart';
-import 'package:annoty/app/presentation/ui/home/widgets/resource_table.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/speed_dial.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,16 +17,11 @@ class HomePage extends GetView<HomeController> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const AnnotySearchBar(),
-                  MyIconButton(icon: const Icon(Icons.tune_rounded), onPressed: (){})
-                ],
+              Expanded(
+                child: AnnotySearchTool(controller: controller),
               ),
-              ResourceTable(controller: controller),
             ],
-          ),)
-        );
+          ),
+        ));
   }
 }

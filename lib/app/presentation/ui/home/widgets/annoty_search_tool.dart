@@ -1,6 +1,35 @@
 import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/shared/widget/my_text_field.dart';
+import 'package:annoty/app/presentation/ui/home/home_controller.dart';
+import 'package:annoty/app/presentation/ui/home/widgets/resource_table.dart';
 import 'package:flutter/material.dart';
+
+class AnnotySearchTool extends StatelessWidget {
+  const AnnotySearchTool({
+    super.key,
+    required this.controller,
+  });
+
+  final HomeController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const AnnotySearchBar(),
+            MyIconButton(icon: const Icon(Icons.tune_rounded), onPressed: () {})
+          ],
+        ),
+        ResourceTable(controller: controller),
+      ],
+    );
+  }
+}
+
 
 class AnnotySearchBar extends StatefulWidget {
   const AnnotySearchBar({super.key});
