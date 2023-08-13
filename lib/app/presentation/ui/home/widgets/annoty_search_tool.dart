@@ -2,7 +2,6 @@ import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/shared/widget/my_text_field.dart';
 import 'package:annoty/app/presentation/ui/home/home_controller.dart';
-import 'package:annoty/app/presentation/ui/home/widgets/resource_table.dart';
 import 'package:flutter/material.dart';
 
 class AnnotySearchTool extends StatelessWidget {
@@ -23,8 +22,7 @@ class AnnotySearchTool extends StatelessWidget {
             const AnnotySearchBar(),
             MyIconButton(icon: const Icon(Icons.tune_rounded), onPressed: () {})
           ],
-        ),
-        ResourceTable(controller: controller),
+        )
       ],
     );
   }
@@ -41,9 +39,9 @@ class AnnotySearchBar extends StatefulWidget {
 class _AnnotySearchBarState extends State<AnnotySearchBar> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: 
-      Container(
-        alignment: Alignment.center,
+    return Expanded(
+      child: Container(
+        alignment: Alignment.topCenter,
         padding: const EdgeInsets.only(left: 0, top: 4, right: 0, bottom: 4),
         margin: const EdgeInsets.all(8),
         height: 35,

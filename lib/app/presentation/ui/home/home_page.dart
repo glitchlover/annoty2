@@ -1,6 +1,7 @@
 import 'package:annoty/app/presentation/ui/home/home_controller.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/annoty_search_tool.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/home_app_bar.dart';
+import 'package:annoty/app/presentation/ui/home/widgets/resource_table.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/speed_dial.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,9 +18,8 @@ class HomePage extends GetView<HomeController> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Expanded(
-                child: AnnotySearchTool(controller: controller),
-              ),
+              AnnotySearchTool(controller: controller),
+              ResourceTable(controller: controller,),//todo - make it list later
             ],
           ),
         ));

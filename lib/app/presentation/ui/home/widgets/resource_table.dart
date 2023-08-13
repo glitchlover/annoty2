@@ -16,7 +16,7 @@ class ResourceTable extends StatelessWidget {
       child: ListView.builder(
             shrinkWrap: true,
             itemBuilder: (_, index) =>
-                EntityCard(entity: controller.pdfDirEntityList[index]),
+              ResourceNoteBookCard(entity: controller.pdfDirEntityList[index]),
             itemCount: controller.pdfDirEntityListSize),
     );
   }
