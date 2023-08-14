@@ -1,25 +1,26 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:annoty/app/core/constants/database/db.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DocumentServices {
-  final String masterDb = "annotyDb";
+  final String masterDb = DBconst.main;
   final String db;
+  final String dbType;
   late Directory masterDbFolder;
   late String _localPath;
   late Directory dbFolder;
   late List<FileSystemEntity> entities;
 
   //........................___constructor___........................
-  DocumentServices({required this.db}) {
+  DocumentServices({required this.db, required this.dbType}) {
     setLocaPath();
     Timer(const Duration(milliseconds: 1000), () {
       makeMasterDbFolder();
-      makeDbFile();
+      makeDbFolder();
       initDbEntities();
     });
   }
-
   //........................___making files and folder___........................
   setLocaPath() async {
     final directory = await getApplicationDocumentsDirectory();
@@ -32,7 +33,7 @@ class DocumentServices {
     masterDbFolder.create();
   }
 
-  void makeDbFile() async {
+  void makeDbFolder() async {
     dbFolder = Directory("$_localPath\\$masterDb\\$db");
     print("makeDbFolder:${dbFolder.path}");
     if (await dbFolder.exists()) return;
@@ -40,14 +41,13 @@ class DocumentServices {
   }
 
   //......................initialize entities of db ....................
-  Future<List<FileSystemEntity>> initDbEntities() async{
+  Future<List<FileSystemEntity>> initDbEntities() async {
     entities = await dbFolder.list().toList();
-    return entities
-;
+    return entities;
   }
 
   // ........................creating files and folders.....................
-  static void mkFolder(String name, Directory parent) async {
+  void mkFolder(String name, Directory parent) async {
     int i = 0;
     i++;
     String location = "${parent.path}\\$name";
@@ -59,9 +59,9 @@ class DocumentServices {
   void mkFile(String name, Directory parent) async {
     int i = 0;
     i++;
-    String location = "${parent.path}\\$name.$db";
+    String location = "${parent.path}\\$name.$dbType";
     File file = File(location);
-    if (await file.exists()) mkFile("$name$i.$db", parent);
+    if (await file.exists()) mkFile("$name$i.$dbType", parent);
     file.create();
   }
 

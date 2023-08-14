@@ -4,6 +4,11 @@ Its all about studying PDFs effectively and quickly as possible. Supports markdo
 
 ## How does it works 🤔
 
+## Tasks ⚒️
+> 🔥 => goal, 🥊 challenge, 🟢easy task, 🟡medium task, 🔴hard task
+
+- [ ] 🔥PDF Workings
+- [ ] 🟢Transfer Icons
 
 
 

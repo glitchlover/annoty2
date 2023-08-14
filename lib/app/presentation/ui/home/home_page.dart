@@ -13,7 +13,7 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: HomeAppBar().paint(),
-        floatingActionButton: floatingActionButton(),
+        floatingActionButton: const MyFloatingActionButton(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -25,3 +25,4 @@ class HomePage extends GetView<HomeController> {
         ));
   }
 }
+
