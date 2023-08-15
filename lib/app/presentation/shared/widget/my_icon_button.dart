@@ -7,11 +7,12 @@ class MyIconButton extends IconButton {
   final Widget icon;
   @override
   final VoidCallback? onPressed;
+  @override
   final Color? color;
   @override
   final double iconSize;
   @override
-  final Color hoverColor = Colors.transparent;
+  Color get hoverColor => Colors.transparent;
 
   const MyIconButton._(
       {required this.icon,
