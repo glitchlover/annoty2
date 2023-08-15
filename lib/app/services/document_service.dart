@@ -46,13 +46,14 @@ class DocumentServices {
   }
 
   // ........................creating files and folders.....................
-  void mkFolder(String name, Directory parent) async {
+  Future<bool> mkFolder(String name, Directory parent) async {
     int i = 0;
     i++;
     String location = "${parent.path}\\$name";
     Directory folder = Directory(location);
     if (await folder.exists()) mkFolder("$name+$i", parent);
     folder.create();
+    return true;
   }
 
   void mkFile(String name, Directory parent) async {
@@ -114,11 +115,10 @@ class DocumentServices {
     return result;
   }
 
-  List<Directory> getChildrenFolder(
+  List<FileSystemEntity> getChildrenFolder(
       {required Directory directory,
       required int currentDepth,
       int? targetDepth}) {
-
     List<Directory> result = [];
 
     if (targetDepth == null || currentDepth < targetDepth) {
@@ -126,11 +126,10 @@ class DocumentServices {
         for (var entity in directory.listSync()) {
           if (entity is Directory) {
             result.add(entity);
-            result.addAll(
-                getChildrenFolder(
+            result.addAll(getChildrenFolder(
                 directory: entity,
                 currentDepth: currentDepth + 1,
-                targetDepth: targetDepth));
+                targetDepth: targetDepth) as Iterable<Directory>);
           }
         }
       }
@@ -139,11 +138,10 @@ class DocumentServices {
     return result;
   }
 
-  List<File> getChildrenFile(
+  List<FileSystemEntity> getChildrenFile(
       {required Directory directory,
       required int currentDepth,
       int? targetDepth}) {
-
     List<File> result = [];
 
     if (targetDepth == null || currentDepth < targetDepth) {
@@ -152,11 +150,10 @@ class DocumentServices {
           if (entity is File) {
             result.add(entity);
           } else if (entity is Directory) {
-            result
-                .addAll(getChildrenFile(
+            result.addAll(getChildrenFile(
                 directory: entity,
                 currentDepth: currentDepth + 1,
-                targetDepth: targetDepth));
+                targetDepth: targetDepth) as Iterable<File>);
           }
         }
       }

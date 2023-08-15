@@ -8,13 +8,14 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 class ResourceDirectorySystemController extends GetxController {
   DocumentServices pdfService =
       DocumentServices(dbFolderName: "Resource", dbType: "pdf");
-  RxList<Directory> get resourceList => pdfService
+  RxList<FileSystemEntity> get resourceList => pdfService
       .getChildrenFolder(directory: pdfService.dbFolder, currentDepth: 1)
       .obs;
   Rx<int> get resourceListSize => resourceList.length.obs;
 
   updateResources() async {
-    resourceList.value = pdfService.entities as List<Directory>;
+    resourceList.value = pdfService.entities;
+    resourceListSize.refresh();
     resourceList.refresh();
     update();
   }
@@ -26,7 +27,7 @@ class ResourceDirectorySystemController extends GetxController {
     String file = pick.files.first.path!.split("\\").last;
     String folder = file.replaceAll(file.split(".").last, "");
     String folderPath = "${pdfService.dbFolder.path}\\$folder";
-    pdfService.mkFolder(folder, pdfService.dbFolder);
+    await pdfService.mkFolder(folder, pdfService.dbFolder);
     pdfService.copyFile(folderPath, File(pick.files.first.path!));
     updateResources();
   }

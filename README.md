@@ -9,7 +9,11 @@ Its all about studying PDFs effectively and quickly as possible. Supports markdo
 
 - [ ] 🔥PDF Workings
 - [ ] 🟢Transfer Icons
-- [ ] 🟡Refactor Document Service
+- [ ] 🔥Resource Table
+    - [ ] 🥊Working Resource Table
+        - [ ] 🟢OS Access
+    - [ ] 🥊Better Resource Table   
+        - [ ] 🟡Refactor Document Service
 
 
 

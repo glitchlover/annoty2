@@ -31,7 +31,7 @@ class MyPopUpMenu extends StatelessWidget {
                 value: 'delete',
                 child: const MyText('Delete'),
                 onTap: () {
-                  entity.delete();
+                  entity.delete(recursive: true);
                   Get.find<ResourceDirectorySystemController>()
                       .updateResources();
                 },
