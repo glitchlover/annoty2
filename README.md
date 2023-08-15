@@ -9,6 +9,7 @@ Its all about studying PDFs effectively and quickly as possible. Supports markdo
 
 - [ ] 🔥PDF Workings
 - [ ] 🟢Transfer Icons
+- [ ] 🟡Refactor Document Service
 
 
 

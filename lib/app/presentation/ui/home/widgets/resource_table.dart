@@ -1,6 +1,7 @@
 import 'package:annoty/app/presentation/ui/home/home_controller.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/entity_card.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class ResourceTable extends StatelessWidget {
   const ResourceTable({
@@ -13,11 +14,13 @@ class ResourceTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
+      child: Obx(() {
+        return ListView.builder(
             shrinkWrap: true,
-            itemBuilder: (_, index) =>
-              ResourceNoteBookCard(entity: controller.pdfDirEntityList[index]),
-            itemCount: controller.pdfDirEntityListSize),
+            itemBuilder: (_, index) => ResourceNoteBookCard(
+                entity: controller.pdfDirEntityList[index]),
+            itemCount: controller.pdfDirEntityListSize.value);
+      }),
     );
   }
 }

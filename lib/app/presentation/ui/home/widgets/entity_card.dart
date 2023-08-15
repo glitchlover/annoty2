@@ -15,7 +15,7 @@ class ResourceNoteBookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     String name = entity.path.split("\\").last;
 
-    return entity.statSync().type == FileSystemEntityType.file
+    return entity.statSync().type == FileSystemEntityType.directory
         ? ResourceNotebookTile(name: name, entity: entity)
         : Container();
   }

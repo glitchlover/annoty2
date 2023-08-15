@@ -4,16 +4,16 @@ import 'package:annoty/app/core/constants/database/db.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DocumentServices {
-  final String masterDb = DBconst.main;
-  final String db;
-  final String dbType;
-  late Directory masterDbFolder;
-  late String _localPath;
+  final String masterFolderName = DBconst.main;
+  late Directory masterFolder;
+  final String dbFolderName;
   late Directory dbFolder;
+  final String dbType;
+  late String _localPath;
   late List<FileSystemEntity> entities;
 
   //........................___constructor___........................
-  DocumentServices({required this.db, required this.dbType}) {
+  DocumentServices({required this.dbFolderName, required this.dbType}) {
     setLocaPath();
     Timer(const Duration(milliseconds: 1000), () {
       makeMasterDbFolder();
@@ -28,22 +28,21 @@ class DocumentServices {
   }
 
   void makeMasterDbFolder() async {
-    masterDbFolder = Directory("$_localPath\\$masterDb");
-    if (await masterDbFolder.exists()) return;
-    masterDbFolder.create();
+    masterFolder = Directory("$_localPath\\$masterFolderName");
+    if (await masterFolder.exists()) return;
+    masterFolder.create();
   }
 
   void makeDbFolder() async {
-    dbFolder = Directory("$_localPath\\$masterDb\\$db");
+    dbFolder = Directory("$_localPath\\$masterFolderName\\$dbFolderName");
     print("makeDbFolder:${dbFolder.path}");
     if (await dbFolder.exists()) return;
     await dbFolder.create();
   }
 
-  //......................initialize entities of db ....................
-  Future<List<FileSystemEntity>> initDbEntities() async {
+  //......................initialize entities of dbFolderName ....................
+  void initDbEntities() async {
     entities = await dbFolder.list().toList();
-    return entities;
   }
 
   // ........................creating files and folders.....................
@@ -76,7 +75,7 @@ class DocumentServices {
   }
 
   void updateFile(String name, File thisDir) {
-    String newPath = "${thisDir.parent.path}\\$name.$db";
+    String newPath = "${thisDir.parent.path}\\$name.$dbFolderName";
     thisDir.rename(newPath);
   }
 
@@ -88,5 +87,81 @@ class DocumentServices {
 
   static void deltFolder(String path) {
     Directory(path).delete(recursive: true);
+  }
+  // ...................get children files and folders ..................
+
+  List<FileSystemEntity> getChildren(
+      {required Directory directory,
+      required int currentDepth,
+      int? targetDepth}) {
+    List<FileSystemEntity> result = [];
+
+    if (targetDepth == null || currentDepth < targetDepth) {
+      if (directory.existsSync()) {
+        for (var entity in directory.listSync()) {
+          result.add(entity);
+
+          if (entity is Directory) {
+            result.addAll(getChildren(
+                directory: entity,
+                currentDepth: currentDepth + 1,
+                targetDepth: targetDepth));
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  List<Directory> getChildrenFolder(
+      {required Directory directory,
+      required int currentDepth,
+      int? targetDepth}) {
+
+    List<Directory> result = [];
+
+    if (targetDepth == null || currentDepth < targetDepth) {
+      if (directory.existsSync()) {
+        for (var entity in directory.listSync()) {
+          if (entity is Directory) {
+            result.add(entity);
+            result.addAll(
+                getChildrenFolder(
+                directory: entity,
+                currentDepth: currentDepth + 1,
+                targetDepth: targetDepth));
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  List<File> getChildrenFile(
+      {required Directory directory,
+      required int currentDepth,
+      int? targetDepth}) {
+
+    List<File> result = [];
+
+    if (targetDepth == null || currentDepth < targetDepth) {
+      if (directory.existsSync()) {
+        for (var entity in directory.listSync()) {
+          if (entity is File) {
+            result.add(entity);
+          } else if (entity is Directory) {
+            result
+                .addAll(getChildrenFile(
+                directory: entity,
+                currentDepth: currentDepth + 1,
+                targetDepth: targetDepth));
+          }
+        }
+      }
+    }
+
+    return result;
   }
 }
