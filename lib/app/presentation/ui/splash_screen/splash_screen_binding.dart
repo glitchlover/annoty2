@@ -1,4 +1,4 @@
-import 'package:annoty/app/core/controllers/pdf_directory_controller.dart';
+import 'package:annoty/app/core/controllers/resource_directory_system_controller.dart';
 import 'package:annoty/app/core/controllers/theme_controller.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +9,6 @@ class SplashScreenBinding extends Bindings {
   void dependencies() {
     Get.put(SplashScreenController(),);
     Get.put(ThemeToggleController());
-    Get.put(PdfDirectoryController());
+    Get.put(ResourceDirectorySystemController());
   }
 }

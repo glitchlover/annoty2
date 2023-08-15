@@ -1,26 +1,21 @@
-import 'package:annoty/app/presentation/ui/home/home_controller.dart';
+import 'package:annoty/app/core/controllers/resource_directory_system_controller.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/entity_card.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
 
 class ResourceTable extends StatelessWidget {
   const ResourceTable({
     super.key,
-    required this.controller,
   });
-
-  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Obx(() {
-        return ListView.builder(
-            shrinkWrap: true,
-            itemBuilder: (_, index) => ResourceNoteBookCard(
-                entity: controller.pdfDirEntityList[index]),
-            itemCount: controller.pdfDirEntityListSize.value);
-      }),
-    );
+        child: GetBuilder<ResourceDirectorySystemController>(
+            builder: (controller) => ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (_, index) => ResourceNoteBookCard(
+                    entity: controller.resourceList[index]),
+                itemCount: controller.resourceListSize.value)));
   }
 }

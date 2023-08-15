@@ -3,14 +3,11 @@ import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/shared/widget/my_text_field.dart';
 import 'package:annoty/app/presentation/ui/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class AnnotySearchTool extends StatelessWidget {
-  const AnnotySearchTool({
-    super.key,
-    required this.controller,
-  });
+class AnnotySearchTool extends GetView<HomeController> {
+  const AnnotySearchTool({super.key});
 
-  final HomeController controller;
 
   @override
   Widget build(BuildContext context) {

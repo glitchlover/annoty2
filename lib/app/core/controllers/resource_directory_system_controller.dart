@@ -5,15 +5,17 @@ import 'package:file_picker/file_picker.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-class PdfDirectoryController extends GetxController {
+class ResourceDirectorySystemController extends GetxController {
   DocumentServices pdfService =
       DocumentServices(dbFolderName: "Resource", dbType: "pdf");
+  RxList<Directory> get resourceList => pdfService
+      .getChildrenFolder(directory: pdfService.dbFolder, currentDepth: 1)
+      .obs;
+  Rx<int> get resourceListSize => resourceList.length.obs;
 
-  late RxList<FileSystemEntity> fentities = pdfService.entities.obs;
-
-  updateFentities() async {
-    fentities.value = pdfService.entities;
-    fentities.refresh();
+  updateResources() async {
+    resourceList.value = pdfService.entities as List<Directory>;
+    resourceList.refresh();
     update();
   }
 
@@ -26,6 +28,6 @@ class PdfDirectoryController extends GetxController {
     String folderPath = "${pdfService.dbFolder.path}\\$folder";
     pdfService.mkFolder(folder, pdfService.dbFolder);
     pdfService.copyFile(folderPath, File(pick.files.first.path!));
-    updateFentities();
+    updateResources();
   }
 }

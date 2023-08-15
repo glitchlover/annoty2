@@ -1,12 +1,11 @@
-import 'package:annoty/app/presentation/ui/home/home_controller.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/annoty_search_tool.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/home_app_bar.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/resource_table.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/speed_dial.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class HomePage extends GetView<HomeController> {
+
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
@@ -14,12 +13,12 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
         appBar: HomeAppBar().paint(),
         floatingActionButton: const MyFloatingActionButton(),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
+        body: const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Column(
             children: [
-              AnnotySearchTool(controller: controller),
-              ResourceTable(controller: controller,),//todo - make it list later
+              AnnotySearchTool(),
+              ResourceTable(), //todo - make it list later
             ],
           ),
         ));

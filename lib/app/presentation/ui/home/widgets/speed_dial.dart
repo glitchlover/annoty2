@@ -1,9 +1,10 @@
 import 'package:annoty/app/core/constants/color/core.dart';
-import 'package:annoty/app/core/controllers/pdf_directory_controller.dart';
+import 'package:annoty/app/core/controllers/resource_directory_system_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyFloatingActionButton extends GetView<PdfDirectoryController> {
+class MyFloatingActionButton
+    extends GetView<ResourceDirectorySystemController> {
   const MyFloatingActionButton({
     super.key,
   });
