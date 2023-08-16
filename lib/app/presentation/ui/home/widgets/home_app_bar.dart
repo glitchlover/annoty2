@@ -17,10 +17,6 @@ class HomeAppBar {
         actions: myIconActions(thmCtrl));
   }
 
-
-
-
-
   List<Widget> myIconActions(ThemeToggleController thmCtrl) {
     return [
         Obx(() {

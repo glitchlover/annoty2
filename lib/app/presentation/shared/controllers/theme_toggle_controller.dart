@@ -14,7 +14,7 @@ class ThemeToggleController extends GetxController {
   }
 
   setIcon(mode) {
-    icon.value = (mode == ThemeMode.dark) ? Icons.wb_sunny_outlined : Icons.circle_rounded;
+    icon.value = (mode == ThemeMode.dark) ? Icons.light_mode_outlined : Icons.dark_mode_outlined;
     update();
   }
 
