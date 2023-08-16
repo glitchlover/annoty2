@@ -1,4 +1,4 @@
-import 'package:annoty/app/core/controllers/resource_directory_system_controller.dart';
+import 'package:annoty/app/presentation/shared/controllers/resource_directory_system_controller.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/entity_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

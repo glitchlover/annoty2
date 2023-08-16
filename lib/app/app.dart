@@ -1,8 +1,8 @@
 
+import 'package:annoty/app/app_binding.dart';
 import 'package:annoty/app/core/routes/app_pages.dart';
 import 'package:annoty/app/core/routes/splash_screen_routes.dart';
 import 'package:annoty/app/core/theme/my_theme_data.dart';
-import 'package:annoty/app/presentation/ui/splash_screen/splash_screen_binding.dart';
 import 'package:annoty/app/services/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ class App extends StatelessWidget {
       theme: MyThemeData.lightthemeData,
       darkTheme: MyThemeData.darkthemeData,
       themeMode: ThemeService.instance.themeMode,
-      initialBinding: SplashScreenBinding(),
+      initialBinding: AppBindings(),
       initialRoute: SplashScreenRoutes.splashScreen,
       getPages: AppPages.routes,
     );

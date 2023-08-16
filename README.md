@@ -6,9 +6,9 @@ Its all about studying PDFs effectively and quickly as possible. Supports markdo
 
 ## Tasks ⚒️
 > 🔥 => goal, 🥊 challenge, 🟢easy task, 🟡medium task, 🔴hard task
-
+- [ ] 🔥UI
+    - [ ] 🟢Transform Icons
 - [ ] 🔥PDF Workings
-- [ ] 🟢Transfer Icons
 - [ ] 🔥Resource Table
     - [ ] 🥊Working Resource Table
         - [ ] 🟢OS Access

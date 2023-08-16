@@ -1,8 +1,5 @@
 {
-    "vocabulary-builder.rootPath": "c:\\Users\\Samama\\Desktop\\Brain-Box 🤯\\Knowledge\\Vocabulary",
     "files.autoSave": "afterDelay",
-    "chadcommit.openAiKey": "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",
-    "chadcommit.prompt": "Analyze a git diff and make a short conventional and funny commit message, follow this template: 🚀feat(scope) [message]\\n🛠️refactor(scope) [message]\\n⚙️chore(scope) [message]; Response example: 🚀feat(player) add captions\\n🛠️refactor(player) support new formats\\n⚙️chore(dependencies) upgrade terser to 5.16.6",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,

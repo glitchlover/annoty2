@@ -1,6 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/ui/assets.dart';
-import 'package:annoty/app/core/controllers/theme_controller.dart';
+import 'package:annoty/app/presentation/shared/controllers/theme_toggle_controller.dart';
 import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:annoty/app/core/theme/my_text_theme.dart';
 import 'package:annoty/app/presentation/shared/widget/my_app_bar.dart';
