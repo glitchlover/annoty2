@@ -1,7 +1,7 @@
 /// note
 /// - 0 means inside the previos folder.
 
-mixin DBconst {
+mixin ResourceFolderTreeConst {
   static const String main = "Annoty";
 
   static const String resource = "$main\\Resource";

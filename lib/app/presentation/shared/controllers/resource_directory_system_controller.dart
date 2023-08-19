@@ -13,22 +13,27 @@ class ResourceDirectorySystemController extends GetxController {
       .obs;
   Rx<int> get resourceListSize => resourceList.length.obs;
 
+  pickPdf() async {
+    FilePickerResult? pick = await FilePicker.platform
+        .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
+    if (pick == null) return;
+    String folderPath = await makeResourceFolder(pick);
+    pdfService.copyFile(folderPath, File(pick.files.first.path!));
+    updateResources();
+  }
+
+  Future<String> makeResourceFolder(FilePickerResult pick) async {
+    String file = pick.files.first.path!.split("\\").last;
+    String folder = file.replaceAll(file.split(".").last, "");
+    String folderPath = "${pdfService.dbFolder.path}\\$folder";
+    await pdfService.mkFolder(folder, pdfService.dbFolder);
+    return folderPath;
+  }
+
   updateResources() async {
     resourceList.value = pdfService.entities;
     resourceListSize.refresh();
     resourceList.refresh();
     update();
-  }
-
-  pickPdf() async {
-    FilePickerResult? pick = await FilePicker.platform
-        .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
-    if (pick == null) return;
-    String file = pick.files.first.path!.split("\\").last;
-    String folder = file.replaceAll(file.split(".").last, "");
-    String folderPath = "${pdfService.dbFolder.path}\\$folder";
-    await pdfService.mkFolder(folder, pdfService.dbFolder);
-    pdfService.copyFile(folderPath, File(pick.files.first.path!));
-    updateResources();
   }
 }
