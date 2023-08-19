@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:annoty/app/core/constants/database/db.dart';
+import 'package:annoty/app/core/constants/database/resource_file_tree.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DocumentServices {
-  final String masterFolderName = DBconst.main;
+  final String masterFolderName = ResourceFolderTreeConst.main;
   late Directory masterFolder;
   final String dbFolderName;
   late Directory dbFolder;

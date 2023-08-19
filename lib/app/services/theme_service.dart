@@ -1,11 +1,11 @@
-import 'package:annoty/app/services/get_storage_service.dart';
+import 'package:annoty/app/core/constants/database/get_storage_key.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ThemeService extends GetxController{
   final _getStorage = GetStorage();
-  final _storageKey = GetStorageService().themeStorageKey;
+  final _storageKey = GetStorageKey().themeStorageKey;
   static ThemeService instance = ThemeService._();
   // ignore: empty_constructor_bodies
   ThemeService._() {}

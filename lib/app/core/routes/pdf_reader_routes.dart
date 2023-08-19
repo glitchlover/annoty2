@@ -10,7 +10,7 @@ class PdfReaderRoutes {
   static final routes = [
     GetPage(
       name: pdfReader,
-      page: () => const PdfReader(),
+      page: () => const PdfReaderPage(),
       binding: PdfReaderBinding(),
     ),
   ];
