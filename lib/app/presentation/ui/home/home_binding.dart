@@ -1,4 +1,4 @@
-import 'package:annoty/app/presentation/ui/home/home_controller.dart';
+import 'package:annoty/app/presentation/ui/home/controllers/home_controller.dart';
 import 'package:get/get.dart';
 
 class HomeBinding extends Bindings {

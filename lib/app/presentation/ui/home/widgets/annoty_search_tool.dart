@@ -1,7 +1,7 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/shared/widget/my_text_field.dart';
-import 'package:annoty/app/presentation/ui/home/home_controller.dart';
+import 'package:annoty/app/presentation/ui/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
