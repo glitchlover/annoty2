@@ -1,25 +1,19 @@
 import 'dart:io';
 import 'package:get/get.dart';
-import 'package:pdfx/pdfx.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AnnotyPdfStudyController extends GetxController {
   late final File pdfFile;
-  late final PdfController pdfController;
+  final PdfViewerController sfPdfViewerController = PdfViewerController();
+
   @override
   void onInit() {
-    setPdfFile();
-    openPdfFile();
+    setPdfData();
     print(pdfFile);
     super.onInit();
   }
 
-  void setPdfFile() {
+  void setPdfData() {
     pdfFile = Get.arguments;
-  }
-
-  void openPdfFile() {
-    pdfController = PdfController(
-      document: PdfDocument.openFile(pdfFile.path),
-    );
   }
 }

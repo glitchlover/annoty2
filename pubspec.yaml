@@ -46,6 +46,7 @@ dependencies:
   tbib_splash_screen: ^0.0.6
   syncfusion_flutter_pdf: ^20.4.51
   pdfx: ^2.4.0
+  syncfusion_flutter_pdfviewer: ^20.4.54
 
 dev_dependencies:
   flutter_test:

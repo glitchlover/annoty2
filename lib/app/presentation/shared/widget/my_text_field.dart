@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +11,11 @@ class MyTextField extends TextField {
   final String? helperText;
   final String? hintText;
   @override
-  final TextEditingController? controller;
+  TextEditingController? get controller => controllerSet;
+  final TextEditingController? controllerSet;
   @override
-  final ValueChanged<String>? onChanged;
+  ValueChanged<String>? get onChanged => onChangedSet;
+  final ValueChanged<String>? onChangedSet;
   @override
   Color get cursorColor => MyCoreColor.activeGrey;
   Widget? get suffix => suffixIcon == null
@@ -22,44 +23,50 @@ class MyTextField extends TextField {
       : null;
   @override
   InputDecoration get decoration => MyInputDecoration(
-      labelText: labelText,
-      helperText: helperText,
-      hintText: hintText,
-      suffixIcon: suffixIcon,
-      prefixIcon: preffixIcon);
+      labelTextSet: labelText,
+      helperTextSet: helperText,
+      hintTextSet: hintText,
+      suffixIconSet: suffixIcon,
+      prefixIconSet: preffixIcon);
 
   const MyTextField({
     this.labelText,
     this.helperText,
     this.hintText,
-    this.onChanged,
+    this.onChangedSet,
     this.suffixIcon,
     this.preffixIcon,
     this.onPressed,
     super.key,
-    this.controller,
+    this.controllerSet,
   });
 }
 
 class MyInputDecoration extends InputDecoration {
   @override
-  final String? labelText;
+  String? get labelText => labelTextSet;
+  final String? labelTextSet;
   @override
-  final String? helperText;
+  String? get helperText => helperTextSet;
+  final String? helperTextSet;
   @override
-  final Widget? prefixIcon;
+  Widget? get prefixIcon => prefixIconSet;
+  final Widget? prefixIconSet;
   @override
-  final Widget? suffixIcon;
+  Widget? get suffixIcon => suffixIconSet;
+  final Widget? suffixIconSet;
   @override
-  final String? hintText;
+  String? get hintText => hintTextSet;
+  final String? hintTextSet;
   @override
   InputBorder? get border => InputBorder.none;
   final BorderSide noBorder = const BorderSide(color: Colors.transparent);
 
-  const MyInputDecoration(
-      {this.labelText,
-      this.helperText,
-      this.hintText,
-      this.prefixIcon,
-      this.suffixIcon});
+  const MyInputDecoration({
+    this.labelTextSet,
+    this.helperTextSet,
+    this.hintTextSet,
+    this.prefixIconSet,
+    this.suffixIconSet
+    });
 }
