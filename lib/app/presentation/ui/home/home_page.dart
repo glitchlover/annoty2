@@ -1,7 +1,7 @@
 import 'package:annoty/app/presentation/ui/home/widgets/annoty_search_tool.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/home_app_bar.dart';
 import 'package:annoty/app/presentation/ui/home/widgets/resource_table.dart';
-import 'package:annoty/app/presentation/ui/home/widgets/speed_dial.dart';
+import 'package:annoty/app/presentation/ui/home/widgets/my_floating_action_button.dart';
 import 'package:flutter/material.dart';
 
 

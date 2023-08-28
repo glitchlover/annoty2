@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 class MyIconButton extends IconButton {
   @override
-  final Widget icon;
+  Widget get icon => iconSet;
+  final Widget iconSet;
   @override
   final VoidCallback? onPressed;
   @override
@@ -15,12 +16,12 @@ class MyIconButton extends IconButton {
   Color get hoverColor => Colors.transparent;
 
   const MyIconButton._(
-      {required this.icon,
+      {required this.iconSet,
       required this.onPressed,
       this.color,
       this.iconSize = 20})
       : super(
-            onPressed: onPressed, icon: icon, color: color, iconSize: iconSize);
+            onPressed: onPressed, icon: iconSet, color: color, iconSize: iconSize);
 
   factory MyIconButton(
       {required Icon icon,
@@ -32,11 +33,7 @@ class MyIconButton extends IconButton {
             ? MyCoreColor.muteGrey
             : MyCoreColor.muteBlack);
     return MyIconButton._(
-      icon: icon,
-      onPressed: onPressed,
-      color: bcolor,
-      iconSize: iconSize
-    );
+        iconSet: icon, onPressed: onPressed, color: bcolor, iconSize: iconSize);
   }
 
   IconButton paint({double? size}) {
