@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class PdfReaderBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => AnnotyPdfStudyController());
+    Get.lazyPut(() => AnnotyReaderController());
     Get.lazyPut(() => PdfDataController());
   }
 }

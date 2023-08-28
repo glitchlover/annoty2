@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class AnnotyPdfStudyController extends GetxController {
+class AnnotyReaderController extends GetxController {
   late final File pdfFile;
   final PdfViewerController sfPdfViewerController = PdfViewerController();
 

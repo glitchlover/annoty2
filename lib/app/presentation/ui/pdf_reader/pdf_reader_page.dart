@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class PdfReaderPage extends GetView<AnnotyPdfStudyController> {
+class PdfReaderPage extends GetView<AnnotyReaderController> {
   const PdfReaderPage({super.key});
 
   @override

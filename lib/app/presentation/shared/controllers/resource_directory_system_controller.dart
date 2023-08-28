@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:annoty/app/core/utils/optimized_utils.dart';
 import 'package:annoty/app/services/document_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -17,16 +18,18 @@ class ResourceDirectorySystemController extends GetxController {
     FilePickerResult? pick = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
     if (pick == null) return;
-    String folderPath = await makeResourceFolder(pick);
-    pdfService.copyFile(folderPath, File(pick.files.first.path!));
+    String outputPath = await makeResourceFolder(pick);
+    await OptimizedUtils().optimizePdf(pick.files.first.path!, outputPath);
+    // pdfService.copyFile(folderPath, File(pick.files.first.path!));
     updateResources();
   }
 
   Future<String> makeResourceFolder(FilePickerResult pick) async {
-    String file = pick.files.first.path!.split("\\").last;
-    String folder = file.replaceAll(file.split(".").last, "");
-    String folderPath = "${pdfService.dbFolder.path}\\$folder";
-    await pdfService.mkFolder(folder, pdfService.dbFolder);
+    String fileName = pick.files.first.path!.split("\\").last;
+    String folderName =
+        fileName.replaceRange(fileName.lastIndexOf("."), fileName.length, "");
+    String folderPath = "${pdfService.dbFolder.path}\\$folderName";
+    await pdfService.mkFolder(folderName, pdfService.dbFolder);
     return folderPath;
   }
 
