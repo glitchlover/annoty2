@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:annoty/app/presentation/ui/pdf_reader/pdf_reader_binding.dart';
-import 'package:annoty/app/presentation/ui/pdf_reader/pdf_reader_page.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/annoty_reader_binding.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/annoty_reader_page.dart';
 
 class PdfReaderRoutes {
   PdfReaderRoutes._();
@@ -10,7 +10,7 @@ class PdfReaderRoutes {
   static final routes = [
     GetPage(
       name: pdfReader,
-      page: () => const PdfReaderPage(),
+      page: () => const AnnotyReaderPage(),
       binding: PdfReaderBinding(),
     ),
   ];

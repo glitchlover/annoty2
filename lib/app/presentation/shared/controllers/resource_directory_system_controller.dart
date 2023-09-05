@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:annoty/app/core/utils/optimized_utils.dart';
 import 'package:annoty/app/services/document_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_rx/get_rx.dart';
@@ -19,8 +18,7 @@ class ResourceDirectorySystemController extends GetxController {
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
     if (pick == null) return;
     String outputPath = await makeResourceFolder(pick);
-    await OptimizedUtils().optimizePdf(pick.files.first.path!, outputPath);
-    // pdfService.copyFile(folderPath, File(pick.files.first.path!));
+    pdfService.copyFile(outputPath, File(pick.files.first.path!));
     updateResources();
   }
 

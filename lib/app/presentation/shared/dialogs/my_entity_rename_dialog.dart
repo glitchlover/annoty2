@@ -6,14 +6,13 @@ import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:get/get.dart';
 
 class MyEntityRenameDialog extends StatelessWidget {
-  MyEntityRenameDialog({super.key, required this.isFolder, required this.entity});
-  final bool isFolder;
+  MyEntityRenameDialog({super.key, required this.entity});
   final FileSystemEntity entity;
   final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: isFolder?const MyText("Folder Name"): const MyText("File Name"),
+      title: const MyText("File Name"),
       content: TextField(
         controller: _controller,
         decoration: const InputDecoration(hintText: "Untitle"),
@@ -23,7 +22,12 @@ class MyEntityRenameDialog extends StatelessWidget {
             onPressed: () {
               ResourceDirectorySystemController ctrl =
                   Get.find<ResourceDirectorySystemController>();
-              isFolder?ctrl.pdfService.updateFolder(_controller.text, entity as Directory): ctrl.pdfService.updateFile(_controller.text, entity as File);
+              String folderPath = ctrl.pdfService
+                  .updateFolder(_controller.text, entity as Directory)
+                  .path;
+              String filePath =
+                  "$folderPath\\${entity.path.split("\\").last}.pdf";
+              ctrl.pdfService.updateFile(_controller.text, File(filePath));
               ctrl.updateResources();
               Navigator.of(context).pop();
             },

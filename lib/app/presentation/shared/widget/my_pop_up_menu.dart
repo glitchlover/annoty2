@@ -19,12 +19,7 @@ class MyPopUpMenu extends StatelessWidget {
           if (value == "rename") {
             showDialog(
                 context: Get.context!,
-                builder: (_) => MyEntityRenameDialog(
-                    isFolder:
-                        entity.statSync().type == FileSystemEntityType.directory
-                            ? true
-                            : false,
-                    entity: entity));
+                builder: (_) => MyEntityRenameDialog(entity: entity));
           }
         },
         itemBuilder: (context) => [

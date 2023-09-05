@@ -70,14 +70,14 @@ class DocumentServices {
     file.copy("$path\\${file.path.split("\\").last}");
   }
 
-  void updateFolder(String name, Directory thisDir) {
+  Directory updateFolder(String name, Directory thisDir){
     String newPath = "${thisDir.parent.path}\\$name";
-    thisDir.rename(newPath);
+    return thisDir.renameSync(newPath);
   }
 
-  void updateFile(String name, File thisDir) {
+  Future updateFile(String name, File thisDir) async{
     String newPath = "${thisDir.parent.path}\\$name.$dbFolderName";
-    thisDir.rename(newPath);
+    await thisDir.rename(newPath);
   }
 
   // ..................deleting files and folders ................
