@@ -11,8 +11,21 @@ class AnnotyReaderPage extends GetView<AnnotyReaderController> {
     return Scaffold(
       appBar: ToolMenu(), 
       body: SfPdfViewer.file(
-        controller.pdfFile,
-        controller: controller.sfPdfViewerController,
+          controller.pdfFile,
+          controller: controller.pdfViewerController,
+          enableTextSelection: true,
+          onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
+            print(details.globalSelectedRegion);
+            if (details.selectedText == null &&
+                controller.ctxMenu.selectionOverlayEntry != null) {
+              controller.pdfViewerController.clearSelection();
+              controller.ctxMenu.handleContextMenuClose();
+            } else if (details.selectedText != null &&
+                controller.ctxMenu.selectionOverlayEntry == null) {
+              controller.ctxMenu.showContextMenu(
+                  context: context, details: details);
+            }
+          },
         )
       );
   }
@@ -20,4 +33,5 @@ class AnnotyReaderPage extends GetView<AnnotyReaderController> {
 
 class ToolMenu extends AppBar {
   ToolMenu({super.key});
+
 }

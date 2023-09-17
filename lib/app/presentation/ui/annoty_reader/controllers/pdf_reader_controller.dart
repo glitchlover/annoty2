@@ -1,19 +1,30 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'package:annoty/app/presentation/ui/annoty_reader/widgets/show_context_menu.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AnnotyReaderController extends GetxController {
   late final File pdfFile;
-  final PdfViewerController sfPdfViewerController = PdfViewerController();
+  late final Uint8List pdfBytes;
+  final PdfViewerController pdfViewerController = PdfViewerController();
+  final ShowContextMenu ctxMenu = ShowContextMenu();
 
   @override
-  void onInit() {
-    setPdfData();
-    print(pdfFile);
+  void onInit(){
+    setPdfDataAndBytes();
     super.onInit();
   }
 
-  void setPdfData() {
+  @override
+  void onClose() {
+    ctxMenu.handleContextMenuClose();
+    super.onClose();
+  }
+
+  void setPdfDataAndBytes() async{
     pdfFile = Get.arguments;
+    pdfBytes = await pdfFile.readAsBytes();
+    print(pdfFile);
   }
 }

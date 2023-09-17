@@ -1,9 +1,20 @@
-class SizingUiConstants {
-  static const double kWebContextMenuHeight = 32;
-  static const double kMobileContextMenuHeight = 48;
-  static const double kContextMenuBottom = 55;
-  static const double kContextMenuWidth = 200;
-  static const double kSearchOverlayWidth = 412;
-  static const int kHeaderTextSize = 20;
-  static const int kNormalTextSize = 16;
+class SizingUiCore {
+  static double size_2_1 = 2;
+  static double size_2_2 = 4;
+  static double size_2_3 = 6;
+  static double size_4_1 = 4;
+  static double size_4_2 = 8;
+  static double size_4_3 = 12;
+  static double size_4_4 = 16;
+  static double size_4_5 = 20;
+  static double size_4_7 = 28;
+  static double size_4_11 = 44;
+  static double size_4_13 = 52;
 }
+
+class SpaceSizing {
+  static double mainPadding = SizingUiCore.size_4_2;
+  static double secondaryPadding = SizingUiCore.size_2_2;
+}
+
+class WidgetSizing {}

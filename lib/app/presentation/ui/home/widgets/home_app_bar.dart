@@ -1,5 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/ui/assets.dart';
+import 'package:annoty/app/core/constants/ui/sizing.dart';
 import 'package:annoty/app/presentation/shared/controllers/theme_toggle_controller.dart';
 import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:annoty/app/core/theme/my_text_theme.dart';
@@ -63,7 +64,7 @@ class Leading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(SpaceSizing.mainPadding),
       child: Image.asset(Assets.kAstImgIcon),
     );
   }

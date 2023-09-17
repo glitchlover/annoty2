@@ -29,7 +29,7 @@ mixin MyThemeData implements ThemeData {
         scaffoldBackgroundColor: MyCoreColor.backgroundDark,
         shadowColor: const Color.fromARGB(255, 0, 0, 0),
         textTheme: MyTextTheme(),
-        floatingActionButtonTheme: MyFloationActionButtonTheme(),
         appBarTheme: MyAppBarTheme(),
+        floatingActionButtonTheme: MyFloationActionButtonTheme(),
       );
 }
