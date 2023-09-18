@@ -1,35 +1,14 @@
-import 'package:annoty/app/core/constants/misc/key.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/pdf_reader_controller.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/widgets/pdf_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class AnnotyReaderPage extends GetView<AnnotyReaderController> {
+class AnnotyReaderPage extends StatelessWidget{
   const AnnotyReaderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: ToolMenu(), 
-      body: SfPdfViewer.file(
-          controller.pdfFile,
-          key: KeyConst.pdfKey,
-          controller: controller.pdfViewerController,
-          enableTextSelection: true,
-          interactionMode: PdfInteractionMode.selection,
-          onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
-            print(details.globalSelectedRegion);
-            if (details.selectedText == null &&
-                controller.ctxMenu.selectionOverlayEntry != null) {
-              controller.pdfViewerController.clearSelection();
-              controller.ctxMenu.handleContextMenuClose();
-            } else if (details.selectedText != null &&
-                controller.ctxMenu.selectionOverlayEntry == null) {
-              controller.ctxMenu.showContextMenu(
-                  context: context, details: details);
-            }
-          },
-        )
+      body: const PdfViewer()
       );
   }
 }
