@@ -5,9 +5,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class PdfViewer extends GetView<AnnotyReaderController> {
-  const PdfViewer({
-    super.key,
-    });
+  const PdfViewer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +13,17 @@ class PdfViewer extends GetView<AnnotyReaderController> {
         controller.pdfFile,
         key: KeyConst.pdfKey,
         controller: controller.pdfViewerController,
-        enableTextSelection: true,
-        interactionMode: PdfInteractionMode.selection,
+      enableTextSelection: true,
         onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
           print(details.globalSelectedRegion);
           if (details.selectedText == null &&
-              controller.ctxMenu.selectionOverlayEntry != null) {
-            controller.pdfViewerController.clearSelection();
-            controller.ctxMenu.handleContextMenuClose();
+            controller.contextMenu.selectionOverlayEntry != null) {
+          controller.pdfViewerController.clearSelection();
+          controller.contextMenu.handleContextMenuClose();
           } else if (details.selectedText != null &&
-              controller.ctxMenu.selectionOverlayEntry == null) {
-            controller.ctxMenu.showContextMenu(
-                context: context, details: details);
+            controller.contextMenu.selectionOverlayEntry == null) {
+          controller.contextMenu
+              .showContextMenu(context: context, details: details);
           }
         },
       );

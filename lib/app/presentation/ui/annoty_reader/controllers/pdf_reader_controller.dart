@@ -8,7 +8,7 @@ class AnnotyReaderController extends GetxController {
   late final File pdfFile;
   late final Uint8List pdfBytes;
   final PdfViewerController pdfViewerController = PdfViewerController();
-  final ShowContextMenu ctxMenu = ShowContextMenu();
+  final ShowContextMenu contextMenu = ShowContextMenu();
 
   @override
   void onInit(){
@@ -18,7 +18,7 @@ class AnnotyReaderController extends GetxController {
 
   @override
   void onClose() {
-    ctxMenu.handleContextMenuClose();
+    contextMenu.handleContextMenuClose();
     super.onClose();
   }
 

@@ -58,75 +58,16 @@ class ShowContextMenu {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: const Icon(Icons.square_rounded,
-                        color: HighlightColorConstant.kPurp),
-                    onTap: () async {
-                      addAnnote(
-                          annotyReaderController: annotyReaderController,
-                          details: details,
-                          color: HighlightColorConstant.kPurp);
-                    },
-                  )),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: const Icon(Icons.square_rounded,
-                        color: HighlightColorConstant.kBlue),
-                    onTap: () async {
-                      addAnnote(
-                          annotyReaderController: annotyReaderController,
-                          details: details,
-                          color: HighlightColorConstant.kBlue);
-                    },
-                  )),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: const Icon(Icons.square_rounded,
-                        color: HighlightColorConstant.kGreen),
-                    onTap: () async {
-                      addAnnote(
-                          annotyReaderController: annotyReaderController,
-                          details: details,
-                          color: HighlightColorConstant.kGreen);
-                    },
-                  )),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: const Icon(Icons.square_rounded,
-                        color: HighlightColorConstant.kYellow),
-                    onTap: () async {
-                      addAnnote(
-                          annotyReaderController: annotyReaderController,
-                          details: details,
-                          color: HighlightColorConstant.kYellow);
-                    },
-                  )),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: const Icon(Icons.square_rounded,
-                        color: HighlightColorConstant.kRed),
-                    onTap: () async {
-                      addAnnote(
-                          annotyReaderController: annotyReaderController,
-                          details: details,
-                          color: HighlightColorConstant.kRed);
-                    },
-                  )),
-              MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: GestureDetector(
-                    child: const Icon(Icons.copy_rounded),
-                    onTap: () async {
-                      await Clipboard.setData(
-                          ClipboardData(text: details.selectedText!));
-                    },
-                  )),
+              TextButton(
+                child: const Icon(Icons.square_rounded,
+                    color: HighlightColorConstant.kPurp),
+                onPressed: () async {
+                  addAnnote(
+                      annotyReaderController: annotyReaderController,
+                      details: details,
+                      color: HighlightColorConstant.kPurp);
+                },
+              ),
             ],
           ),
         ),
@@ -134,6 +75,7 @@ class ShowContextMenu {
     );
     overlayState.insert(selectionOverlayEntry!);
   }
+
 
   void addAnnote({
     required AnnotyReaderController annotyReaderController,
