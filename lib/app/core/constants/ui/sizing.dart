@@ -11,7 +11,7 @@ class SizingUiCore {
   static double size_4_11 = 44;
   static double size_4_13 = 52;
 }
-
+// todo - study sizing
 class SpaceSizing {
   static double mainPadding = SizingUiCore.size_4_2;
   static double secondaryPadding = SizingUiCore.size_2_2;

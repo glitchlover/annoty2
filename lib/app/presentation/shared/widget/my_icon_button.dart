@@ -7,21 +7,27 @@ class MyIconButton extends IconButton {
   Widget get icon => iconSet;
   final Widget iconSet;
   @override
-  final VoidCallback? onPressed;
+  VoidCallback? get onPressed => onPressedSet;
+  final VoidCallback? onPressedSet;
   @override
-  final Color? color;
+  Color? get color => colorSet;
+  final Color? colorSet;
   @override
-  final double iconSize;
+  double get iconSize => iconSizeSet;
+  final double iconSizeSet;
   @override
   Color get hoverColor => Colors.transparent;
 
   const MyIconButton._(
       {required this.iconSet,
-      required this.onPressed,
-      this.color,
-      this.iconSize = 20})
+      required this.onPressedSet,
+      this.colorSet,
+      this.iconSizeSet = 20})
       : super(
-            onPressed: onPressed, icon: iconSet, color: color, iconSize: iconSize);
+            onPressed: onPressedSet,
+            icon: iconSet,
+            color: colorSet,
+            iconSize: iconSizeSet);
 
   factory MyIconButton(
       {required Icon icon,
@@ -33,7 +39,7 @@ class MyIconButton extends IconButton {
             ? MyCoreColor.muteGrey
             : MyCoreColor.muteBlack);
     return MyIconButton._(
-        iconSet: icon, onPressed: onPressed, color: bcolor, iconSize: iconSize);
+        iconSet: icon, onPressedSet: onPressed, colorSet: bcolor, iconSizeSet: iconSize);
   }
 
   IconButton paint({double? size}) {

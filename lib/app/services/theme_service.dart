@@ -3,12 +3,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ThemeService extends GetxController{
+class ThemeService extends GetxController {
   final _getStorage = GetStorage();
   final _storageKey = GetStorageKey().themeStorageKey;
   static ThemeService instance = ThemeService._();
-  // ignore: empty_constructor_bodies
-  ThemeService._() {}
+
+  ThemeService._();
   set themeMode(ThemeMode themeMode) {
     if (themeMode == ThemeMode.system) {
       _getStorage.remove(_storageKey);

@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: HomeAppBar().paint(),
-        floatingActionButton: const MyFloatingActionButton(),
         body: const Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
@@ -21,7 +20,9 @@ class HomePage extends StatelessWidget {
               ResourceTable(), //todo - make it list later
             ],
           ),
-        ));
+        ),
+        floatingActionButton: const MyFloatingActionButton(),
+    );
   }
 }
 

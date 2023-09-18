@@ -13,6 +13,7 @@ class DocumentServices {
   late List<FileSystemEntity> entities;
 
   //........................___constructor___........................
+  //todo - change it to asynchronous factory and singleton constructor
   DocumentServices({required this.dbFolderName, required this.dbType}) {
     setLocaPath();
     Timer(const Duration(milliseconds: 1000), () {
@@ -22,6 +23,7 @@ class DocumentServices {
     });
   }
   //........................___making files and folder___........................
+  // todo - all this goes to file utils
   setLocaPath() async {
     final directory = await getApplicationDocumentsDirectory();
     _localPath = directory.path;

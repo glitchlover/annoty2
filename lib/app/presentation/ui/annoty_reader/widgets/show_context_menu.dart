@@ -23,23 +23,23 @@ class ShowContextMenu {
     }
   }
 
-  void showContextMenu(
-      {required BuildContext context,
-      required PdfTextSelectionChangedDetails details}) {
-    AnnotyReaderController annotyReaderController =
-        Get.find<AnnotyReaderController>();
-    final RenderBox? renderBoxContainer =
+  void showContextMenu({
+    required BuildContext context,
+    required PdfTextSelectionChangedDetails details
+    }) {
+      final RenderBox? renderBoxContainer =
         context.findRenderObject()! as RenderBox?;
-    if (renderBoxContainer != null) {
-      overlayEntryWidget(details, context, annotyReaderController);
-    }
+      if (renderBoxContainer != null) {
+        overlayEntryWidget(details);
+      }
   }
 
-  void overlayEntryWidget(PdfTextSelectionChangedDetails details, BuildContext context, AnnotyReaderController annotyReaderController) {
-    final List<BoxShadow> boxShadows = MyUiElement().shadow;
+  void overlayEntryWidget(PdfTextSelectionChangedDetails details) {
+    final List<BoxShadow> boxShadow = MyUiElement().shadow;
     final double top = details.globalSelectedRegion!.top - 55;
     final double left = details.globalSelectedRegion!.center.dx;
-    final OverlayState overlayState = Overlay.of(context, rootOverlay: true);
+    final OverlayState overlayState = Overlay.of(Get.context!, rootOverlay: true);
+    final AnnotyReaderController annotyReaderController = Get.find<AnnotyReaderController>();
     selectionOverlayEntry = OverlayEntry(
       builder: (BuildContext context) => Positioned(
         top: top,
@@ -48,7 +48,7 @@ class ShowContextMenu {
           padding: const EdgeInsets.all(2),
           decoration: BoxDecoration(
             color: contextMenuColor,
-            boxShadow: boxShadows,
+            boxShadow: boxShadow,
           ),
           constraints: BoxConstraints(
               maxWidth: SizingUiCore.size_4_1 * 50,

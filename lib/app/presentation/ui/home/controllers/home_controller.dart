@@ -1,7 +1,3 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  late final String pdfFilePath;
-
-
-}
+class HomeController extends GetxController{}

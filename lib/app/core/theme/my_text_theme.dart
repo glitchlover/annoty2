@@ -40,23 +40,28 @@ class MyTextTheme extends TextTheme {
 
 class MyTextStyle extends TextStyle {
   @override
-  final String? fontFamily;
+  String? get fontFamily => fontFamilySet;
+  final String? fontFamilySet;
   @override
-  final FontWeight? fontWeight;
+  FontWeight? get fontWeight => fontWeightSet;
+  final FontWeight? fontWeightSet;
   @override
-  final double fontSize;
-  final Color? color;
+  double get fontSize => fontSizeSet;
+  final double fontSizeSet;
+  @override
+  Color? get color => colorSet;
+  final Color? colorSet;
 
   const MyTextStyle._({
-    this.fontFamily = "Quicksand",
-    this.fontWeight = FontWeight.w700,
-    this.color,
-    required this.fontSize,
+    this.fontFamilySet = "Quicksand",
+    this.fontWeightSet = FontWeight.w700,
+    this.colorSet,
+    required this.fontSizeSet,
   }) : super(
-          fontFamily: fontFamily,
-          fontWeight: fontWeight,
-          color: color,
-          fontSize: fontSize,
+          fontFamily: fontFamilySet,
+          fontWeight: fontWeightSet,
+          color: colorSet,
+          fontSize: fontSizeSet,
         );
 
   factory MyTextStyle(
@@ -69,9 +74,9 @@ class MyTextStyle extends TextStyle {
         (isLightTheme ? MyCoreColor.muteBlack : MyCoreColor.activeGrey);
 
     return MyTextStyle._(
-        color: bcolor,
-        fontSize: fontSize,
-        fontFamily: fontFamily,
-        fontWeight: fontWeight);
+        colorSet: bcolor,
+        fontSizeSet: fontSize,
+        fontFamilySet: fontFamily,
+        fontWeightSet: fontWeight);
   }
 }

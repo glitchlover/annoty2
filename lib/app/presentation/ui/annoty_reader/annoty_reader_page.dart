@@ -1,3 +1,4 @@
+import 'package:annoty/app/core/constants/misc/key.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/pdf_reader_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,8 +13,10 @@ class AnnotyReaderPage extends GetView<AnnotyReaderController> {
       appBar: ToolMenu(), 
       body: SfPdfViewer.file(
           controller.pdfFile,
+          key: KeyConst.pdfKey,
           controller: controller.pdfViewerController,
           enableTextSelection: true,
+          interactionMode: PdfInteractionMode.selection,
           onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
             print(details.globalSelectedRegion);
             if (details.selectedText == null &&

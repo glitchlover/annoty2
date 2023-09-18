@@ -12,7 +12,7 @@ class SplashScreenPage extends GetView<SplashScreenController> {
   @override
   Widget build(BuildContext context) {
     return const SplashScreenView(
-      imageSrc: Assets.kAstImgIcon,
+      imageSrc: Assets.kAstImgIcon, //todo - loti animation
       navigateRoute: UnknownPage(),
       duration: Duration(seconds: 3),
     );
