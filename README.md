@@ -12,8 +12,11 @@ Its all about studying PDFs effectively and quickly as possible. Supports markdo
 |   |   |-- 🗂️constants/
 |   |   |-- 🗂️routes/
 |   |   |-- 🗂️themes/
+|   |   |-- 🗂️utils/
 |   |-- 🗂️data/
 |   |-- 🗂️presentation/
+|   |   |-- 🗂️shared/
+|   |   |-- 🗂️ui/
 |   |-- 🗂️services/
 |   |-- 🍡app.dart
 |   |-- 🍡app_binding.dart
@@ -21,19 +24,7 @@ Its all about studying PDFs effectively and quickly as possible. Supports markdo
 
 
 ## Tasks ⚒️
-> 🪲 bug, 🔥 goal, 🥊 challenge, 🟢easy task, 🟡medium task, 🔴hard task
-
-- [ ] 🔥UI
-    - [ ] 🟢Transform Icons
-- [ ] 🔥PDF Workings
-    - [ ] Optimezed Pdf ⏳after defence
-- [ ] 🔥Resource Table
-    - [ ] 🥊Working Resource Table
-        - [x] 🟢OS Access
-        - [ ] 🪲renaming Process
-    - [ ] 🥊Better Resource Table   
-        - [ ] 🟡Refactor Document Service
-
+![tasks](TASKME.md)
 
 
 
