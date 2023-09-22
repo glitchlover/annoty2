@@ -25,6 +25,6 @@ class AnnotyReaderController extends GetxController {
   void setPdfDataAndBytes() async{
     pdfFile = Get.arguments;
     pdfBytes = await pdfFile.readAsBytes();
-    print(pdfFile);
+    print("pdf file: $pdfFile");
   }
 }

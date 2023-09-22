@@ -1,0 +1,5 @@
+- [ ] make annotation possible
+- [ ] make showcontext work
+- [ ] get text from selection
+- [x] make the cursor into text selection cursor when it is hovering on a selectable text
+- [ ] make annotation more smoother = Text selection area smooth + cursor behaviour smooth regarding the change of the window size

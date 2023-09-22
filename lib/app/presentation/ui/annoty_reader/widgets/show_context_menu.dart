@@ -17,7 +17,7 @@ class ShowContextMenu {
 
   void handleContextMenuClose() {
     if (selectionOverlayEntry != null) {
-      print("handling");
+      print("handling overlay");
       selectionOverlayEntry?.remove();
       selectionOverlayEntry = null;
     }

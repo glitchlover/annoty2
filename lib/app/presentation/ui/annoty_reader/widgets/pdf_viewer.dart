@@ -10,22 +10,22 @@ class PdfViewer extends GetView<AnnotyReaderController> {
   @override
   Widget build(BuildContext context) {
     return SfPdfViewer.file(
-        controller.pdfFile,
-        key: KeyConst.pdfKey,
-        controller: controller.pdfViewerController,
+      controller.pdfFile,
+      key: KeyConst.pdfKey,
+      controller: controller.pdfViewerController,
       enableTextSelection: true,
-        onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
-          print(details.globalSelectedRegion);
-          if (details.selectedText == null &&
+      onTextSelectionChanged: (PdfTextSelectionChangedDetails details) {
+        print("details.globalSelectedRegion:  ${details.globalSelectedRegion}");
+        if (details.selectedText == null &&
             controller.contextMenu.selectionOverlayEntry != null) {
           controller.pdfViewerController.clearSelection();
           controller.contextMenu.handleContextMenuClose();
-          } else if (details.selectedText != null &&
+        } else if (details.selectedText != null &&
             controller.contextMenu.selectionOverlayEntry == null) {
           controller.contextMenu
               .showContextMenu(context: context, details: details);
-          }
-        },
-      );
+        }
+      },
+    );
   }
 }
