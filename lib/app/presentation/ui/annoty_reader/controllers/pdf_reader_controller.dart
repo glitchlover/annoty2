@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:annoty/app/presentation/ui/annoty_reader/widgets/show_context_menu.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_widget_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -8,23 +9,42 @@ class AnnotyReaderController extends GetxController {
   late final File pdfFile;
   late final Uint8List pdfBytes;
   final PdfViewerController pdfViewerController = PdfViewerController();
-  final ShowContextMenu contextMenu = ShowContextMenu();
+  final AnnotationWidgetController annotationWidgetController =
+      Get.find<AnnotationWidgetController>();
 
   @override
-  void onInit(){
+  void onInit() {
     setPdfDataAndBytes();
     super.onInit();
   }
 
   @override
   void onClose() {
-    contextMenu.handleContextMenuClose();
+    annotationWidgetController.handleContextMenuClose();
     super.onClose();
   }
 
-  void setPdfDataAndBytes() async{
+  void setPdfDataAndBytes() async {
     pdfFile = Get.arguments;
     pdfBytes = await pdfFile.readAsBytes();
     print("pdf file: $pdfFile");
+  }
+
+  void handleAnnotationWidget(
+      PdfTextSelectionChangedDetails details, BuildContext context) {
+    print("🔥 handleAnnotationWidget");
+    print("details.selectedText:  ${details.selectedText}");
+    if (details.selectedText == null &&
+        annotationWidgetController.selectionOverlayEntry.value.mounted) {
+      annotationWidgetController.selectionOverlayEntry.value.remove();
+      annotationWidgetController.selectionOverlayEntry.value.mounted;
+      annotationWidgetController.selectionOverlayEntry.refresh();
+      pdfViewerController.clearSelection();
+    } else if (details.selectedText != null &&
+        !annotationWidgetController.selectionOverlayEntry.value.mounted) {
+      annotationWidgetController.showContextMenu(
+          context: context, details: details);
+    }
+    print("💡 handleAnnotationWidget");
   }
 }

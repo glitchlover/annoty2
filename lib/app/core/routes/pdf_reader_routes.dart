@@ -11,7 +11,7 @@ class PdfReaderRoutes {
     GetPage(
       name: pdfReader,
       page: () => const AnnotyReaderPage(),
-      binding: PdfReaderBinding(),
+      binding: AnnotyReaderBinding(),
     ),
   ];
 }
