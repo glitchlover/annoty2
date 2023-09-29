@@ -20,31 +20,32 @@ class AnnotyReaderController extends GetxController {
 
   @override
   void onClose() {
-    annotationWidgetController.handleContextMenuClose();
+    annotationWidgetController.checkAndCloseOverlayEntry();
     super.onClose();
   }
 
   void setPdfDataAndBytes() async {
     pdfFile = Get.arguments;
     pdfBytes = await pdfFile.readAsBytes();
-    print("pdf file: $pdfFile");
+    print("🐛 pdf file: $pdfFile");
   }
 
   void handleAnnotationWidget(
       PdfTextSelectionChangedDetails details, BuildContext context) {
-    print("🔥 handleAnnotationWidget");
-    print("details.selectedText:  ${details.selectedText}");
+    print("=" * 80);
+    print("🌕 handleAnnotationWidget");
     if (details.selectedText == null &&
-        annotationWidgetController.selectionOverlayEntry.value.mounted) {
-      annotationWidgetController.selectionOverlayEntry.value.remove();
-      annotationWidgetController.selectionOverlayEntry.value.mounted;
-      annotationWidgetController.selectionOverlayEntry.refresh();
+        annotationWidgetController.selectionOverlayEntry!.mounted) {
+      annotationWidgetController.checkAndCloseOverlayEntry();
       pdfViewerController.clearSelection();
     } else if (details.selectedText != null &&
-        !annotationWidgetController.selectionOverlayEntry.value.mounted) {
-      annotationWidgetController.showContextMenu(
+        !annotationWidgetController.selectionOverlayEntry!.mounted) {
+      print("🐛 text selected");
+      print(
+          "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion!.top}");
+      annotationWidgetController.showOverlay(
           context: context, details: details);
     }
-    print("💡 handleAnnotationWidget");
+    print("🟢 handleAnnotationWidget");
   }
 }

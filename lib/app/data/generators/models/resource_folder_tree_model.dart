@@ -3,7 +3,6 @@ import 'dart:io';
 
 class ResourceFolderTreeModel {
   final Directory resourceDbFolder;
-
   File get pdfFile => File(
       "${resourceDbFolder.path}\\${resourceDbFolder.path.split("\\").last}.pdf");
   File get annotationJson => File("${resourceDbFolder.path}/annotation.json");

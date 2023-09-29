@@ -1,4 +1,4 @@
-import 'package:annoty/app/data/generator/enums/error_code.dart';
+import 'package:annoty/app/data/generators/enums/error_code.dart';
 
 class AppError {
   final ErrorCode code;

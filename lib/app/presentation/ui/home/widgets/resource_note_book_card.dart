@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:annoty/app/core/routes/pdf_reader_routes.dart';
-import 'package:annoty/app/data/generator/models/resource_folder_tree_model.dart';
+import 'package:annoty/app/data/generators/models/resource_folder_tree_model.dart';
 import 'package:annoty/app/presentation/shared/widget/my_pop_up_menu.dart';
 import 'package:flutter/material.dart';
 

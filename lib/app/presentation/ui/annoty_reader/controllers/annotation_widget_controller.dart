@@ -11,35 +11,38 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AnnotationWidgetController extends GetxController {
-  Rx<OverlayEntry> get selectionOverlayEntry => overlayEntryWidget(PdfTextSelectionChangedDetails("", Rect.zero)).obs;
+  OverlayEntry? selectionOverlayEntry;
   Color? contextMenuColor = MyCoreColor.backgroundDark;
   Color? copyTextColor = MyCoreColor.backgroundDark;
   late BuildContext context;
 
-  void handleContextMenuClose() {
-    if (selectionOverlayEntry.value.mounted) {
-      print("handling overlay");
-      selectionOverlayEntry.value.remove();
-      selectionOverlayEntry.refresh();
+  void checkAndCloseOverlayEntry() {
+    print("🌕 checkAndCloseOverlayEntry");
+    if (!selectionOverlayEntry!.mounted) {
+      print("🐛 handle to close the widget");
+      selectionOverlayEntry?.remove();
     }
   }
 
-  void showContextMenu(
+  void showOverlay(
       {required BuildContext context,
       required PdfTextSelectionChangedDetails details}) {
-    print("🔥✅ showContextMenu");
+    print("🌕 showContextMenu");
     this.context = context;
-    Overlay.of(context, rootOverlay: true).insert(selectionOverlayEntry.value);
-    print("💡✅ showContextMenu");
+    selectionOverlayEntry = overlayEntryWidget(details);
+    selectionOverlayEntry ??
+        Overlay.of(context, rootOverlay: true).insert(selectionOverlayEntry!);
+    print("🟢 showContextMenu");
   }
 
   OverlayEntry overlayEntryWidget(PdfTextSelectionChangedDetails details) {
-    print("🔥✅ OverlayEntryWidget");
+    print("🌕 OverlayEntryWidget");
     final List<BoxShadow> boxShadow = MyUiElement().shadow;
-    final double top = details.globalSelectedRegion!.top - 55;
-    final double left = details.globalSelectedRegion!.center.dx;
+    final (top, left) = getPosition(details);
     final AnnotyReaderController annotyReaderController =
         Get.find<AnnotyReaderController>();
+    print(
+        "🐛 details in 🌕OverlayEntryWidget:  ${details.selectedText}, ${details.globalSelectedRegion!.top}");
     return OverlayEntry(
       builder: (BuildContext context) => Positioned(
         top: top,
@@ -78,6 +81,8 @@ class AnnotationWidgetController extends GetxController {
       {required AnnotyReaderController annotyReaderController,
       required PdfTextSelectionChangedDetails details,
       required Color color}) async {
+    print("🌕 addAnnote()");
+    checkAndCloseOverlayEntry();
     await Clipboard.setData(ClipboardData(text: details.selectedText!));
     final PdfDocument document = PdfDocument(
         inputBytes: await annotyReaderController.pdfFile.readAsBytes());
@@ -94,5 +99,36 @@ class AnnotationWidgetController extends GetxController {
     final List<int> bytes = document.saveSync();
     annotyReaderController.pdfBytes = Uint8List.fromList(bytes);
     annotyReaderController.update();
+  }
+
+  (double, double) getPosition(details) {
+    final RenderBox renderBoxContainer =
+        // ignore: avoid_as
+        context.findRenderObject()! as RenderBox;
+    final Offset containerOffset = renderBoxContainer.localToGlobal(
+      renderBoxContainer.paintBounds.topLeft,
+    );
+    if (containerOffset.dy < details.globalSelectedRegion!.topLeft.dy - 55 ||
+        (containerOffset.dy <
+                details.globalSelectedRegion!.center.dy - (48 / 2) &&
+            details.globalSelectedRegion!.height > 100)) {
+      double top = 0.0;
+      double left = 0.0;
+      if ((details.globalSelectedRegion!.top) >
+          MediaQuery.of(context).size.height / 2) {
+        top = details.globalSelectedRegion!.topLeft.dy - 55;
+        left = details.globalSelectedRegion!.bottomLeft.dx;
+        return (top, left);
+      } else {
+        top = details.globalSelectedRegion!.height > 100
+            ? details.globalSelectedRegion!.center.dy - (48 / 2)
+            : details.globalSelectedRegion!.topLeft.dy - 55;
+        left = details.globalSelectedRegion!.height > 100
+            ? details.globalSelectedRegion!.center.dx - (100 / 2)
+            : details.globalSelectedRegion!.bottomLeft.dx;
+        return (top, left);
+      }
+    }
+    return (0.0, 0.0);
   }
 }
