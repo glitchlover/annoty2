@@ -16,7 +16,6 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Annoty',
-      debugShowCheckedModeBanner: false,
       theme: MyThemeData.lightthemeData,
       darkTheme: MyThemeData.darkthemeData,
       themeMode: ThemeService.instance.themeMode,
