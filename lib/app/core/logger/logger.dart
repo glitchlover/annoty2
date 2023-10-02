@@ -127,9 +127,8 @@ class Flog {
 
     var traceString = frames[_startingFrame];
 
-    (String, String, List<String>) analyze = _analyzeFrame(traceString);
-    String lineInfo = analyze.$1;
-    List<String> callerInfo = analyze.$3;
+    final (lineInfo, fileInfo, callerInfo) = _analyzeFrame(traceString);
+
     String callerMethod = callerInfo[1];
     String callerClass = callerInfo[0];
 
