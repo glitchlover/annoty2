@@ -1,4 +1,4 @@
-import 'package:flog/logger/log_level.dart';
+import 'package:annoty/app/core//logger/log_level.dart';
 
 /// Supported ANSI colors.
 enum Color {

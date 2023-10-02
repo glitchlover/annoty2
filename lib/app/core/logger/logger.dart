@@ -1,7 +1,7 @@
 import 'dart:developer' as dev;
 import 'package:flutter/foundation.dart' as flutter;
-import 'package:flog/logger/log_color.dart';
-import 'package:flog/logger/log_level.dart';
+import 'package:annoty/app/core//logger/log_color.dart';
+import 'package:annoty/app/core//logger/log_level.dart';
 import 'package:flutter/material.dart';
 
 /// Logger singleton.
