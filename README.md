@@ -1,29 +1,19 @@
-# ⚡ANNOTY 📖
+# Annoty⚡
+~*A study tool for modern era* ❤️
 
-Its all about studying PDFs effectively and quickly as possible. Supports markdown, backlinks, graph, **autosugestions** etc
-
-## How does it works 🤔
-
-
-## File Structure
-🗂️lib/                                
-|-- 🗂️app/
-|   |-- 🗂️core/
-|   |   |-- 🗂️constants/
-|   |   |-- 🗂️routes/
-|   |   |-- 🗂️themes/
-|   |   |-- 🗂️utils/
-|   |-- 🗂️data/
-|   |-- 🗂️presentation/
-|   |   |-- 🗂️shared/
-|   |   |-- 🗂️ui/
-|   |-- 🗂️services/
-|   |-- 🍡app.dart
-|   |-- 🍡app_binding.dart
-|   🍡main.dart
+Annoty aims to simplify studying pdf by providing you with easy and searchable annotation and backlinkings 🔗.
 
 
-## Tasks ⚒️
+
+## Features✨
+
+- Light/dark mode toggle
+- Annotation manupulation tools
+- Intelligent search
+- Backlinking
+- Cross platform
+
+## Roadmap🗺️
 ![tasks](TASKME.md)
 
 
