@@ -40,8 +40,9 @@ class ResourceNotebookTile extends StatelessWidget {
           leading: const Icon(Icons.book_outlined),
           trailing: MyPopUpMenu(entity),
         ),
-        onTap: () async{
-          File pdfFile = ResourceFolderTreeModel(resourceDbFolder: entity).pdfFile;
+        onTap: () async {
+          File pdfFile =
+              ResourceFolderTreeModel(resourceDbFolder: entity).pdfFile;
           Get.toNamed(PdfReaderRoutes.pdfReader, arguments: pdfFile);
         });
   }

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_widget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,25 +28,24 @@ class AnnotyReaderController extends GetxController {
   void setPdfDataAndBytes() async {
     pdfFile = Get.arguments;
     pdfBytes = await pdfFile.readAsBytes();
-    print("🐛 pdf file: $pdfFile");
+    Flog.debug("pdf file: $pdfFile");
   }
 
   void handleAnnotationWidget(
       PdfTextSelectionChangedDetails details, BuildContext context) {
-    print("=" * 80);
-    print("🌕 handleAnnotationWidget");
+    Flog.mark("handling annotation widget");
     if (details.selectedText == null &&
-        annotationWidgetController.selectionOverlayEntry!.mounted) {
+        annotationWidgetController.selectionOverlayEntry.value.mounted) {
       annotationWidgetController.checkAndCloseOverlayEntry();
       pdfViewerController.clearSelection();
     } else if (details.selectedText != null &&
-        !annotationWidgetController.selectionOverlayEntry!.mounted) {
-      print("🐛 text selected");
-      print(
+        !annotationWidgetController.selectionOverlayEntry.value.mounted) {
+      Flog.debug("🐛 text selected");
+      Flog.debug(
           "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion!.top}");
       annotationWidgetController.showOverlay(
           context: context, details: details);
     }
-    print("🟢 handleAnnotationWidget");
+    Flog.success("🟢 handleAnnotationWidget");
   }
 }

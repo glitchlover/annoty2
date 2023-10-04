@@ -14,7 +14,6 @@ class PdfViewer extends GetView<AnnotyReaderController> {
       key: KeyConst.pdfKey,
       controller: controller.pdfViewerController,
       enableTextSelection: true,
-      interactionMode: PdfInteractionMode.selection,
       onTextSelectionChanged: (details) => controller.handleAnnotationWidget(details, context),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:annoty/app/core/constants/database/resource_file_tree.dart';
+import 'package:annoty/app/core/logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DocumentServices {
@@ -37,7 +38,7 @@ class DocumentServices {
 
   void makeDbFolder() async {
     dbFolder = Directory("$_localPath\\$masterFolderName\\$dbFolderName");
-    print("🌕makeDbFolder:${dbFolder.path}");
+    Flog.debug(dbFolder.path);
     if (await dbFolder.exists()) return;
     await dbFolder.create();
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:developer' as dev;
 import 'package:flutter/foundation.dart' as flutter;
 import 'package:annoty/app/core//logger/log_color.dart';
@@ -35,8 +37,8 @@ class Flog {
   static bool get logDevToolsOnly => _logDevToolsOnly;
   static void setLogDevToolsOnly(bool option) => _logDevToolsOnly = option;
 
-  static void _flog(String header, Object message, LogLevel level,
-      {Object? object, StackTrace? trace}) {
+  static void _flog(String header, Object? message, LogLevel level,
+      {Object? object, StackTrace? trace, String? description}) {
     // Break if in release mode:
     if (flutter.kReleaseMode) return;
     // Otherwise, log the message to DevTools if option has been set:
@@ -64,7 +66,6 @@ class Flog {
     }
     flutter.debugPrint(
         '${color[level]}$headerFull${color[level]}${message.toString()}\x1B[0m');
-    if (trace != null) debugPrintStack(stackTrace: trace, maxFrames: 3);
     if (object != null) {
       // If log call passed an object to print:
       try {
@@ -75,49 +76,51 @@ class Flog {
         flutter.debugPrint('${color[level]}$error\x1B[0m');
       }
     }
+    if (trace != null) debugPrintStack(stackTrace: trace, maxFrames: 3);
+    if (description != null) debugPrint('⇢ $description');
   }
 
-  static void mark(Object message) {
+  static void mark(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.mark);
   }
 
-  static void trace(Object message) {
+  static void trace(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.trace, trace: StackTrace.current);
   }
 
-  static void debug(Object message) {
+  static void debug(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.debug);
   }
 
-  static void info(Object message) {
+  static void info(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.info);
   }
 
-  static void success(Object message) {
+  static void success(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.success);
   }
 
-  static void warning(Object message) {
+  static void warning(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.warning);
   }
 
-  static void error(Object message) {
+  static void error(Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.error);
   }
 
-  static void errorObject(Object error, Object message) {
+  static void errorObject(Object error, Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.error, object: error);
   }
 
-  static void fatal(Object? error, Object message) {
+  static void fatal(Object? error, Object? message) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.fatal, object: error);
   }
@@ -158,7 +161,7 @@ class Flog {
 
 // /// Implements the behavior of the log function from the dart:developer package.
 // static void log(
-//   Object message, {
+//   Object? message, {
 //   DateTime? time,
 //   int? sequenceNumber,
 //   int level = 0,

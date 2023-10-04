@@ -3,6 +3,7 @@ import 'package:annoty/app/core/constants/color/highlights.dart';
 import 'package:annoty/app/core/constants/color/ui_element.dart';
 import 'package:annoty/app/core/constants/misc/key.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
+import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/pdf_reader_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,38 +12,38 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AnnotationWidgetController extends GetxController {
-  OverlayEntry? selectionOverlayEntry;
+  Rx<OverlayEntry> selectionOverlayEntry = OverlayEntry(builder: (_)=>Container()).obs;
   Color? contextMenuColor = MyCoreColor.backgroundDark;
   Color? copyTextColor = MyCoreColor.backgroundDark;
   late BuildContext context;
 
   void checkAndCloseOverlayEntry() {
-    print("🌕 checkAndCloseOverlayEntry");
-    if (!selectionOverlayEntry!.mounted) {
-      print("🐛 handle to close the widget");
-      selectionOverlayEntry?.remove();
+    Flog.mark("Checking overlay...");
+    if (selectionOverlayEntry.value.mounted) {
+      Flog.debug("handling to close the widget");
+      selectionOverlayEntry.value.remove();
+      selectionOverlayEntry.refresh();
     }
   }
 
   void showOverlay(
       {required BuildContext context,
       required PdfTextSelectionChangedDetails details}) {
-    print("🌕 showContextMenu");
+    Flog.mark("rendering the overlay widget...");
     this.context = context;
-    selectionOverlayEntry = overlayEntryWidget(details);
-    selectionOverlayEntry ??
-        Overlay.of(context, rootOverlay: true).insert(selectionOverlayEntry!);
-    print("🟢 showContextMenu");
+    selectionOverlayEntry.value = overlayEntryWidget(details);
+    Overlay.of(context, rootOverlay: true)
+        .insert(selectionOverlayEntry.value!);
+    Flog.success("redering finished.");
   }
 
   OverlayEntry overlayEntryWidget(PdfTextSelectionChangedDetails details) {
-    print("🌕 OverlayEntryWidget");
+    Flog.mark("");
     final List<BoxShadow> boxShadow = MyUiElement().shadow;
     final (top, left) = getPosition(details);
     final AnnotyReaderController annotyReaderController =
         Get.find<AnnotyReaderController>();
-    print(
-        "🐛 details in 🌕OverlayEntryWidget:  ${details.selectedText}, ${details.globalSelectedRegion!.top}");
+
     return OverlayEntry(
       builder: (BuildContext context) => Positioned(
         top: top,
@@ -81,7 +82,6 @@ class AnnotationWidgetController extends GetxController {
       {required AnnotyReaderController annotyReaderController,
       required PdfTextSelectionChangedDetails details,
       required Color color}) async {
-    print("🌕 addAnnote()");
     checkAndCloseOverlayEntry();
     await Clipboard.setData(ClipboardData(text: details.selectedText!));
     final PdfDocument document = PdfDocument(
@@ -103,8 +103,8 @@ class AnnotationWidgetController extends GetxController {
 
   (double, double) getPosition(details) {
     final RenderBox renderBoxContainer =
-        // ignore: avoid_as
-        context.findRenderObject()! as RenderBox;
+      // ignore: avoid_as
+      context.findRenderObject()! as RenderBox;
     final Offset containerOffset = renderBoxContainer.localToGlobal(
       renderBoxContainer.paintBounds.topLeft,
     );
