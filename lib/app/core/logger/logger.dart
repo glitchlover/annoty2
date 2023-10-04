@@ -80,47 +80,47 @@ class Flog {
     if (description != null) debugPrint('⇢ $description');
   }
 
-  static void mark(Object? message) {
+  static void mark(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.mark);
   }
 
-  static void trace(Object? message) {
+  static void trace(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.trace, trace: StackTrace.current);
   }
 
-  static void debug(Object? message) {
+  static void debug(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.debug);
   }
 
-  static void info(Object? message) {
+  static void info(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
-    _flog(header, message, LogLevel.info);
+    _flog(header, message, LogLevel.info, description: description);
   }
 
-  static void success(Object? message) {
+  static void success(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.success);
   }
 
-  static void warning(Object? message) {
+  static void warning(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.warning);
   }
 
-  static void error(Object? message) {
+  static void error(Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.error);
   }
 
-  static void errorObject(Object error, Object? message) {
+  static void errorObject(Object error, Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.error, object: error);
   }
 
-  static void fatal(Object? error, Object? message) {
+  static void fatal(Object? error, Object? message, {String? description}) {
     String header = _generateHeader(StackTrace.current);
     _flog(header, message, LogLevel.fatal, object: error);
   }

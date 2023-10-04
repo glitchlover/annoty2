@@ -9,6 +9,8 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class AnnotyReaderController extends GetxController {
   late final File pdfFile;
   late final Uint8List pdfBytes;
+  final Rx<PdfTextSelectionChangedDetails> lastDetails =
+      PdfTextSelectionChangedDetails(null, null).obs;
   final PdfViewerController pdfViewerController = PdfViewerController();
   final AnnotationWidgetController annotationWidgetController =
       Get.find<AnnotationWidgetController>();
@@ -22,6 +24,7 @@ class AnnotyReaderController extends GetxController {
   @override
   void onClose() {
     annotationWidgetController.checkAndCloseOverlayEntry();
+    // Overlay.maybeOf(annotationWidgetController.context)?.dispose();
     super.onClose();
   }
 
@@ -34,18 +37,21 @@ class AnnotyReaderController extends GetxController {
   void handleAnnotationWidget(
       PdfTextSelectionChangedDetails details, BuildContext context) {
     Flog.mark("handling annotation widget");
+    if (details == lastDetails.value) return;
     if (details.selectedText == null &&
-        annotationWidgetController.selectionOverlayEntry.value.mounted) {
+        annotationWidgetController.overlayMounted.value == true) {
       annotationWidgetController.checkAndCloseOverlayEntry();
       pdfViewerController.clearSelection();
     } else if (details.selectedText != null &&
-        !annotationWidgetController.selectionOverlayEntry.value.mounted) {
+        annotationWidgetController.overlayMounted.value == false) {
       Flog.debug("🐛 text selected");
       Flog.debug(
           "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion!.top}");
       annotationWidgetController.showOverlay(
           context: context, details: details);
     }
+    lastDetails.value = details;
+    lastDetails.refresh();
     Flog.success("🟢 handleAnnotationWidget");
   }
 }

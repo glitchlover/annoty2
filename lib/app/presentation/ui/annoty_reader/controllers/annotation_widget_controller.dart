@@ -12,16 +12,23 @@ import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AnnotationWidgetController extends GetxController {
-  Rx<OverlayEntry> selectionOverlayEntry = OverlayEntry(builder: (_)=>Container()).obs;
+  late Rx<OverlayEntry> selectionOverlayEntry;
+  Rx<bool> overlayMounted = false.obs;
   Color? contextMenuColor = MyCoreColor.backgroundDark;
   Color? copyTextColor = MyCoreColor.backgroundDark;
   late BuildContext context;
 
+  @override
+  onInit() {
+    selectionOverlayEntry = OverlayEntry(builder: (_) => Container()).obs;
+    super.onInit();
+  }
+
   void checkAndCloseOverlayEntry() {
-    Flog.mark("Checking overlay...");
-    if (selectionOverlayEntry.value.mounted) {
-      Flog.debug("handling to close the widget");
+    if (overlayMounted.value) {
       selectionOverlayEntry.value.remove();
+      selectionOverlayEntry.value.dispose();
+      overlayMounted.value = false;
       selectionOverlayEntry.refresh();
     }
   }
@@ -29,12 +36,10 @@ class AnnotationWidgetController extends GetxController {
   void showOverlay(
       {required BuildContext context,
       required PdfTextSelectionChangedDetails details}) {
-    Flog.mark("rendering the overlay widget...");
     this.context = context;
     selectionOverlayEntry.value = overlayEntryWidget(details);
-    Overlay.of(context, rootOverlay: true)
-        .insert(selectionOverlayEntry.value!);
-    Flog.success("redering finished.");
+    Overlay.of(context, rootOverlay: true).insert(selectionOverlayEntry.value);
+    overlayMounted.value = true;
   }
 
   OverlayEntry overlayEntryWidget(PdfTextSelectionChangedDetails details) {
@@ -103,8 +108,8 @@ class AnnotationWidgetController extends GetxController {
 
   (double, double) getPosition(details) {
     final RenderBox renderBoxContainer =
-      // ignore: avoid_as
-      context.findRenderObject()! as RenderBox;
+        // ignore: avoid_as
+        context.findRenderObject()! as RenderBox;
     final Offset containerOffset = renderBoxContainer.localToGlobal(
       renderBoxContainer.paintBounds.topLeft,
     );
