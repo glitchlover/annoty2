@@ -1,10 +1,10 @@
 import 'package:annoty/app/core/constants/misc/key.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/pdf_reader_controller.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class PdfViewer extends GetView<AnnotyReaderController> {
+class PdfViewer extends GetView<AnnotyStudyEngineController> {
   const PdfViewer({super.key});
 
   @override

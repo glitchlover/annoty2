@@ -1,19 +1,19 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:annoty/app/core/logger/logger.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_widget_controller.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class AnnotyReaderController extends GetxController {
+class AnnotyStudyEngineController extends GetxController {
   late final File pdfFile;
-  late final Uint8List pdfBytes;
+  late Uint8List pdfBytes;
   final Rx<PdfTextSelectionChangedDetails> lastDetails =
       PdfTextSelectionChangedDetails(null, null).obs;
   final PdfViewerController pdfViewerController = PdfViewerController();
-  final AnnotationWidgetController annotationWidgetController =
-      Get.find<AnnotationWidgetController>();
+  final TextPopUpWidgetController annotationWidgetController =
+      Get.find<TextPopUpWidgetController>();
 
   @override
   void onInit() {
@@ -23,7 +23,7 @@ class AnnotyReaderController extends GetxController {
 
   @override
   void onClose() {
-    annotationWidgetController.checkAndCloseOverlayEntry();
+    annotationWidgetController.checkAndClosePopUpEntry();
     // Overlay.maybeOf(annotationWidgetController.context)?.dispose();
     super.onClose();
   }
@@ -39,15 +39,15 @@ class AnnotyReaderController extends GetxController {
     Flog.mark("handling annotation widget");
     if (details == lastDetails.value) return;
     if (details.selectedText == null &&
-        annotationWidgetController.overlayMounted.value == true) {
-      annotationWidgetController.checkAndCloseOverlayEntry();
+        annotationWidgetController.textPopUpMounted.value == true) {
+      annotationWidgetController.checkAndClosePopUpEntry();
       pdfViewerController.clearSelection();
     } else if (details.selectedText != null &&
-        annotationWidgetController.overlayMounted.value == false) {
+        annotationWidgetController.textPopUpMounted.value == false) {
       Flog.debug("🐛 text selected");
       Flog.debug(
-          "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion!.top}");
-      annotationWidgetController.showOverlay(
+          "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion.toString()}");
+      annotationWidgetController.renderTextPopUp(
           context: context, details: details);
     }
     lastDetails.value = details;
