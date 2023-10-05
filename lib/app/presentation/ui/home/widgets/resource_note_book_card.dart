@@ -1,7 +1,8 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:annoty/app/core/routes/pdf_reader_routes.dart';
-import 'package:annoty/app/data/generators/models/resource_folder_tree_model.dart';
+import 'package:annoty/app/database/models/resource_folder_tree_model.dart';
 import 'package:annoty/app/presentation/shared/widget/my_pop_up_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,9 @@ class ResourceNotebookTile extends StatelessWidget {
         onTap: () async {
           File pdfFile =
               ResourceFolderTreeModel(resourceDbFolder: entity).pdfFile;
-          Get.toNamed(PdfReaderRoutes.pdfReader, arguments: pdfFile);
+          Uint8List pdfBytes = await pdfFile.readAsBytes();
+          Get.toNamed(PdfReaderRoutes.pdfReader,
+              arguments: pdfBytes, parameters: {'pdfFile': pdfFile.path});
         });
   }
 }

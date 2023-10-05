@@ -1,14 +1,12 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/color/highlights.dart';
 import 'package:annoty/app/core/constants/color/ui_element.dart';
-import 'package:annoty/app/core/constants/misc/key.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
 import 'package:annoty/app/core/logger/logger.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class TextPopUpWidgetController extends GetxController {
@@ -24,12 +22,13 @@ class TextPopUpWidgetController extends GetxController {
     super.onInit();
   }
 
-  void checkAndClosePopUpEntry() {
+  void checkAndClosePopUpEntry(PdfViewerController controller) {
     if (textPopUpMounted.value) {
       textPopUpEntry.value.remove();
       textPopUpEntry.value.dispose();
       textPopUpMounted.value = false;
       textPopUpEntry.refresh();
+      controller.clearSelection();
     }
   }
 
@@ -71,7 +70,7 @@ class TextPopUpWidgetController extends GetxController {
                 child: const Icon(Icons.square_rounded,
                     color: HighlightColorConstant.kPurp),
                 onPressed: () async {
-                  addAnnote(
+                  await Get.find<AnnotationController>().addTextAnnotation(
                       annotyReaderController: annotyReaderController,
                       details: details,
                       color: HighlightColorConstant.kPurp);
@@ -82,29 +81,6 @@ class TextPopUpWidgetController extends GetxController {
         ),
       ),
     );
-  }
-
-  void addAnnote(
-      {required AnnotyStudyEngineController annotyReaderController,
-      required PdfTextSelectionChangedDetails details,
-      required Color color}) async {
-    Flog.mark("adding annotaion");
-    await Clipboard.setData(ClipboardData(text: details.selectedText!));
-    final PdfDocument document = PdfDocument(
-        inputBytes: await annotyReaderController.pdfFile.readAsBytes());
-    KeyConst.pdfKey.currentState!.getSelectedTextLines().forEach((element) {
-      final PdfPage page = document.pages[element.pageNumber];
-      final PdfRectangleAnnotation rectangleAnnotation = PdfRectangleAnnotation(
-        element.bounds,
-        details.selectedText!,
-        color: PdfColor(color.red, color.green, color.blue),
-        opacity: 0.5,
-      );
-      page.annotations.add(rectangleAnnotation);
-    });
-    final List<int> bytes = document.saveSync();
-    annotyReaderController.pdfBytes = Uint8List.fromList(bytes);
-    annotyReaderController.update();
   }
 
   (double, double) getPosition(details) {
