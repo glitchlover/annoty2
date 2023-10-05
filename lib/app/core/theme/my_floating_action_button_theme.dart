@@ -1,12 +1,14 @@
 import 'package:annoty/app/core/constants/color/core.dart';
-import 'package:annoty/app/core/utils/color_utils.dart';
+import 'package:annoty/app/core/utils/color_transformers.dart';
 import 'package:flutter/material.dart';
 
 class MyFloationActionButtonTheme extends FloatingActionButtonThemeData{
   @override
-  Color? get foregroundColor => ColorUtils.lighten(MyCoreColor.accent, 1);
+  Color? get foregroundColor =>
+      ColorTransformers.lighten(MyCoreColor.accent, 1);
   @override
-  Color? get backgroundColor => ColorUtils.darken(MyCoreColor.accent, .3);
+  Color? get backgroundColor =>
+      ColorTransformers.darken(MyCoreColor.accent, .3);
   // final Color? focusColor;
   @override
   Color? get hoverColor => MyCoreColor.accent;

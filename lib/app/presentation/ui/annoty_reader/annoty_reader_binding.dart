@@ -1,3 +1,4 @@
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/tool_box_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
@@ -8,6 +9,7 @@ class AnnotyReaderBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => AnnotyStudyEngineController());
     Get.lazyPut(() => TextPopUpWidgetController());
+    Get.lazyPut(() => AnnotationController());
     Get.lazyPut(() => ToolBoxController());
   }
 }

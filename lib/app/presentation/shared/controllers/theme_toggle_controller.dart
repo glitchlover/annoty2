@@ -1,4 +1,4 @@
-import 'package:annoty/app/domain/providers/theme_service.dart';
+import 'package:annoty/app/provider/services/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class ThemeToggleController extends GetxController {

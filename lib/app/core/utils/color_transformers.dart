@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColorUtils {
+class ColorTransformers {
 
   static Color darken(Color color, double factor) {
     assert(factor >= 0 && factor <= 1, 'Factor must be between 0 and 1');

@@ -6,6 +6,7 @@ import 'app/app.dart';
 void main() async {
   Flog.init();
   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding.instance.waitUntilFirstFrameRasterized;
   await GetStorage.init();
   runApp(const App());
 }
