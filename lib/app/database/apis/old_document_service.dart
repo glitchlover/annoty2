@@ -37,7 +37,7 @@ class DocumentServices {
   }
 
   void makeDbFolder() async {
-    documentFolder = Directory("$_homePath\\$mainFolderName\\ $documentFolderName");
+    documentFolder = Directory("$_homePath\\$mainFolderName\\$documentFolderName");
     Flog.debug(documentFolder.path);
     if (await documentFolder.exists()) return;
     await documentFolder.create();
