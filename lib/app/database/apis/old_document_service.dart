@@ -5,17 +5,17 @@ import 'package:annoty/app/core/logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DocumentServices {
-  final String masterFolderName = ResourceFolderTreeConst.main;
-  late Directory masterFolder;
-  final String dbFolderName;
-  late Directory dbFolder;
-  final String dbType;
-  late String _localPath;
+  final String mainFolderName = ResourceFolderTreeConst.main;
+  late Directory mainFolder;
+  final String documentFolderName;
+  late Directory documentFolder;
+  final String documentType;
+  late String _homePath;
   late List<FileSystemEntity> entities;
 
   //........................___constructor___........................
   //todo - change it to asynchronous factory and singleton constructor
-  DocumentServices({required this.dbFolderName, required this.dbType}) {
+  DocumentServices({required this.documentFolderName, required this.documentType}) {
     setLocaPath();
     Timer(const Duration(milliseconds: 1000), () {
       makeMasterDbFolder();
@@ -27,25 +27,25 @@ class DocumentServices {
   // todo - all this goes to file utils
   setLocaPath() async {
     final directory = await getApplicationDocumentsDirectory();
-    _localPath = directory.path;
+    _homePath = directory.path;
   }
 
   void makeMasterDbFolder() async {
-    masterFolder = Directory("$_localPath\\$masterFolderName");
-    if (await masterFolder.exists()) return;
-    masterFolder.create();
+    mainFolder = Directory("$_homePath\\$mainFolderName");
+    if (await mainFolder.exists()) return;
+    mainFolder.create();
   }
 
   void makeDbFolder() async {
-    dbFolder = Directory("$_localPath\\$masterFolderName\\$dbFolderName");
-    Flog.debug(dbFolder.path);
-    if (await dbFolder.exists()) return;
-    await dbFolder.create();
+    documentFolder = Directory("$_homePath\\$mainFolderName\\ $documentFolderName");
+    Flog.debug(documentFolder.path);
+    if (await documentFolder.exists()) return;
+    await documentFolder.create();
   }
 
-  //......................initialize entities of dbFolderName ....................
+  //......................initialize entities of documentFolderName ....................
   void initDbEntities() async {
-    entities = await dbFolder.list().toList();
+    entities = await documentFolder.list().toList();
   }
 
   // ........................creating files and folders.....................
@@ -62,9 +62,9 @@ class DocumentServices {
   void mkFile(String name, Directory parent) async {
     int i = 0;
     i++;
-    String location = "${parent.path}\\$name.$dbType";
+    String location = "${parent.path}\\$name. documentType";
     File file = File(location);
-    if (await file.exists()) mkFile("$name$i.$dbType", parent);
+    if (await file.exists()) mkFile("$name$i. documentType", parent);
     file.create();
   }
 
@@ -79,7 +79,7 @@ class DocumentServices {
   }
 
   Future updateFile(String name, File thisDir) async{
-    String newPath = "${thisDir.parent.path}\\$name.$dbFolderName";
+    String newPath = "${thisDir.parent.path}\\$name. documentFolderName";
     await thisDir.rename(newPath);
   }
 
