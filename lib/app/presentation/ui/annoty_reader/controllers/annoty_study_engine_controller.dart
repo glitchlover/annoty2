@@ -1,6 +1,6 @@
-import 'dart:typed_data';
 import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
@@ -25,7 +25,7 @@ class AnnotyStudyEngineController extends GetxController {
     // Overlay.maybeOf(annotationWidgetController.context)?.dispose();
     super.onClose();
   }
-  
+
   void handleTextPopUpWidget(
       PdfTextSelectionChangedDetails details, BuildContext context) {
     Flog.mark("handling annotation widget");

@@ -3,7 +3,6 @@ import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -11,6 +10,8 @@ class AnnotationController extends GetxController {
   late PdfDocument document;
   late PdfPage currentPage;
   final SfPdfViewerState? currentState = KeyConst.pdfKey.currentState;
+  final RxDouble xOffset = (0.0).obs;
+  final RxDouble yOffset = (0.0).obs;
 
   Future addTextAnnotation(
       {required AnnotyStudyEngineController annotyReaderController,
@@ -18,10 +19,24 @@ class AnnotationController extends GetxController {
       required Color color}) async {
     Flog.mark("adding annotaion");
     await preTextAnnotationProcessor(details, annotyReaderController);
-    annotationGenerator(annotyReaderController);
+    await annotationGenerator(annotyReaderController);
+    postTextAnnotationProcessor(annotyReaderController);
+    // annotyReaderController.handlePdfBytesChanging();
   }
 
-  void annotationGenerator(
+  void postTextAnnotationProcessor(AnnotyStudyEngineController annotyReaderController) {
+    xOffset.value =
+        annotyReaderController.pdfViewerController.scrollOffset.dx;
+    yOffset.value =
+        annotyReaderController.pdfViewerController.scrollOffset.dy;
+    xOffset.refresh();
+    yOffset.refresh();
+    List<int> bytes = document.saveSync();
+    annotyReaderController.pdfBytes.value = Uint8List.fromList(bytes);
+    // annotyReaderController.handlePdfBytesChanging();
+  }
+
+  Future annotationGenerator(
       AnnotyStudyEngineController annotyReaderController) async {
     currentState!.getSelectedTextLines().forEach((line) async {
       Flog.info(line.text);
@@ -33,12 +48,6 @@ class AnnotationController extends GetxController {
           opacity: 0.3);
       currentPage.annotations.add(rectangleAnnotation);
       currentPage.annotations.flattenAllAnnotations();
-      double xOffset =
-          annotyReaderController.pdfViewerController.scrollOffset.dx;
-      double yOffset =
-          annotyReaderController.pdfViewerController.scrollOffset.dy;
-      List<int> bytes = await document.save();
-      annotyReaderController.pdfBytes.value = Uint8List.fromList(bytes);
     });
   }
 

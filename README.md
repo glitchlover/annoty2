@@ -63,9 +63,3 @@ Annoty aims to simplify studying pdf by providing you with easy and searchable a
 
 
 
-
-
-
-
-
-
