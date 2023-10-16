@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:annoty/app/core/logger/logger.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,20 +12,22 @@ class AnnotyStudyEngineController extends GetxController {
   final Rx<PdfTextSelectionChangedDetails> lastDetails =
       PdfTextSelectionChangedDetails(null, null).obs;
   final PdfViewerController pdfViewerController = PdfViewerController();
-  final TextPopUpWidgetController annotationWidgetController =
+  final TextPopUpWidgetController popUpWidgetController =
       Get.find<TextPopUpWidgetController>();
+  late final File pdfFile;
   final Rx<Uint8List> pdfBytes = Rx(Get.arguments);
 
   @override
   void onInit() {
     pdfBytes.value = Get.arguments;
+    pdfFile = File(Get.parameters["pdfFile"]!);
     super.onInit();
   }
 
   @override
-  void onClose() {
-    annotationWidgetController.checkAndClosePopUpEntry(pdfViewerController);
-    // Overlay.maybeOf(annotationWidgetController.context)?.dispose();
+  void onClose() async{
+    popUpWidgetController.checkAndClosePopUpEntry(pdfViewerController);
+    await pdfFile.writeAsBytes(pdfBytes.value);
     super.onClose();
   }
 
@@ -31,18 +36,25 @@ class AnnotyStudyEngineController extends GetxController {
     Flog.mark("handling annotation widget");
     if (details == lastDetails.value) return;
     if (details.selectedText == null &&
-        annotationWidgetController.textPopUpMounted.value == true) {
-      annotationWidgetController.checkAndClosePopUpEntry(pdfViewerController);
+        popUpWidgetController.textPopUpMounted.value == true) {
+      popUpWidgetController.checkAndClosePopUpEntry(pdfViewerController);
     } else if (details.selectedText != null &&
-        annotationWidgetController.textPopUpMounted.value == false) {
+        popUpWidgetController.textPopUpMounted.value == false) {
       Flog.debug("🐛 text selected");
       Flog.debug(
           "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion.toString()}");
-      annotationWidgetController.renderTextPopUp(
-          context: context, details: details);
+      popUpWidgetController.renderTextPopUp(context: context, details: details);
     }
     lastDetails.value = details;
     lastDetails.refresh();
     Flog.success("🟢 handleAnnotationWidget");
+  }
+
+  void jumpToPreviousOffset() {
+    AnnotationController annotationController =
+        Get.find<AnnotationController>();
+    pdfViewerController.jumpTo(
+        xOffset: annotationController.xOffset.value,
+        yOffset: Get.find<AnnotationController>().yOffset.value);
   }
 }
