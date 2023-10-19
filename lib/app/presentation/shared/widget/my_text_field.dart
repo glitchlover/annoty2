@@ -17,7 +17,7 @@ class MyTextField extends TextField {
   ValueChanged<String>? get onChanged => onChangedSet;
   final ValueChanged<String>? onChangedSet;
   @override
-  Color get cursorColor => MyCoreColor.activeGrey;
+  Color get cursorColor => ConstColorMain.activeGrey;
   Widget? get suffix => suffixIcon == null
       ? MyIconButton(icon: suffixIcon!, onPressed: onPressed)
       : null;

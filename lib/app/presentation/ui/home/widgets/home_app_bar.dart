@@ -26,15 +26,15 @@ class HomeAppBar {
                 thmCtrl.toggle();
               },
               icon: Icon(thmCtrl.icon.value),
-              color: MyCoreColor.yellow);
+            color: ConstColorMain.yellow);
         }),
         MyIconButton(
             onPressed: () {},
             icon: const Icon(Icons.notifications_outlined,
-            color: MyCoreColor.orange)),
+              color: ConstColorMain.orange)),
         MyIconButton(
             onPressed: () {},
-            icon: const Icon(Icons.face_outlined, color: MyCoreColor.green))
+          icon: const Icon(Icons.face_outlined, color: ConstColorMain.green))
       ];
   }
 }
@@ -50,7 +50,7 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MyText("Annoty").temp(MyTextTheme(
-                color: MyCoreColor.accent, fontFace: "Quicksand Bold")
+                color: ConstColorMain.accent, fontFace: "Quicksand Bold")
             .titleLarge);
   }
 }

@@ -36,8 +36,8 @@ class MyIconButton extends IconButton {
       double iconSize = 20}) {
     Color bcolor = color ??
         (Get.theme.brightness == Brightness.dark
-            ? MyCoreColor.muteGrey
-            : MyCoreColor.muteBlack);
+            ? ConstColorMain.muteGrey
+            : ConstColorMain.muteBlack);
     return MyIconButton._(
         iconSet: icon, onPressedSet: onPressed, colorSet: bcolor, iconSizeSet: iconSize);
   }

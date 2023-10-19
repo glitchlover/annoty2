@@ -1,6 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/color/highlights.dart';
-import 'package:annoty/app/core/constants/color/ui_element.dart';
+import 'package:annoty/app/core/constants/ui/ui_element.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
 import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
@@ -12,8 +12,8 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class TextPopUpWidgetController extends GetxController {
   late Rx<OverlayEntry> textPopUpEntry;
   Rx<bool> textPopUpMounted = false.obs;
-  Color? contextMenuColor = MyCoreColor.backgroundDark;
-  Color? copyTextColor = MyCoreColor.backgroundDark;
+  Color? contextMenuColor = ConstColorMain.backgroundDark;
+  Color? copyTextColor = ConstColorMain.backgroundDark;
   late BuildContext context;
 
   @override
@@ -44,7 +44,7 @@ class TextPopUpWidgetController extends GetxController {
   OverlayEntry createOverlayEntryWidgetAsTextPopUp(
       PdfTextSelectionChangedDetails details) {
     Flog.mark("");
-    final List<BoxShadow> boxShadow = MyUiElement().shadow;
+    final List<BoxShadow> boxShadow = ConstUiMisc().shadow;
     final (top, left) = getPosition(details);
     final AnnotyStudyEngineController annotyReaderController =
         Get.find<AnnotyStudyEngineController>();
@@ -60,20 +60,20 @@ class TextPopUpWidgetController extends GetxController {
             boxShadow: boxShadow,
           ),
           constraints: BoxConstraints(
-              maxWidth: SizingUiCore.size_4_1 * 50,
-              maxHeight: SizingUiCore.size_4_1 * 12),
+              maxWidth: ConstSizing.size_4_1 * 50,
+              maxHeight: ConstSizing.size_4_1 * 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
               TextButton(
                 child: const Icon(Icons.square_rounded,
-                    color: HighlightColorConstant.kPurp),
+                    color: ConstColorHighlight.kPurp),
                 onPressed: () async {
                   await Get.find<AnnotationController>().addTextAnnotation(
                       annotyReaderController: annotyReaderController,
                       details: details,
-                      color: HighlightColorConstant.kPurp);
+                      color: ConstColorHighlight.kPurp);
                 },
               ),
             ],

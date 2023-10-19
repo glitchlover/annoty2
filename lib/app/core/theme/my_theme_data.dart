@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 mixin MyThemeData implements ThemeData {
   @override
-  final Color primaryColor = MyCoreColor.accent;
+  final Color primaryColor = ConstColorMain.accent;
   @override
   final Color splashColor = Colors.transparent;
   @override
@@ -25,8 +25,8 @@ mixin MyThemeData implements ThemeData {
 
   static ThemeData get darkthemeData => ThemeData(
         brightness: Brightness.dark,
-        cardColor: MyCoreColor.muteBlack,
-        scaffoldBackgroundColor: MyCoreColor.backgroundDark,
+        cardColor: ConstColorMain.muteBlack,
+        scaffoldBackgroundColor: ConstColorMain.backgroundDark,
         shadowColor: const Color.fromARGB(255, 0, 0, 0),
         textTheme: MyTextTheme(),
         appBarTheme: MyAppBarTheme(),

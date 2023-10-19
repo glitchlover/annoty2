@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyCoreColor {
+class ConstColorMain {
   static const accent = Color(0xFF36D5CE);
   static const windowDark = Color(0xFF2F343C);
   static const backgroundDark = Color(0xFF25262D);

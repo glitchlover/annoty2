@@ -45,10 +45,10 @@ class _AnnotySearchBarState extends State<AnnotySearchBar> {
         height: 35,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.transparent),
-            color: MyCoreColor.highlightBlack,
+                color: ConstColorMain.highlightBlack,
             borderRadius: BorderRadius.circular(10)),
         child: const MyTextField(
-          preffixIcon : Icon(Icons.search, color: MyCoreColor.muteGrey),
+              preffixIcon: Icon(Icons.search, color: ConstColorMain.muteGrey),
           hintText: "Search",
         )
       )

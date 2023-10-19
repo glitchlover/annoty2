@@ -31,8 +31,8 @@ class MyTextTheme extends TextTheme {
       {String? fontFace, Color? color, FontWeight? fontWeight}) {
     Color bcolor = color ??
         (IsIt.dark
-            ? MyTextColorsConstantDark.primaryDark
-            : MyTextColorsConstantLight.primaryLight);
+            ? ConstColorTextDark.primaryDark
+            : ConstColorTextLight.primaryLight);
     return MyTextTheme._(
         fontFace: fontFace, color: bcolor, fontWeight: fontWeight);
   }
@@ -71,7 +71,7 @@ class MyTextStyle extends TextStyle {
       FontWeight? fontWeight}) {
     final isLightTheme = Get.theme.brightness == Brightness.light;
     final bcolor = color ??
-        (isLightTheme ? MyCoreColor.muteBlack : MyCoreColor.activeGrey);
+        (isLightTheme ? ConstColorMain.muteBlack : ConstColorMain.activeGrey);
 
     return MyTextStyle._(
         colorSet: bcolor,

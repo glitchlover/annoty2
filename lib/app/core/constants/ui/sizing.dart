@@ -1,4 +1,4 @@
-class SizingUiCore {
+class ConstSizing {
   static double size_2_1 = 2;
   static double size_2_2 = 4;
   static double size_2_3 = 6;
@@ -13,8 +13,8 @@ class SizingUiCore {
 }
 // todo - study sizing
 class SpaceSizing {
-  static double mainPadding = SizingUiCore.size_4_2;
-  static double secondaryPadding = SizingUiCore.size_2_2;
+  static double mainPadding = ConstSizing.size_4_2;
+  static double secondaryPadding = ConstSizing.size_2_2;
 }
 
 class WidgetSizing {}

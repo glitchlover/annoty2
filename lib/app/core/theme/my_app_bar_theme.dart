@@ -5,9 +5,9 @@ import 'package:annoty/app/core/constants/color/core.dart';
 class MyAppBarTheme extends AppBarTheme {
   // final Color? color,
   @override
-  Color? get backgroundColor => MyCoreColor.windowDark;
+  Color? get backgroundColor => ConstColorMain.windowDark;
   @override
-  Color? get foregroundColor => MyCoreColor.accent;
+  Color? get foregroundColor => ConstColorMain.accent;
   @override
   double? get elevation => 0;
   // final double? scrolledUnderElevation,

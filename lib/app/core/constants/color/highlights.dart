@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HighlightColorConstant{
+class ConstColorHighlight {
 
   /// default consts ...
   static const kBlue = Color.fromARGB(255, 86, 176, 250);
