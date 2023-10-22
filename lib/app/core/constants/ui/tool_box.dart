@@ -1,6 +1,9 @@
+import 'package:annoty/app/core/logger/logger.dart';
+import 'package:annoty/app/core/routes/home_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-enum Tool {
+enum ToolItem {
   exit,
   prePage,
   searchPage,
@@ -13,28 +16,25 @@ enum Tool {
   annoBar
 }
 
-Map<Tool, String> toolName = {
-  Tool.exit: "Exit",
-  Tool.prePage: "Previous Page",
-  Tool.searchPage: "Search Page",
-  Tool.nextPage: "Next Page",
-  Tool.zIn: "Zoom In",
-  Tool.zCust: "Custom Zoom",
-  Tool.zOut: "Zoom Out",
-  Tool.searchText: "Search Text",
-  Tool.bookmark: "Bookmark",
-  Tool.annoBar: "Annotation Bar",
-  };
+Map<ToolItem, String> toolName = {
+  ToolItem.exit: "Exit",
+  ToolItem.prePage: "Previous Page",
+  ToolItem.searchPage: "Search Page",
+  ToolItem.nextPage: "Next Page",
+  ToolItem.zIn: "Zoom In",
+  ToolItem.zCust: "Custom Zoom",
+  ToolItem.zOut: "Zoom Out",
+  ToolItem.searchText: "Search Text",
+  ToolItem.bookmark: "Bookmark",
+  ToolItem.annoBar: "Annotation Bar",
+};
 
-Map<Tool, IconData> toolIcon = {
-  Tool.exit: Icons.abc,
-  Tool.prePage: Icons.abc,
-  Tool.searchPage: Icons.abc,
-  Tool.nextPage: Icons.abc,
-  Tool.zIn: Icons.abc,
-  Tool.zCust: Icons.abc,
-  Tool.zOut: Icons.abc,
-  Tool.searchText: Icons.abc,
-  Tool.bookmark: Icons.abc,
-  Tool.annoBar: Icons.abc,
-  };
+Map<ToolItem, IconData> toolIcon = {
+  ToolItem.exit: Icons.cancel,
+  ToolItem.prePage: Icons.keyboard_arrow_left_rounded,
+  ToolItem.nextPage: Icons.keyboard_arrow_right_rounded,
+  ToolItem.zIn: Icons.zoom_in,
+  ToolItem.zOut: Icons.zoom_out,
+  ToolItem.bookmark: Icons.bookmark_rounded,
+  ToolItem.annoBar: Icons.menu_rounded,
+};
