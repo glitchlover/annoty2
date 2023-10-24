@@ -8,6 +8,7 @@ class MyTextTheme extends TextTheme {
   final String? fontFace;
   final Color? color;
   final FontWeight? fontWeight;
+
   @override
   TextStyle? get titleLarge => MyTextStyle(
       fontSize: 34,
@@ -17,7 +18,7 @@ class MyTextTheme extends TextTheme {
   @override
   TextStyle? get headlineLarge => MyTextStyle(fontSize: 24);
   @override
-  TextStyle? get headlineMedium => MyTextStyle(fontSize: 18);
+  TextStyle? get headlineMedium => MyTextStyle(fontSize: 18, fontWeight: FontWeight.w600);
   @override
   TextStyle? get headlineSmall => MyTextStyle(fontSize: 14);
   @override
@@ -71,7 +72,7 @@ class MyTextStyle extends TextStyle {
       FontWeight? fontWeight}) {
     final isLightTheme = Get.theme.brightness == Brightness.light;
     final bcolor = color ??
-        (isLightTheme ? ConstColorMain.muteBlack : ConstColorMain.activeGrey);
+        (isLightTheme ? ConstColorMain.muteBlack : ConstColorMain.muteGrey);
 
     return MyTextStyle._(
         colorSet: bcolor,

@@ -12,10 +12,11 @@ class PdfViewer extends GetView<AnnotyStudyEngineController> {
     return Obx(() {
       return SfPdfViewer.memory(
         controller.pdfBytes.value,
-        key: KeyConst.pdfKey,
+        key: ConstKey.pdfKey,
         controller: controller.pdfViewerController,
         enableTextSelection: true,
-        onDocumentLoaded: (details) => controller.jumpToPreviousOffset(),
+        initialZoomLevel: 1.5,
+        onDocumentLoaded: (details) => controller.onDocumentLoaded(),
         onTextSelectionChanged: (details) =>
             controller.handleTextPopUpWidget(details, context),
       );

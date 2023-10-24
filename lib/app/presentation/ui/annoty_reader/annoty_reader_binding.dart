@@ -10,6 +10,6 @@ class AnnotyReaderBinding extends Bindings {
     Get.lazyPut(() => AnnotyStudyEngineController());
     Get.lazyPut(() => TextPopUpWidgetController());
     Get.lazyPut(() => AnnotationController());
-    Get.lazyPut(() => ToolBoxController());
+    Get.lazyPut(() => ToolBoxMenuController());
   }
 }

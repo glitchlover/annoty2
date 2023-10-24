@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:annoty/app/core/constants/misc/objects.dart';
 import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
@@ -11,7 +12,8 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class AnnotyStudyEngineController extends GetxController {
   final Rx<PdfTextSelectionChangedDetails> lastDetails =
       PdfTextSelectionChangedDetails(null, null).obs;
-  final PdfViewerController pdfViewerController = PdfViewerController();
+  final PdfViewerController pdfViewerController =
+      ConstObject().pdfViewerController;
   final TextPopUpWidgetController popUpWidgetController =
       Get.find<TextPopUpWidgetController>();
   late final File pdfFile;
@@ -25,7 +27,7 @@ class AnnotyStudyEngineController extends GetxController {
   }
 
   @override
-  void onClose() async{
+  void onClose() async {
     popUpWidgetController.checkAndClosePopUpEntry(pdfViewerController);
     await pdfFile.writeAsBytes(pdfBytes.value);
     super.onClose();
@@ -48,6 +50,11 @@ class AnnotyStudyEngineController extends GetxController {
     lastDetails.value = details;
     lastDetails.refresh();
     Flog.success("🟢 handleAnnotationWidget");
+  }
+
+  void onDocumentLoaded() {
+    //Todo see if the file is modified or opened for the first time.
+    jumpToPreviousOffset();
   }
 
   void jumpToPreviousOffset() {

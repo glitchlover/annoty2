@@ -15,7 +15,7 @@ class ConstColorMain {
   static const orange = Color(0xFFFEA677);
   static const red = Color(0xFFF97C6D);
   static const pink = Color(0xFFFF79B0);
-  static const activeGrey = Color(0xFFADC4E5);
-  static const muteGrey = Color(0xFF778393);
+  static const activeGrey = Color.fromARGB(255, 205, 216, 232);
+  static const muteGrey = Color.fromARGB(255, 144, 158, 176);
   static const accentWhite = Color.fromARGB(255, 229, 240, 255);
 }

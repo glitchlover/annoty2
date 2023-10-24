@@ -1,7 +1,4 @@
-import 'package:annoty/app/core/logger/logger.dart';
-import 'package:annoty/app/core/routes/home_routes.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 enum ToolItem {
   exit,

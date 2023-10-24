@@ -9,7 +9,7 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class AnnotationController extends GetxController {
   late PdfDocument document;
   late PdfPage currentPage;
-  final SfPdfViewerState? currentState = KeyConst.pdfKey.currentState;
+  final SfPdfViewerState? currentState = ConstKey.pdfKey.currentState;
   final RxDouble xOffset = (0.0).obs;
   final RxDouble yOffset = (0.0).obs;
 
