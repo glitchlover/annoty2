@@ -1,3 +1,4 @@
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/tool_box_menu_controller.dart';
@@ -11,5 +12,6 @@ class AnnotyReaderBinding extends Bindings {
     Get.lazyPut(() => TextPopUpWidgetController());
     Get.lazyPut(() => AnnotationController());
     Get.lazyPut(() => ToolBoxMenuController());
+    Get.lazyPut(() => AnnotationBarController());
   }
 }

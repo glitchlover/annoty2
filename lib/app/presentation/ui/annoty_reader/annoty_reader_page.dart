@@ -9,14 +9,12 @@ class AnnotyReaderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const ToolBox(),
+    return const Scaffold(
+      appBar: ToolBox(),
       body: Stack(
         children: [
-          const PdfViewer(),
-          Obx(() {
-            return const AnnotationBar();
-          }),
+          PdfViewer(),
+          AnnotationBar(),
         ],
       ),
     );

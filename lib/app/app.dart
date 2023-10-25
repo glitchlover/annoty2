@@ -3,7 +3,7 @@ import 'package:annoty/app/app_binding.dart';
 import 'package:annoty/app/core/routes/app_pages.dart';
 import 'package:annoty/app/core/routes/splash_screen_routes.dart';
 import 'package:annoty/app/core/theme/my_theme_data.dart';
-import 'package:annoty/app/database/apis/theme_service.dart';
+import 'package:annoty/app/database/functions/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
