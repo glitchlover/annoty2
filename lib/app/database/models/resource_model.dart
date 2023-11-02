@@ -1,43 +1,29 @@
-import 'package:flutter/material.dart';
+import 'package:annoty/app/database/models/metadata.dart';
+import 'package:annoty/app/database/models/tag.dart';
+import 'package:objectbox/objectbox.dart';
 
+import 'package:annoty/app/database/models/annotation.dart';
+
+@Entity()
 class ResourceModel {
+  int id;
   final String name;
   final String customName;
   final String filePath;
+  @Property(type: PropertyType.date)
   final DateTime createdDate;
+  @Property(type: PropertyType.date)
   final DateTime modifiedDate;
-  final Metadata metadata;
-  final List<Annotation>? annotations;
-  final List<Tag>? tags;
+  final ToOne<Metadata> metadata = ToOne<Metadata>();
+  final ToMany<Annotation> annotations = ToMany<Annotation>();
+  final ToMany<Tag>? tags = ToMany<Tag>();
 
-  ResourceModel(
-      {required this.name,
+  ResourceModel({
+      required this.id,
+      required this.name,
       required this.customName,
       required this.filePath,
       required this.createdDate,
       required this.modifiedDate,
-      required this.metadata,
-      required this.annotations,
-      required this.tags});
-}
-
-class Annotation {
-}
-
-class Metadata {
-  final List<String>? authours;
-  final DateTime? published;
-  final String? publisher;
-
-  Metadata(
-      {this.authours,
-      this.published,
-      this.publisher});
-}
-
-class Tag {
-  final String name;
-  final Color color;
-
-  Tag({required this.name, required this.color});
+      });
 }
