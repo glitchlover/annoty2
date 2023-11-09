@@ -1,7 +1,7 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
 import 'package:annoty/app/core/constants/ui/tool_box.dart';
-import 'package:annoty/app/core/logger/logger.dart';
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/tool_box_menu_controller.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +73,7 @@ class Tool extends GetView<ToolBoxMenuController> {
             controller.toggleBookmark();
             break;
           case ToolItem.annoBar:
-            Get.find<AnnotationBarController>().isAnnoBarOpen.toggle();
+            Get.find<AnnotationSideBarController>().isAnnoBarOpen.toggle();
             break;
           default:
             Flog.info(toolItem);

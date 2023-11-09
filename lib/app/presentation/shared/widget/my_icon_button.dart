@@ -17,6 +17,8 @@ class MyIconButton extends IconButton {
   final double iconSizeSet;
   @override
   Color get hoverColor => Colors.transparent;
+  @override
+  EdgeInsetsGeometry get padding => EdgeInsets.zero;
 
   const MyIconButton._(
       {required this.iconSet,
@@ -39,7 +41,10 @@ class MyIconButton extends IconButton {
             ? ConstColorMain.muteGrey
             : ConstColorMain.muteBlack);
     return MyIconButton._(
-        iconSet: icon, onPressedSet: onPressed, colorSet: bcolor, iconSizeSet: iconSize);
+        iconSet: icon,
+        onPressedSet: onPressed,
+        colorSet: bcolor,
+        iconSizeSet: iconSize);
   }
 
   IconButton paint({double? size}) {

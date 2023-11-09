@@ -1,4 +1,5 @@
 import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/core/constants/color/highlights.dart';
 import 'package:annoty/app/core/constants/ui/assets.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
 import 'package:annoty/app/presentation/shared/controllers/theme_toggle_controller.dart';
@@ -26,15 +27,15 @@ class HomeAppBar {
                 thmCtrl.toggle();
               },
               icon: Icon(thmCtrl.icon.value),
-            color: ConstColorMain.yellow);
+            color: ConstColorHighlight.yellow);
         }),
         MyIconButton(
             onPressed: () {},
             icon: const Icon(Icons.notifications_outlined,
-              color: ConstColorMain.orange)),
+              color: ConstColorHighlight.orange)),
         MyIconButton(
             onPressed: () {},
-          icon: const Icon(Icons.face_outlined, color: ConstColorMain.green))
+          icon: const Icon(Icons.face_outlined, color: ConstColorHighlight.green))
       ];
   }
 }

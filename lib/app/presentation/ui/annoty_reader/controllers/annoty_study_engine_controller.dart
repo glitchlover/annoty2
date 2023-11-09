@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:annoty/app/core/constants/misc/objects.dart';
-import 'package:annoty/app/core/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/text_popup_widget_controller.dart';
 import 'package:flutter/foundation.dart';
@@ -35,21 +34,16 @@ class AnnotyStudyEngineController extends GetxController {
 
   void handleTextPopUpWidget(
       PdfTextSelectionChangedDetails details, BuildContext context) {
-    Flog.mark("handling annotation widget");
     if (details == lastDetails.value) return;
     if (details.selectedText == null &&
         popUpWidgetController.textPopUpMounted.value == true) {
       popUpWidgetController.checkAndClosePopUpEntry(pdfViewerController);
     } else if (details.selectedText != null &&
         popUpWidgetController.textPopUpMounted.value == false) {
-      Flog.debug("🐛 text selected");
-      Flog.debug(
-          "🐛 details in 🌕handleAnnotaionWidget:  ${details.selectedText}, ${details.globalSelectedRegion.toString()}");
       popUpWidgetController.renderTextPopUp(context: context, details: details);
     }
     lastDetails.value = details;
     lastDetails.refresh();
-    Flog.success("🟢 handleAnnotationWidget");
   }
 
   void onDocumentLoaded() {

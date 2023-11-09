@@ -18,11 +18,11 @@ class MyTextTheme extends TextTheme {
   @override
   TextStyle? get headlineLarge => MyTextStyle(fontSize: 24);
   @override
-  TextStyle? get headlineMedium => MyTextStyle(fontSize: 18, fontWeight: FontWeight.w600);
+  TextStyle? get headlineMedium => MyTextStyle(fontSize: 20);
   @override
-  TextStyle? get headlineSmall => MyTextStyle(fontSize: 14);
+  TextStyle? get headlineSmall => MyTextStyle(fontSize: 18);
   @override
-  TextStyle? get bodyMedium => MyTextStyle(fontSize: 12);
+  TextStyle? get bodyMedium => MyTextStyle(fontSize: 16, color: ConstColorMain.accentWhite);
   @override
   TextStyle? get labelSmall => MyTextStyle(fontSize: 10);
 

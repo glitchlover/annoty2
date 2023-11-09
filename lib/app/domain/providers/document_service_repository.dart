@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:annoty/app/core/constants/database/resource_file_tree.dart';
 import 'package:path_provider/path_provider.dart';
 
-abstract class DocumentService {
+abstract class DocumentServiceRepository {
   final String documentName;
   final String documentType;
 
@@ -15,7 +15,7 @@ abstract class DocumentService {
   Future<Directory> get document async =>
       Directory("${(await main).path}\\$documentName");
 
-  DocumentService({required this.documentName, required this.documentType});
+  DocumentServiceRepository({required this.documentName, required this.documentType});
 
   Future makeFolder({required String name, required Directory parent});
   Future makeFile({required String name, required Directory parent});

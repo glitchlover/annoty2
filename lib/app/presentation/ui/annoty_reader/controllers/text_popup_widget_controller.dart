@@ -2,7 +2,7 @@ import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/color/highlights.dart';
 import 'package:annoty/app/core/constants/ui/ui_element.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
-import 'package:annoty/app/core/logger/logger.dart';
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:flutter/material.dart';
@@ -68,12 +68,12 @@ class TextPopUpWidgetController extends GetxController {
             children: [
               TextButton(
                 child: const Icon(Icons.square_rounded,
-                    color: ConstColorHighlight.kPurp),
+                    color: ConstColorHighlight.purple),
                 onPressed: () async {
                   await Get.find<AnnotationController>().addTextAnnotation(
                       annotyReaderController: annotyReaderController,
                       details: details,
-                      color: ConstColorHighlight.kPurp);
+                      color: ConstColorHighlight.purple);
                 },
               ),
             ],

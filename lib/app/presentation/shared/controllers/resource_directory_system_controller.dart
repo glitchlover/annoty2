@@ -1,15 +1,18 @@
 import 'dart:io';
 
-import 'package:annoty/app/database/functions/old_document_service.dart';
+import 'package:annoty/app/core/resources/logger/logger.dart';
+import 'package:annoty/app/core/utils/file_utils.dart';
+import 'package:annoty/app/database/providers/local/resource_repository.dart';
+import 'package:annoty/app/database/providers/old_document_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class ResourceDirectorySystemController extends GetxController {
   DocumentServices pdfService =
-      DocumentServices( documentFolderName: "Resource",  documentType: "pdf");
+      DocumentServices(documentFolderName: "Resource", documentType: "pdf");
   RxList<FileSystemEntity> get resourceList => pdfService
-      .getChildrenFolder(directory: pdfService. documentFolder, currentDepth: 1)
+      .getChildrenFolder(directory: pdfService.documentFolder, currentDepth: 1)
       .obs;
   Rx<int> get resourceListSize => resourceList.length.obs;
 
@@ -23,12 +26,14 @@ class ResourceDirectorySystemController extends GetxController {
   }
 
   Future<String> makeResourceFolder(FilePickerResult pick) async {
-    String fileName = pick.files.first.path!.split("\\").last;
-    String folderName =
-        fileName.replaceRange(fileName.lastIndexOf("."), fileName.length, "");
-    String folderPath = "${pdfService. documentFolder.path}\\$folderName";
-    await pdfService.mkFolder(folderName, pdfService. documentFolder);
-    return folderPath;
+    String destinationFolderName =
+        FileUtils.getFileNameWithoutExt(pick.files.first.path!);
+    String destinationFolderPath =
+        "${pdfService.documentFolder.path}\\$destinationFolderName";
+    Flog.info(destinationFolderPath);
+    LocalResourceRepository().saveResourceModel("$destinationFolderPath\\$destinationFolderName.pdf");
+    await pdfService.mkFolder(destinationFolderName, pdfService.documentFolder);
+    return destinationFolderPath;
   }
 
   updateResources() async {
