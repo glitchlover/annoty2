@@ -1,5 +1,4 @@
 import 'package:annoty/app/core/constants/color/core.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
@@ -74,7 +73,7 @@ class AnnotationSideBarHeader extends StatelessWidget {
         width: 400.0,
         height: 40.0,
         alignment: Alignment.center,
-        color: ConstColorMain.backgroundDark,
+        color: ConstColorMain.primaryBGDark,
         child: const MyText("Annotation Bar").heading2()
         // Todo have to add annotation search bar
         );

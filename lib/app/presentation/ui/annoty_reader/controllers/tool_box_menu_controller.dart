@@ -1,4 +1,3 @@
-import 'package:annoty/app/core/constants/misc/is_it.dart';
 import 'package:annoty/app/core/constants/misc/key.dart';
 import 'package:annoty/app/core/constants/misc/objects.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,6 @@ class ToolBoxMenuController extends GetxController {
   final GlobalKey focusNode = GlobalKey();
   final bool isWeb = false;
   final bool showTooltip = true;
-  final bool isLight = IsIt.dark;
   final PdfViewerController pdfViewerController =
       ConstObject().pdfViewerController;
   final SfPdfViewerState? currentPdfViewerState = ConstKey.pdfKey.currentState;

@@ -69,7 +69,7 @@ class MyIconButton extends IconButton {
     );
   }
 
-  Widget box([double size = 20]) {
+  IconButton box([double size = 20]) {
     return IconButton(
       icon: icon,
       onPressed: onPressed,

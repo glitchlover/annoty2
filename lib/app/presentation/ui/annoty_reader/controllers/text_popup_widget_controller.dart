@@ -12,8 +12,8 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class TextPopUpWidgetController extends GetxController {
   late Rx<OverlayEntry> textPopUpEntry;
   Rx<bool> textPopUpMounted = false.obs;
-  Color? contextMenuColor = ConstColorMain.backgroundDark;
-  Color? copyTextColor = ConstColorMain.backgroundDark;
+  Color? contextMenuColor = ConstColorMain.primaryBGDark;
+  Color? copyTextColor = ConstColorMain.primaryBGDark;
   late BuildContext context;
 
   @override

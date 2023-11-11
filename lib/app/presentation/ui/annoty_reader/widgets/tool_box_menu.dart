@@ -17,7 +17,7 @@ class ToolBox extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 56,
-      color: ConstColorMain.backgroundDark,
+      color: ConstColorMain.primaryBGDark,
       child: const Padding(
         padding: EdgeInsets.all(8.0),
         child: Row(
