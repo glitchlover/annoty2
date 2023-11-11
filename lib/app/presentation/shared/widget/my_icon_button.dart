@@ -1,6 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/core/constants/misc/is_it.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyIconButton extends IconButton {
   @override
@@ -37,7 +37,7 @@ class MyIconButton extends IconButton {
       Color? color,
       double iconSize = 20}) {
     Color bcolor = color ??
-        (Get.theme.brightness == Brightness.dark
+        (IsIt.dark
             ? ConstColorMain.muteGrey
             : ConstColorMain.muteBlack);
     return MyIconButton._(

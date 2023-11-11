@@ -3,7 +3,7 @@ import 'package:annoty/app/core/theme/my_app_bar_theme.dart';
 import 'package:annoty/app/core/theme/my_floating_action_button_theme.dart';
 import 'package:annoty/app/core/theme/my_icon_theme.dart';
 import 'package:annoty/app/core/theme/my_text_theme.dart';
-import 'package:annoty/app/core/utils/color_transformers.dart';
+import 'package:annoty/app/core/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 
 mixin MyThemeData implements ThemeData {
@@ -31,7 +31,7 @@ mixin MyThemeData implements ThemeData {
         cardColor: ConstColorMain.muteBlack,
         scaffoldBackgroundColor: ConstColorMain.primaryBGDark,
         shadowColor:
-            ColorTransformers.darken(ConstColorMain.primaryBGDark, 0.5),
+            ColorUtils.darken(ConstColorMain.primaryBGDark, 0.5),
         textTheme: MyTextTheme(),
         appBarTheme: MyAppBarTheme(),
         floatingActionButtonTheme: MyFloationActionButtonTheme(),
