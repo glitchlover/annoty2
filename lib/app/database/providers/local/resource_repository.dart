@@ -9,7 +9,8 @@ class LocalResourceRepository extends ResourceRepository {
   final Box resourceBox = ObjectBoxDB().resourceBox;
 
   @override
-  Future<int> getResourceId(String filePath) async => (await getResource(filePath)).id!;
+  Future<int> getResourceId(String filePath) async =>
+      (await getResource(filePath)).id!;
 
   Future<ResourceModel> getResource(String filePath) async => await resourceBox
       .query(ResourceModel_.filePath.equals(filePath))
@@ -20,14 +21,16 @@ class LocalResourceRepository extends ResourceRepository {
 
   @override
   Future deleteResourceModel(String filePath) async {
+    Flog.info(filePath);
     ResourceModel getresource = await getResource(filePath);
+    Flog.info(getresource.name);
     await resourceBox.removeAsync(getresource.id!);
   }
 
   @override
-  Future saveResourceModel(String filePath) async {
+  Future<int> saveResourceModel(String filePath) async {
     Flog.info(filePath);
-    await resourceBox.putAsync(ResourceModel(
+    return await resourceBox.putAsync(ResourceModel(
         name: FileUtils.getFilename(filePath),
         customName: "",
         filePath: filePath,

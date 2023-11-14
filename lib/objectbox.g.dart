@@ -15,6 +15,7 @@ import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
 import 'app/database/models/annotation.dart';
+import 'app/database/models/annotation_bounds.dart';
 import 'app/database/models/comment.dart';
 import 'app/database/models/metadata.dart';
 import 'app/database/models/resource_model.dart';
@@ -24,220 +25,256 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 8248204990099429406),
+      id: const IdUid(1, 3965493186035185519),
       name: 'Annotation',
-      lastPropertyId: const IdUid(12, 4807803630161972398),
+      lastPropertyId: const IdUid(9, 9174180981644186355),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 6257851605915656083),
+            id: const IdUid(1, 1111617394466000055),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 2911682090479067511),
+            id: const IdUid(2, 4096001806471590801),
             name: 'text',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 9085424665909237401),
+            id: const IdUid(3, 8667925886230878247),
             name: 'keyWords',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 4869164249911040981),
+            id: const IdUid(4, 863628403157166423),
             name: 'createdDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 4537281218644058175),
+            id: const IdUid(5, 3629246444202599494),
             name: 'modifiedDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 7432922768966538681),
-            name: 'resourceId',
+            id: const IdUid(6, 6997129562113086968),
+            name: 'boundsId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(2, 8968142865902978357),
-            relationTarget: 'ResourceModel'),
+            indexId: const IdUid(1, 6619088394181912300),
+            relationTarget: 'AnnotationBounds'),
         ModelProperty(
-            id: const IdUid(9, 8331238368741889284),
-            name: 'annoLocation',
-            type: 29,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(11, 1821406228020511976),
+            id: const IdUid(7, 1748238405797494837),
             name: 'commentId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(6, 2954430150247302611),
+            indexId: const IdUid(2, 4442986349168894896),
             relationTarget: 'Comment'),
         ModelProperty(
-            id: const IdUid(12, 4807803630161972398),
+            id: const IdUid(8, 6969957969196270026),
+            name: 'resourceId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(3, 5375943514303345433),
+            relationTarget: 'ResourceModel'),
+        ModelProperty(
+            id: const IdUid(9, 9174180981644186355),
             name: 'dbColor',
             type: 6,
             flags: 0)
       ],
       relations: <ModelRelation>[
         ModelRelation(
-            id: const IdUid(1, 6923373494171050244),
+            id: const IdUid(1, 5268128295793448591),
             name: 'backlinks',
-            targetId: const IdUid(1, 8248204990099429406))
+            targetId: const IdUid(1, 3965493186035185519))
       ],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(3, 7215945279805285914),
-      name: 'Metadata',
-      lastPropertyId: const IdUid(5, 2306406660106987452),
+      id: const IdUid(2, 51963621201805884),
+      name: 'AnnotationBounds',
+      lastPropertyId: const IdUid(5, 6455133834933922782),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 386412920356514914),
+            id: const IdUid(1, 8120623583160883491),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 5184479599504940744),
+            id: const IdUid(2, 7846405417281308789),
+            name: 'xOffset1',
+            type: 8,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 6975723537469251808),
+            name: 'xOffset2',
+            type: 8,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 8982781720132876437),
+            name: 'yOffset1',
+            type: 8,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 6455133834933922782),
+            name: 'yOffset2',
+            type: 8,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(3, 7430174701284610166),
+      name: 'Comment',
+      lastPropertyId: const IdUid(4, 4622939945708309980),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 7606012575500123632),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 5567083221332978302),
+            name: 'text',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 6036606503360400721),
+            name: 'createdDate',
+            type: 10,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 4622939945708309980),
+            name: 'modifiedDate',
+            type: 10,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(4, 2960173941353202022),
+      name: 'Metadata',
+      lastPropertyId: const IdUid(5, 7141130183502346640),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 1700456527006957795),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 5742421373580366069),
             name: 'authours',
             type: 30,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 2508204788101926549),
-            name: 'published',
-            type: 10,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 3693569524275523637),
+            id: const IdUid(3, 3940698091852726604),
             name: 'publisher',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 2306406660106987452),
+            id: const IdUid(4, 5310451309569269382),
+            name: 'published',
+            type: 10,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 7141130183502346640),
             name: 'resourceId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(4, 6694350154418787491),
+            indexId: const IdUid(4, 8156027737338210916),
             relationTarget: 'ResourceModel')
       ],
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(4, 4109849702745454960),
+      id: const IdUid(5, 1975252279855882229),
       name: 'ResourceModel',
-      lastPropertyId: const IdUid(7, 7369379352859169486),
+      lastPropertyId: const IdUid(7, 4709636709119030346),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 3576280008256436632),
+            id: const IdUid(1, 230734659566341843),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 676059336318277615),
+            id: const IdUid(2, 5544837741777264062),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 2427956517700911657),
+            id: const IdUid(3, 4119554345690517336),
             name: 'customName',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 6944515626103696103),
+            id: const IdUid(4, 8927440069218093463),
             name: 'filePath',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 6363098222944715000),
+            id: const IdUid(5, 4011826619568277350),
             name: 'createdDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 4800053596555886445),
+            id: const IdUid(6, 2843465248907091237),
             name: 'modifiedDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 7369379352859169486),
+            id: const IdUid(7, 4709636709119030346),
             name: 'metadataId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(5, 1720603989783748426),
+            indexId: const IdUid(5, 235655519406377623),
             relationTarget: 'Metadata')
       ],
       relations: <ModelRelation>[
         ModelRelation(
-            id: const IdUid(2, 5844204696709590591),
+            id: const IdUid(2, 6423600076939425364),
             name: 'annotations',
-            targetId: const IdUid(1, 8248204990099429406)),
+            targetId: const IdUid(1, 3965493186035185519)),
         ModelRelation(
-            id: const IdUid(3, 3597498948616981604),
+            id: const IdUid(3, 7180562354932414813),
             name: 'tags',
-            targetId: const IdUid(5, 8549396755358312848))
+            targetId: const IdUid(6, 5013042518281969629))
       ],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(5, 8549396755358312848),
+      id: const IdUid(6, 5013042518281969629),
       name: 'Tag',
-      lastPropertyId: const IdUid(3, 5069005284069945164),
+      lastPropertyId: const IdUid(3, 103376511721398340),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 5678071039353668765),
+            id: const IdUid(1, 7948500334679202558),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 3949013145579953731),
+            id: const IdUid(2, 8228792869345973332),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 5069005284069945164),
+            id: const IdUid(3, 103376511721398340),
             name: 'color',
             type: 6,
             flags: 0)
       ],
       relations: <ModelRelation>[
         ModelRelation(
-            id: const IdUid(4, 8346971367855664503),
+            id: const IdUid(4, 349234033409775690),
             name: 'resources',
-            targetId: const IdUid(4, 4109849702745454960)),
+            targetId: const IdUid(5, 1975252279855882229)),
         ModelRelation(
-            id: const IdUid(5, 1953413206913352229),
+            id: const IdUid(5, 2165903840679947403),
             name: 'annotations',
-            targetId: const IdUid(1, 8248204990099429406))
+            targetId: const IdUid(1, 3965493186035185519))
       ],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(7, 6137702185814852847),
-      name: 'Comment',
-      lastPropertyId: const IdUid(4, 3825512618922583635),
-      flags: 0,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 2716506071694547707),
-            name: 'id',
-            type: 6,
-            flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 9088051527749048036),
-            name: 'text',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 1277858262175100193),
-            name: 'createdDate',
-            type: 10,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 3825512618922583635),
-            name: 'modifiedDate',
-            type: 10,
-            flags: 0)
-      ],
-      relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[])
 ];
 
@@ -268,21 +305,13 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(7, 6137702185814852847),
-      lastIndexId: const IdUid(6, 2954430150247302611),
-      lastRelationId: const IdUid(5, 1953413206913352229),
+      lastEntityId: const IdUid(6, 5013042518281969629),
+      lastIndexId: const IdUid(5, 235655519406377623),
+      lastRelationId: const IdUid(5, 2165903840679947403),
       lastSequenceId: const IdUid(0, 0),
-      retiredEntityUids: const [597770737609656693, 2657955787335229915],
-      retiredIndexUids: const [4892981388347643264, 2686495519677825834],
-      retiredPropertyUids: const [
-        5460684269534598927,
-        7241362272138008483,
-        1043726643665298655,
-        9022690092654126091,
-        621637047420169961,
-        6272359716375395534,
-        7197696914112980098
-      ],
+      retiredEntityUids: const [],
+      retiredIndexUids: const [],
+      retiredPropertyUids: const [],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
@@ -292,7 +321,7 @@ ModelDefinition getObjectBoxModel() {
     Annotation: EntityDefinition<Annotation>(
         model: _entities[0],
         toOneRelations: (Annotation object) =>
-            [object.resource, object.comment],
+            [object.bounds, object.comment, object.resource],
         toManyRelations: (Annotation object) =>
             {RelInfo<Annotation>.toMany(1, object.id!): object.backlinks},
         getId: (Annotation object) => object.id,
@@ -302,17 +331,16 @@ ModelDefinition getObjectBoxModel() {
         objectToFB: (Annotation object, fb.Builder fbb) {
           final textOffset = fbb.writeString(object.text);
           final keyWordsOffset = fbb.writeString(object.keyWords);
-          final annoLocationOffset = fbb.writeListFloat64(object.annoLocation);
-          fbb.startTable(13);
+          fbb.startTable(10);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addOffset(1, textOffset);
           fbb.addOffset(2, keyWordsOffset);
           fbb.addInt64(3, object.createdDate.millisecondsSinceEpoch);
           fbb.addInt64(4, object.modifiedDate.millisecondsSinceEpoch);
-          fbb.addInt64(6, object.resource.targetId);
-          fbb.addOffset(8, annoLocationOffset);
-          fbb.addInt64(10, object.comment.targetId);
-          fbb.addInt64(11, object.dbColor);
+          fbb.addInt64(5, object.bounds.targetId);
+          fbb.addInt64(6, object.comment.targetId);
+          fbb.addInt64(7, object.resource.targetId);
+          fbb.addInt64(8, object.dbColor);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -329,30 +357,106 @@ ModelDefinition getObjectBoxModel() {
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0));
           final modifiedDateParam = DateTime.fromMillisecondsSinceEpoch(
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0));
-          final annoLocationParam =
-              const fb.ListReader<double>(fb.Float64Reader(), lazy: false)
-                  .vTableGet(buffer, rootOffset, 20, []);
           final object = Annotation(
               id: idParam,
               text: textParam,
               keyWords: keyWordsParam,
               createdDate: createdDateParam,
-              modifiedDate: modifiedDateParam,
-              annoLocation: annoLocationParam)
+              modifiedDate: modifiedDateParam)
             ..dbColor =
-                const fb.Int64Reader().vTableGet(buffer, rootOffset, 26, 0);
-          object.resource.targetId =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
-          object.resource.attach(store);
+                const fb.Int64Reader().vTableGet(buffer, rootOffset, 20, 0);
+          object.bounds.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0);
+          object.bounds.attach(store);
           object.comment.targetId =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 24, 0);
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
           object.comment.attach(store);
+          object.resource.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0);
+          object.resource.attach(store);
           InternalToManyAccess.setRelInfo<Annotation>(object.backlinks, store,
               RelInfo<Annotation>.toMany(1, object.id!));
           return object;
         }),
-    Metadata: EntityDefinition<Metadata>(
+    AnnotationBounds: EntityDefinition<AnnotationBounds>(
         model: _entities[1],
+        toOneRelations: (AnnotationBounds object) => [],
+        toManyRelations: (AnnotationBounds object) => {},
+        getId: (AnnotationBounds object) => object.id,
+        setId: (AnnotationBounds object, int id) {
+          object.id = id;
+        },
+        objectToFB: (AnnotationBounds object, fb.Builder fbb) {
+          fbb.startTable(6);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addFloat64(1, object.xOffset1);
+          fbb.addFloat64(2, object.xOffset2);
+          fbb.addFloat64(3, object.yOffset1);
+          fbb.addFloat64(4, object.yOffset2);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
+          final xOffset1Param =
+              const fb.Float64Reader().vTableGet(buffer, rootOffset, 6, 0);
+          final xOffset2Param =
+              const fb.Float64Reader().vTableGet(buffer, rootOffset, 8, 0);
+          final yOffset1Param =
+              const fb.Float64Reader().vTableGet(buffer, rootOffset, 10, 0);
+          final yOffset2Param =
+              const fb.Float64Reader().vTableGet(buffer, rootOffset, 12, 0);
+          final object = AnnotationBounds(
+              id: idParam,
+              xOffset1: xOffset1Param,
+              xOffset2: xOffset2Param,
+              yOffset1: yOffset1Param,
+              yOffset2: yOffset2Param);
+
+          return object;
+        }),
+    Comment: EntityDefinition<Comment>(
+        model: _entities[2],
+        toOneRelations: (Comment object) => [],
+        toManyRelations: (Comment object) => {},
+        getId: (Comment object) => object.id,
+        setId: (Comment object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Comment object, fb.Builder fbb) {
+          final textOffset = fbb.writeString(object.text);
+          fbb.startTable(5);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addOffset(1, textOffset);
+          fbb.addInt64(2, object.createdDate.millisecondsSinceEpoch);
+          fbb.addInt64(3, object.modifiedDate.millisecondsSinceEpoch);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+          final idParam =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
+          final textParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGet(buffer, rootOffset, 6, '');
+          final createdDateParam = DateTime.fromMillisecondsSinceEpoch(
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0));
+          final modifiedDateParam = DateTime.fromMillisecondsSinceEpoch(
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0));
+          final object = Comment(
+              id: idParam,
+              text: textParam,
+              createdDate: createdDateParam,
+              modifiedDate: modifiedDateParam);
+
+          return object;
+        }),
+    Metadata: EntityDefinition<Metadata>(
+        model: _entities[3],
         toOneRelations: (Metadata object) => [object.resource],
         toManyRelations: (Metadata object) => {},
         getId: (Metadata object) => object.id,
@@ -371,8 +475,8 @@ ModelDefinition getObjectBoxModel() {
           fbb.startTable(6);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addOffset(1, authoursOffset);
-          fbb.addInt64(2, object.published?.millisecondsSinceEpoch);
-          fbb.addOffset(3, publisherOffset);
+          fbb.addOffset(2, publisherOffset);
+          fbb.addInt64(3, object.published?.millisecondsSinceEpoch);
           fbb.addInt64(4, object.resource.targetId);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
@@ -381,7 +485,7 @@ ModelDefinition getObjectBoxModel() {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
           final publishedValue =
-              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 8);
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 10);
           final idParam =
               const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
           final authoursParam = const fb.ListReader<String>(
@@ -392,7 +496,7 @@ ModelDefinition getObjectBoxModel() {
               ? null
               : DateTime.fromMillisecondsSinceEpoch(publishedValue);
           final publisherParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGetNullable(buffer, rootOffset, 10);
+              .vTableGetNullable(buffer, rootOffset, 8);
           final object = Metadata(
               id: idParam,
               authours: authoursParam,
@@ -404,7 +508,7 @@ ModelDefinition getObjectBoxModel() {
           return object;
         }),
     ResourceModel: EntityDefinition<ResourceModel>(
-        model: _entities[2],
+        model: _entities[4],
         toOneRelations: (ResourceModel object) => [object.metadata],
         toManyRelations: (ResourceModel object) => {
               RelInfo<ResourceModel>.toMany(2, object.id!): object.annotations,
@@ -461,7 +565,7 @@ ModelDefinition getObjectBoxModel() {
           return object;
         }),
     Tag: EntityDefinition<Tag>(
-        model: _entities[3],
+        model: _entities[5],
         toOneRelations: (Tag object) => [],
         toManyRelations: (Tag object) => {
               RelInfo<Tag>.toMany(4, object.id!): object.resources,
@@ -495,43 +599,6 @@ ModelDefinition getObjectBoxModel() {
           InternalToManyAccess.setRelInfo<Tag>(
               object.annotations, store, RelInfo<Tag>.toMany(5, object.id!));
           return object;
-        }),
-    Comment: EntityDefinition<Comment>(
-        model: _entities[4],
-        toOneRelations: (Comment object) => [],
-        toManyRelations: (Comment object) => {},
-        getId: (Comment object) => object.id,
-        setId: (Comment object, int id) {
-          object.id = id;
-        },
-        objectToFB: (Comment object, fb.Builder fbb) {
-          final textOffset = fbb.writeString(object.text);
-          fbb.startTable(5);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, textOffset);
-          fbb.addInt64(2, object.createdDate.millisecondsSinceEpoch);
-          fbb.addInt64(3, object.modifiedDate.millisecondsSinceEpoch);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-          final idParam =
-              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4);
-          final textParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 6, '');
-          final createdDateParam = DateTime.fromMillisecondsSinceEpoch(
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0));
-          final modifiedDateParam = DateTime.fromMillisecondsSinceEpoch(
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0));
-          final object = Comment(
-              id: idParam,
-              text: textParam,
-              createdDate: createdDateParam,
-              modifiedDate: modifiedDateParam);
-
-          return object;
         })
   };
 
@@ -560,17 +627,17 @@ class Annotation_ {
   static final modifiedDate =
       QueryIntegerProperty<Annotation>(_entities[0].properties[4]);
 
-  /// see [Annotation.resource]
-  static final resource =
-      QueryRelationToOne<Annotation, ResourceModel>(_entities[0].properties[5]);
-
-  /// see [Annotation.annoLocation]
-  static final annoLocation =
-      QueryDoubleVectorProperty<Annotation>(_entities[0].properties[6]);
+  /// see [Annotation.bounds]
+  static final bounds = QueryRelationToOne<Annotation, AnnotationBounds>(
+      _entities[0].properties[5]);
 
   /// see [Annotation.comment]
   static final comment =
-      QueryRelationToOne<Annotation, Comment>(_entities[0].properties[7]);
+      QueryRelationToOne<Annotation, Comment>(_entities[0].properties[6]);
+
+  /// see [Annotation.resource]
+  static final resource =
+      QueryRelationToOne<Annotation, ResourceModel>(_entities[0].properties[7]);
 
   /// see [Annotation.dbColor]
   static final dbColor =
@@ -581,100 +648,123 @@ class Annotation_ {
       QueryRelationToMany<Annotation, Annotation>(_entities[0].relations[0]);
 }
 
+/// [AnnotationBounds] entity fields to define ObjectBox queries.
+class AnnotationBounds_ {
+  /// see [AnnotationBounds.id]
+  static final id =
+      QueryIntegerProperty<AnnotationBounds>(_entities[1].properties[0]);
+
+  /// see [AnnotationBounds.xOffset1]
+  static final xOffset1 =
+      QueryDoubleProperty<AnnotationBounds>(_entities[1].properties[1]);
+
+  /// see [AnnotationBounds.xOffset2]
+  static final xOffset2 =
+      QueryDoubleProperty<AnnotationBounds>(_entities[1].properties[2]);
+
+  /// see [AnnotationBounds.yOffset1]
+  static final yOffset1 =
+      QueryDoubleProperty<AnnotationBounds>(_entities[1].properties[3]);
+
+  /// see [AnnotationBounds.yOffset2]
+  static final yOffset2 =
+      QueryDoubleProperty<AnnotationBounds>(_entities[1].properties[4]);
+}
+
+/// [Comment] entity fields to define ObjectBox queries.
+class Comment_ {
+  /// see [Comment.id]
+  static final id = QueryIntegerProperty<Comment>(_entities[2].properties[0]);
+
+  /// see [Comment.text]
+  static final text = QueryStringProperty<Comment>(_entities[2].properties[1]);
+
+  /// see [Comment.createdDate]
+  static final createdDate =
+      QueryIntegerProperty<Comment>(_entities[2].properties[2]);
+
+  /// see [Comment.modifiedDate]
+  static final modifiedDate =
+      QueryIntegerProperty<Comment>(_entities[2].properties[3]);
+}
+
 /// [Metadata] entity fields to define ObjectBox queries.
 class Metadata_ {
   /// see [Metadata.id]
-  static final id = QueryIntegerProperty<Metadata>(_entities[1].properties[0]);
+  static final id = QueryIntegerProperty<Metadata>(_entities[3].properties[0]);
 
   /// see [Metadata.authours]
   static final authours =
-      QueryStringVectorProperty<Metadata>(_entities[1].properties[1]);
-
-  /// see [Metadata.published]
-  static final published =
-      QueryIntegerProperty<Metadata>(_entities[1].properties[2]);
+      QueryStringVectorProperty<Metadata>(_entities[3].properties[1]);
 
   /// see [Metadata.publisher]
   static final publisher =
-      QueryStringProperty<Metadata>(_entities[1].properties[3]);
+      QueryStringProperty<Metadata>(_entities[3].properties[2]);
+
+  /// see [Metadata.published]
+  static final published =
+      QueryIntegerProperty<Metadata>(_entities[3].properties[3]);
 
   /// see [Metadata.resource]
   static final resource =
-      QueryRelationToOne<Metadata, ResourceModel>(_entities[1].properties[4]);
+      QueryRelationToOne<Metadata, ResourceModel>(_entities[3].properties[4]);
 }
 
 /// [ResourceModel] entity fields to define ObjectBox queries.
 class ResourceModel_ {
   /// see [ResourceModel.id]
   static final id =
-      QueryIntegerProperty<ResourceModel>(_entities[2].properties[0]);
+      QueryIntegerProperty<ResourceModel>(_entities[4].properties[0]);
 
   /// see [ResourceModel.name]
   static final name =
-      QueryStringProperty<ResourceModel>(_entities[2].properties[1]);
+      QueryStringProperty<ResourceModel>(_entities[4].properties[1]);
 
   /// see [ResourceModel.customName]
   static final customName =
-      QueryStringProperty<ResourceModel>(_entities[2].properties[2]);
+      QueryStringProperty<ResourceModel>(_entities[4].properties[2]);
 
   /// see [ResourceModel.filePath]
   static final filePath =
-      QueryStringProperty<ResourceModel>(_entities[2].properties[3]);
+      QueryStringProperty<ResourceModel>(_entities[4].properties[3]);
 
   /// see [ResourceModel.createdDate]
   static final createdDate =
-      QueryIntegerProperty<ResourceModel>(_entities[2].properties[4]);
+      QueryIntegerProperty<ResourceModel>(_entities[4].properties[4]);
 
   /// see [ResourceModel.modifiedDate]
   static final modifiedDate =
-      QueryIntegerProperty<ResourceModel>(_entities[2].properties[5]);
+      QueryIntegerProperty<ResourceModel>(_entities[4].properties[5]);
 
   /// see [ResourceModel.metadata]
   static final metadata =
-      QueryRelationToOne<ResourceModel, Metadata>(_entities[2].properties[6]);
+      QueryRelationToOne<ResourceModel, Metadata>(_entities[4].properties[6]);
 
   /// see [ResourceModel.annotations]
   static final annotations =
-      QueryRelationToMany<ResourceModel, Annotation>(_entities[2].relations[0]);
+      QueryRelationToMany<ResourceModel, Annotation>(_entities[4].relations[0]);
 
   /// see [ResourceModel.tags]
   static final tags =
-      QueryRelationToMany<ResourceModel, Tag>(_entities[2].relations[1]);
+      QueryRelationToMany<ResourceModel, Tag>(_entities[4].relations[1]);
 }
 
 /// [Tag] entity fields to define ObjectBox queries.
 class Tag_ {
   /// see [Tag.id]
-  static final id = QueryIntegerProperty<Tag>(_entities[3].properties[0]);
+  static final id = QueryIntegerProperty<Tag>(_entities[5].properties[0]);
 
   /// see [Tag.name]
-  static final name = QueryStringProperty<Tag>(_entities[3].properties[1]);
+  static final name = QueryStringProperty<Tag>(_entities[5].properties[1]);
 
   /// see [Tag.color]
-  static final color = QueryIntegerProperty<Tag>(_entities[3].properties[2]);
+  static final color = QueryIntegerProperty<Tag>(_entities[5].properties[2]);
 
   /// see [Tag.resources]
   static final resources =
-      QueryRelationToMany<Tag, ResourceModel>(_entities[3].relations[0]);
+      QueryRelationToMany<Tag, ResourceModel>(_entities[5].relations[0]);
 
   /// see [Tag.annotations]
   static final annotations =
-      QueryRelationToMany<Tag, Annotation>(_entities[3].relations[1]);
-}
-
-/// [Comment] entity fields to define ObjectBox queries.
-class Comment_ {
-  /// see [Comment.id]
-  static final id = QueryIntegerProperty<Comment>(_entities[4].properties[0]);
-
-  /// see [Comment.text]
-  static final text = QueryStringProperty<Comment>(_entities[4].properties[1]);
-
-  /// see [Comment.createdDate]
-  static final createdDate =
-      QueryIntegerProperty<Comment>(_entities[4].properties[2]);
-
-  /// see [Comment.modifiedDate]
-  static final modifiedDate =
-      QueryIntegerProperty<Comment>(_entities[4].properties[3]);
+      QueryRelationToMany<Tag, Annotation>(_entities[5].relations[1]);
 }

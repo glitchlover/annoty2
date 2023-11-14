@@ -2,7 +2,6 @@ import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/color/text.dart';
 import 'package:annoty/app/core/constants/misc/is_it.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyTextTheme extends TextTheme {
   final String? fontFace;

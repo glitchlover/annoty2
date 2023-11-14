@@ -55,7 +55,7 @@ class AnnotyStudyEngineController extends GetxController {
     AnnotationController annotationController =
         Get.find<AnnotationController>();
     pdfViewerController.jumpTo(
-        xOffset: annotationController.xOffset.value,
-        yOffset: Get.find<AnnotationController>().yOffset.value);
+        xOffset: annotationController.xOffset2.value,
+        yOffset: Get.find<AnnotationController>().yOffset2.value);
   }
 }

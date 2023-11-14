@@ -1,6 +1,7 @@
 import 'package:annoty/app/core/resources/enum/color.dart';
 import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/annotation.dart';
+import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/comment.dart';
 import 'package:annoty/app/database/models/tag.dart';
 import 'package:annoty/app/database/providers/local/resource_repository.dart';
@@ -25,10 +26,11 @@ class LocalAnnotatonRepository extends AnnotationRepository {
       annotationBox.getAllAsync() as Future<List<Annotation>>;
 
   @override
-  Future<Annotation> saveAnnotation(Annotation annotation, filePath) async {
-    Flog.info(filePath);
+  Future<Annotation> saveAnnotation(
+      Annotation annotation, filePath, AnnotationBounds bounds) async {
     annotation.resource.target =
         await LocalResourceRepository().getResource(filePath);
+    annotation.bounds.target = bounds;
     return annotationBox.putAndGetAsync(annotation) as Future<Annotation>;
   }
 
@@ -47,9 +49,8 @@ class LocalAnnotatonRepository extends AnnotationRepository {
   }
 
   @override
-  Future<void> deleteAnnotation(Annotation annotation) {
-    // TODO: implement deleteAnnotation
-    throw UnimplementedError();
+  Future<void> deleteAnnotation(Annotation annotation) async {
+    await annotationBox.removeAsync(annotation.id!);
   }
 
   @override

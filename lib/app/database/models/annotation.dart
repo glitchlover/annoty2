@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:objectbox/objectbox.dart';
 
 import 'package:annoty/app/core/resources/enum/color.dart';
@@ -19,7 +20,7 @@ class Annotation {
   final DateTime createdDate;
   @Property(type: PropertyType.date)
   final DateTime modifiedDate;
-  final List<double> annoLocation;
+  final ToOne<AnnotationBounds> bounds = ToOne<AnnotationBounds>();
   final ToOne<Comment> comment = ToOne<Comment>();
   final ToOne<ResourceModel> resource = ToOne<ResourceModel>();
   final ToMany<Annotation> backlinks = ToMany<Annotation>();
@@ -30,7 +31,6 @@ class Annotation {
     required this.keyWords,
     required this.createdDate,
     required this.modifiedDate,
-    required this.annoLocation, 
     this.color = AnnoColor.unknown,
   });
 
@@ -45,7 +45,7 @@ class Annotation {
   }
 
   void _ensureStableEnumValues(int value) {
-    assert(0 <= value && value<= 7);
+    assert(0 <= value && value <= 7);
     Flog.debug(mapToName[value]);
   }
 
@@ -57,7 +57,6 @@ class Annotation {
       'color': mapToAnnoColor[color],
       'createdDate': createdDate.millisecondsSinceEpoch,
       'modifiedDate': modifiedDate.millisecondsSinceEpoch,
-      'annoLocation': annoLocation,
     };
   }
 
@@ -67,9 +66,10 @@ class Annotation {
       text: map['text'] as String,
       keyWords: map['keyWords'] as String,
       color: mapToAnnoColor['color'] as AnnoColor,
-      createdDate: DateTime.fromMillisecondsSinceEpoch(map['createdDate'] as int),
-      modifiedDate: DateTime.fromMillisecondsSinceEpoch(map['modifiedDate'] as int),
-      annoLocation: List<double>.from((map['annoLocation'] as List<double>)),
+      createdDate:
+          DateTime.fromMillisecondsSinceEpoch(map['createdDate'] as int),
+      modifiedDate:
+          DateTime.fromMillisecondsSinceEpoch(map['modifiedDate'] as int),
     );
   }
 

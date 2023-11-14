@@ -30,8 +30,8 @@ class ResourceDirectorySystemController extends GetxController {
         FileUtils.getFileNameWithoutExt(pick.files.first.path!);
     String destinationFolderPath =
         "${pdfService.documentFolder.path}\\$destinationFolderName";
-    Flog.info(destinationFolderPath);
-    LocalResourceRepository().saveResourceModel("$destinationFolderPath\\$destinationFolderName.pdf");
+    Flog.info(destinationFolderName);
+    Flog.info(await LocalResourceRepository().saveResourceModel(destinationFolderPath));
     await pdfService.mkFolder(destinationFolderName, pdfService.documentFolder);
     return destinationFolderPath;
   }

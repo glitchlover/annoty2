@@ -70,7 +70,7 @@ class TextPopUpWidgetController extends GetxController {
                 child: const Icon(Icons.square_rounded,
                     color: ConstColorHighlight.purple),
                 onPressed: () async {
-                  await Get.find<AnnotationController>().addTextAnnotation(
+                  await Get.find<AnnotationController>().addAnnotationToPdf(
                       annotyReaderController: annotyReaderController,
                       details: details,
                       color: ConstColorHighlight.purple);
