@@ -1,4 +1,5 @@
 import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/presentation/shared/controllers/permission_request_handler.dart';
 import 'package:annoty/app/presentation/shared/controllers/resource_directory_system_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,8 +17,7 @@ class MyFloatingActionButton
           Icons.add,
           color: ConstColorMain.activeBlack,
         ),
-        onPressed: () {
-          controller.pickPdf();
-        });
+        onPressed: () => PermissionRequestHandler()
+            .requestPermissions(perform: controller.pickPdf()));
   }
 }

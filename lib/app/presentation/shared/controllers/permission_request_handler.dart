@@ -1,3 +1,4 @@
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionRequestHandler {
@@ -7,9 +8,11 @@ class PermissionRequestHandler {
     ].request();
 
     if (status[Permission.storage] == PermissionStatus.granted) {
+      Flog.info(status[Permission.storage]);
       perform;
+      return;
     } else {
-      null;
+      Flog.error(status[Permission.storage]);
     }
   }
 }

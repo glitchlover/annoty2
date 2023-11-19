@@ -12,17 +12,23 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 class AnnotationController extends GetxController {
   late PdfDocument document;
   late PdfPage currentPage;
+  late int pagenumber;
   final SfPdfViewerState? currentState = ConstKey.pdfKey.currentState;
+  final Rx<Offset> scrollOffset = Offset.zero.obs;
   final RxDouble xOffset1 = (0.0).obs;
   final RxDouble yOffset1 = (0.0).obs;
   final RxDouble xOffset2 = (0.0).obs;
   final RxDouble yOffset2 = (0.0).obs;
   final Rx<Rect> bounds = Rect.zero.obs;
+  late Color color;
+  PdfColor get pdfColor =>
+      PdfColor(color.red, color.green, color.blue, color.alpha);
 
   Future addAnnotationToPdf(
       {required AnnotyStudyEngineController annotyReaderController,
       required PdfTextSelectionChangedDetails details,
       required Color color}) async {
+    this.color = color;
     Flog.mark("adding annotaion");
     await preTextAnnotationProcessor(details, annotyReaderController);
     await annotationGenerator(annotyReaderController);
@@ -34,9 +40,9 @@ class AnnotationController extends GetxController {
       AnnotyStudyEngineController annotyReaderController) async {
     String text =
         currentState!.getSelectedTextLines().map((line) => line.text).join(" ");
-    await Get.find<AnnotationSideBarController>()
-        .addAnnotationCard(await AnnotationUseCase().addAnnotation(text));
-    List<int> bytes = document.saveSync();
+    await Get.find<AnnotationSideBarController>().addAnnotationCard(
+        await AnnotationUseCase().addAnnotation(text, pagenumber));
+    List<int> bytes = await document.save();
     annotyReaderController.pdfBytes.value = Uint8List.fromList(bytes);
     // annotyReaderController.handlePdfBytesChanging();
   }
@@ -45,16 +51,20 @@ class AnnotationController extends GetxController {
       AnnotyStudyEngineController annotyReaderController) async {
     currentState!.getSelectedTextLines().forEach((line) async {
       Flog.info(line.text);
-      currentPage = document.pages[line.pageNumber];
+      pagenumber = line.pageNumber;
+      currentPage = document.pages[pagenumber];
       final PdfRectangleAnnotation rectangleAnnotation = PdfRectangleAnnotation(
           line.bounds, "Highlight",
-          color: PdfColor.fromCMYK(0, 0, 255, 0),
-          innerColor: PdfColor.fromCMYK(0, 0, 255, 0),
+          setAppearance: true,
+          color: pdfColor,
+          innerColor: pdfColor,
           opacity: 0.3);
       xOffset1.value = rectangleAnnotation.bounds.left;
       xOffset2.value = rectangleAnnotation.bounds.right;
       yOffset1.value = rectangleAnnotation.bounds.top;
       yOffset2.value = rectangleAnnotation.bounds.bottom;
+      scrollOffset.value =
+          annotyReaderController.pdfViewerController.scrollOffset;
       currentPage.annotations.add(rectangleAnnotation);
       currentPage.annotations.flattenAllAnnotations();
     });
@@ -68,14 +78,14 @@ class AnnotationController extends GetxController {
   }
 
   Future deleteAnnotationFromPdf(Annotation annotation) async {
-    PdfAnnotationCollection collection = currentPage.annotations;
-    collection.remove(PdfRectangleAnnotation(
-        Rect.fromPoints(
-            Offset(annotation.bounds.target!.xOffset1,
-                annotation.bounds.target!.yOffset1),
-            Offset(annotation.bounds.target!.xOffset2,
-                annotation.bounds.target!.yOffset2)),
-        annotation.text));
+    // PdfAnnotationCollection collection = Get.find<AnnotyStudyEngineController>().currentPage.annotations;
+    // collection.remove(PdfRectangleAnnotation(
+    //     Rect.fromPoints(
+    //         Offset(annotation.bounds.target!.xOffset1,
+    //             annotation.bounds.target!.yOffset1),
+    //         Offset(annotation.bounds.target!.xOffset2,
+    //             annotation.bounds.target!.yOffset2)),
+    //     annotation.text));
     //Add: delete collection from
   }
 }

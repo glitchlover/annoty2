@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:3965493186035185519",
-      "lastPropertyId": "9:9174180981644186355",
+      "lastPropertyId": "10:1744455904850770649",
       "name": "Annotation",
       "properties": [
         {
@@ -61,6 +61,11 @@
         {
           "id": "9:9174180981644186355",
           "name": "dbColor",
+          "type": 6
+        },
+        {
+          "id": "10:1744455904850770649",
+          "name": "page",
           "type": 6
         }
       ],

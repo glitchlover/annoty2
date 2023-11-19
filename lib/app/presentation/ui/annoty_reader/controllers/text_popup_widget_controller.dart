@@ -1,13 +1,16 @@
-import 'package:annoty/app/core/constants/color/core.dart';
-import 'package:annoty/app/core/constants/color/highlights.dart';
-import 'package:annoty/app/core/constants/ui/ui_element.dart';
-import 'package:annoty/app/core/constants/ui/sizing.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+
+import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/core/constants/color/highlights.dart';
+import 'package:annoty/app/core/constants/ui/sizing.dart';
+import 'package:annoty/app/core/constants/ui/ui_element.dart';
+import 'package:annoty/app/core/resources/logger/logger.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 
 class TextPopUpWidgetController extends GetxController {
   late Rx<OverlayEntry> textPopUpEntry;
@@ -54,28 +57,23 @@ class TextPopUpWidgetController extends GetxController {
         top: top,
         left: left,
         child: Container(
-          padding: const EdgeInsets.all(2),
+          padding: const EdgeInsets.all(1),
           decoration: BoxDecoration(
             color: contextMenuColor,
             boxShadow: boxShadow,
           ),
           constraints: BoxConstraints(
-              maxWidth: ConstSizing.size_4_1 * 50,
+              maxWidth: ConstSizing.size_4_1 * 100,
               maxHeight: ConstSizing.size_4_1 * 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextButton(
-                child: const Icon(Icons.square_rounded,
-                    color: ConstColorHighlight.purple),
-                onPressed: () async {
-                  await Get.find<AnnotationController>().addAnnotationToPdf(
-                      annotyReaderController: annotyReaderController,
-                      details: details,
-                      color: ConstColorHighlight.purple);
-                },
-              ),
+              PopUpWidgetButton(annotyReaderController: annotyReaderController, details: details, color: ConstColorHighlight.orange),
+              PopUpWidgetButton(annotyReaderController: annotyReaderController, details: details, color: ConstColorHighlight.green),
+              PopUpWidgetButton(annotyReaderController: annotyReaderController, details: details, color: ConstColorHighlight.blue),
+              PopUpWidgetButton(annotyReaderController: annotyReaderController, details: details, color: ConstColorHighlight.purple),
+              PopUpWidgetButton(annotyReaderController: annotyReaderController, details: details, color: ConstColorHighlight.red),
             ],
           ),
         ),
@@ -112,5 +110,33 @@ class TextPopUpWidgetController extends GetxController {
       }
     }
     return (0.0, 0.0);
+  }
+}
+
+class PopUpWidgetButton extends StatelessWidget {
+
+  const PopUpWidgetButton({
+    Key? key,
+    required this.annotyReaderController,
+    required this.details,
+    required this.color,
+  }) : super(key: key);
+
+  final AnnotyStudyEngineController annotyReaderController;
+  final PdfTextSelectionChangedDetails details;
+  final Color color;
+  
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(minimumSize: const Size(10.0, 35.0), padding: EdgeInsets.all(ConstSizing.size_4_1)),
+      child: Icon(Icons.circle, color: color, size: 20,),
+      onPressed: () async {
+        await Get.find<AnnotationController>().addAnnotationToPdf(
+            annotyReaderController: annotyReaderController,
+            details: details,
+            color: color);
+      },
+    );
   }
 }

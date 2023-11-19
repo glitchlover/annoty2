@@ -1,4 +1,4 @@
-import 'package:annoty/app/core/resources/enum/color.dart';
+import 'package:annoty/app/core/resources/enum/highlight.dart';
 import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
@@ -59,7 +59,7 @@ class LocalAnnotatonRepository extends AnnotationRepository {
     throw UnimplementedError();
   }
 
-  Future<void> updateColor(AnnoColor color) {
+  Future<void> updateColor(Highlight color) {
     // TODO: implement updateAnnotation
     throw UnimplementedError();
   }

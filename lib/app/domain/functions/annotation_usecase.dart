@@ -1,3 +1,4 @@
+import 'package:annoty/app/core/resources/enum/highlight.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
@@ -7,7 +8,7 @@ import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_stud
 import 'package:get/get.dart';
 
 class AnnotationUseCase {
-  Future<Annotation> addAnnotation(String text) async {
+  Future<Annotation> addAnnotation(String text, int page) async {
     AnnotationController getAnno = Get.find<AnnotationController>();
     return LocalAnnotatonRepository().saveAnnotation(
         Annotation(
@@ -15,6 +16,8 @@ class AnnotationUseCase {
           keyWords: "",
           createdDate: DateTime.now(),
           modifiedDate: DateTime.now(),
+          page: page,
+          color: mapColorToHighlight[getAnno.color]!,
         ),
         FileUtils.getFolderPath(
             Get.find<AnnotyStudyEngineController>().pdfFile.path),
@@ -22,7 +25,8 @@ class AnnotationUseCase {
             xOffset1: getAnno.xOffset1.value,
             xOffset2: getAnno.xOffset2.value,
             yOffset1: getAnno.yOffset1.value,
-            yOffset2: getAnno.yOffset2.value));
+            yOffset2: getAnno.yOffset2.value
+            ));
   }
 
   Future<void> editAnnotation(Annotation annotation) async {}

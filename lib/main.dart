@@ -14,5 +14,5 @@ void main() async {
   //     ).init();
   WidgetsFlutterBinding.ensureInitialized();
   WidgetsBinding.instance.waitUntilFirstFrameRasterized;
-  runApp(const App());
+  runApp(const App());  
 }

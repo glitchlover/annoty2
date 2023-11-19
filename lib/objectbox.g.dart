@@ -27,7 +27,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 3965493186035185519),
       name: 'Annotation',
-      lastPropertyId: const IdUid(9, 9174180981644186355),
+      lastPropertyId: const IdUid(10, 1744455904850770649),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -79,6 +79,11 @@ final _entities = <ModelEntity>[
         ModelProperty(
             id: const IdUid(9, 9174180981644186355),
             name: 'dbColor',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(10, 1744455904850770649),
+            name: 'page',
             type: 6,
             flags: 0)
       ],
@@ -331,7 +336,7 @@ ModelDefinition getObjectBoxModel() {
         objectToFB: (Annotation object, fb.Builder fbb) {
           final textOffset = fbb.writeString(object.text);
           final keyWordsOffset = fbb.writeString(object.keyWords);
-          fbb.startTable(10);
+          fbb.startTable(11);
           fbb.addInt64(0, object.id ?? 0);
           fbb.addOffset(1, textOffset);
           fbb.addOffset(2, keyWordsOffset);
@@ -341,6 +346,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.addInt64(6, object.comment.targetId);
           fbb.addInt64(7, object.resource.targetId);
           fbb.addInt64(8, object.dbColor);
+          fbb.addInt64(9, object.page);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -357,12 +363,15 @@ ModelDefinition getObjectBoxModel() {
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0));
           final modifiedDateParam = DateTime.fromMillisecondsSinceEpoch(
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0));
+          final pageParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 22, 0);
           final object = Annotation(
               id: idParam,
               text: textParam,
               keyWords: keyWordsParam,
               createdDate: createdDateParam,
-              modifiedDate: modifiedDateParam)
+              modifiedDate: modifiedDateParam,
+              page: pageParam)
             ..dbColor =
                 const fb.Int64Reader().vTableGet(buffer, rootOffset, 20, 0);
           object.bounds.targetId =
@@ -642,6 +651,10 @@ class Annotation_ {
   /// see [Annotation.dbColor]
   static final dbColor =
       QueryIntegerProperty<Annotation>(_entities[0].properties[8]);
+
+  /// see [Annotation.page]
+  static final page =
+      QueryIntegerProperty<Annotation>(_entities[0].properties[9]);
 
   /// see [Annotation.backlinks]
   static final backlinks =

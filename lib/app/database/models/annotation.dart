@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:objectbox/objectbox.dart';
 
-import 'package:annoty/app/core/resources/enum/color.dart';
+import 'package:annoty/app/core/resources/enum/highlight.dart';
 import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/comment.dart';
 import 'package:annoty/app/database/models/resource_model.dart';
@@ -15,11 +15,12 @@ class Annotation {
   final String text;
   final String keyWords;
   @Transient()
-  AnnoColor color;
+  Highlight color;
   @Property(type: PropertyType.date)
   final DateTime createdDate;
   @Property(type: PropertyType.date)
   final DateTime modifiedDate;
+  final int page;
   final ToOne<AnnotationBounds> bounds = ToOne<AnnotationBounds>();
   final ToOne<Comment> comment = ToOne<Comment>();
   final ToOne<ResourceModel> resource = ToOne<ResourceModel>();
@@ -31,7 +32,8 @@ class Annotation {
     required this.keyWords,
     required this.createdDate,
     required this.modifiedDate,
-    this.color = AnnoColor.unknown,
+    required this.page,
+    this.color = Highlight.unknown,
   });
 
   int get dbColor {
@@ -41,12 +43,12 @@ class Annotation {
 
   set dbColor(int value) {
     _ensureStableEnumValues(value);
-    color = AnnoColor.values[value];
+    color = Highlight.values[value];
   }
 
   void _ensureStableEnumValues(int value) {
     assert(0 <= value && value <= 7);
-    Flog.debug(mapToName[value]);
+    Flog.debug(mapHighlightToName[value]);
   }
 
   Map<String, dynamic> toMap() {
@@ -54,9 +56,10 @@ class Annotation {
       'id': id,
       'text': text,
       'keyWords': keyWords,
-      'color': mapToAnnoColor[color],
+      'color': mapNameToHighlight[color],
       'createdDate': createdDate.millisecondsSinceEpoch,
       'modifiedDate': modifiedDate.millisecondsSinceEpoch,
+      'page': page,
     };
   }
 
@@ -65,11 +68,12 @@ class Annotation {
       id: map['id'] as int,
       text: map['text'] as String,
       keyWords: map['keyWords'] as String,
-      color: mapToAnnoColor['color'] as AnnoColor,
+      color: mapNameToHighlight['color'] as Highlight,
       createdDate:
           DateTime.fromMillisecondsSinceEpoch(map['createdDate'] as int),
       modifiedDate:
           DateTime.fromMillisecondsSinceEpoch(map['modifiedDate'] as int),
+      page: map['page'],
     );
   }
 
