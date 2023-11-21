@@ -13,7 +13,8 @@ class LocalAnnotatonRepository extends AnnotationRepository {
   final Box annotationBox = ObjectBoxDB().annotationBox;
 
   @override
-  Future<List<Annotation>> getFilteredAnnotation(String filePath) async {
+  Future<List<Annotation>> getResourceFilteredAnnotation(
+      String filePath) async {
     Flog.info(filePath);
     var unbuilded = annotationBox.query();
     unbuilded.link(Annotation_.resource,
@@ -21,12 +22,15 @@ class LocalAnnotatonRepository extends AnnotationRepository {
     return unbuilded.build().findAsync() as Future<List<Annotation>>;
   }
 
+  // Future<List<Annotation>> getOutlinkedAnnotation(Annotation annotation) =>
+  //   return annotationBox
+
   @override
   Future<List<Annotation>>? getAllAnnotation() =>
       annotationBox.getAllAsync() as Future<List<Annotation>>;
 
   @override
-  Future<Annotation> saveAnnotation(
+  Future<Annotation> addAnnotation(
       Annotation annotation, filePath, AnnotationBounds bounds) async {
     annotation.resource.target =
         await LocalResourceRepository().getResource(filePath);

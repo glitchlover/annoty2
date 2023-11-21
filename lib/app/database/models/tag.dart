@@ -11,7 +11,9 @@ class Tag {
   int? id;
   final String name;
   final int color;
+  @Backlink()
   final ToMany<ResourceModel> resources = ToMany<ResourceModel>();
+  @Backlink()
   final ToMany<Annotation> annotations = ToMany<Annotation>();
 
   Tag({

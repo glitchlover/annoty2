@@ -18,6 +18,7 @@ class ResourceModel {
   @Property(type: PropertyType.date)
   final DateTime modifiedDate;
   final ToOne<Metadata> metadata = ToOne<Metadata>();
+  @Backlink()
   final ToMany<Annotation> annotations = ToMany<Annotation>();
   final ToMany<Tag> tags = ToMany<Tag>();
 

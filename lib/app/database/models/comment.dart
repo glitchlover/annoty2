@@ -11,6 +11,7 @@ class Comment {
   final DateTime createdDate;
   @Property(type: PropertyType.date)
   final DateTime modifiedDate;
+  
   Comment({
     this.id,
     required this.text,

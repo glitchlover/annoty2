@@ -25,103 +25,107 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 3965493186035185519),
+      id: const IdUid(1, 255422657766095430),
       name: 'Annotation',
-      lastPropertyId: const IdUid(10, 1744455904850770649),
+      lastPropertyId: const IdUid(10, 2125350795245271697),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 1111617394466000055),
+            id: const IdUid(1, 1470332273806621886),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 4096001806471590801),
+            id: const IdUid(2, 8846884886197171536),
             name: 'text',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 8667925886230878247),
+            id: const IdUid(3, 4647208103369138203),
             name: 'keyWords',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 863628403157166423),
+            id: const IdUid(4, 2938038331510127824),
             name: 'createdDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 3629246444202599494),
+            id: const IdUid(5, 3073630183046665211),
             name: 'modifiedDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 6997129562113086968),
-            name: 'boundsId',
-            type: 11,
-            flags: 520,
-            indexId: const IdUid(1, 6619088394181912300),
-            relationTarget: 'AnnotationBounds'),
-        ModelProperty(
-            id: const IdUid(7, 1748238405797494837),
-            name: 'commentId',
-            type: 11,
-            flags: 520,
-            indexId: const IdUid(2, 4442986349168894896),
-            relationTarget: 'Comment'),
-        ModelProperty(
-            id: const IdUid(8, 6969957969196270026),
-            name: 'resourceId',
-            type: 11,
-            flags: 520,
-            indexId: const IdUid(3, 5375943514303345433),
-            relationTarget: 'ResourceModel'),
-        ModelProperty(
-            id: const IdUid(9, 9174180981644186355),
-            name: 'dbColor',
+            id: const IdUid(6, 6112586062110525557),
+            name: 'page',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(10, 1744455904850770649),
-            name: 'page',
+            id: const IdUid(7, 256003567430513667),
+            name: 'boundsId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(1, 4698580310966882293),
+            relationTarget: 'AnnotationBounds'),
+        ModelProperty(
+            id: const IdUid(8, 4461189440832003183),
+            name: 'commentId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(2, 8048015735431317774),
+            relationTarget: 'Comment'),
+        ModelProperty(
+            id: const IdUid(9, 4444547569854857249),
+            name: 'resourceId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(3, 9035107448898502190),
+            relationTarget: 'ResourceModel'),
+        ModelProperty(
+            id: const IdUid(10, 2125350795245271697),
+            name: 'dbColor',
             type: 6,
             flags: 0)
       ],
       relations: <ModelRelation>[
         ModelRelation(
-            id: const IdUid(1, 5268128295793448591),
-            name: 'backlinks',
-            targetId: const IdUid(1, 3965493186035185519))
+            id: const IdUid(5, 5568575507595909257),
+            name: 'outlinks',
+            targetId: const IdUid(1, 255422657766095430)),
+        ModelRelation(
+            id: const IdUid(6, 5747837663004442255),
+            name: 'tag',
+            targetId: const IdUid(6, 7745127723979849109))
       ],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(2, 51963621201805884),
+      id: const IdUid(2, 1893028717859675425),
       name: 'AnnotationBounds',
-      lastPropertyId: const IdUid(5, 6455133834933922782),
+      lastPropertyId: const IdUid(5, 5195688976911541905),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 8120623583160883491),
+            id: const IdUid(1, 570076536851840589),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 7846405417281308789),
+            id: const IdUid(2, 171652712069528447),
             name: 'xOffset1',
             type: 8,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 6975723537469251808),
+            id: const IdUid(3, 1365470770016335684),
             name: 'xOffset2',
             type: 8,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 8982781720132876437),
+            id: const IdUid(4, 2393150372184725559),
             name: 'yOffset1',
             type: 8,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 6455133834933922782),
+            id: const IdUid(5, 5195688976911541905),
             name: 'yOffset2',
             type: 8,
             flags: 0)
@@ -129,28 +133,28 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(3, 7430174701284610166),
+      id: const IdUid(3, 2705502167124870525),
       name: 'Comment',
-      lastPropertyId: const IdUid(4, 4622939945708309980),
+      lastPropertyId: const IdUid(4, 4125960924849100428),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 7606012575500123632),
+            id: const IdUid(1, 3475118411054731017),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 5567083221332978302),
+            id: const IdUid(2, 8403184289230061001),
             name: 'text',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 6036606503360400721),
+            id: const IdUid(3, 859023310915854248),
             name: 'createdDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 4622939945708309980),
+            id: const IdUid(4, 4125960924849100428),
             name: 'modifiedDate',
             type: 10,
             flags: 0)
@@ -158,129 +162,124 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(4, 2960173941353202022),
+      id: const IdUid(4, 9010685457694032360),
       name: 'Metadata',
-      lastPropertyId: const IdUid(5, 7141130183502346640),
+      lastPropertyId: const IdUid(5, 9030696834924742079),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 1700456527006957795),
+            id: const IdUid(1, 3809232704125036735),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 5742421373580366069),
+            id: const IdUid(2, 8317846409275976734),
             name: 'authours',
             type: 30,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 3940698091852726604),
+            id: const IdUid(3, 1289404860367606388),
             name: 'publisher',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 5310451309569269382),
+            id: const IdUid(4, 8162993748655638537),
             name: 'published',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 7141130183502346640),
+            id: const IdUid(5, 9030696834924742079),
             name: 'resourceId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(4, 8156027737338210916),
+            indexId: const IdUid(4, 2885352526544933267),
             relationTarget: 'ResourceModel')
       ],
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(5, 1975252279855882229),
+      id: const IdUid(5, 4066299863724318362),
       name: 'ResourceModel',
-      lastPropertyId: const IdUid(7, 4709636709119030346),
+      lastPropertyId: const IdUid(7, 4888643812190865875),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 230734659566341843),
+            id: const IdUid(1, 8671136077272361796),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 5544837741777264062),
+            id: const IdUid(2, 5006605948144387776),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 4119554345690517336),
+            id: const IdUid(3, 1438427701059052930),
             name: 'customName',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 8927440069218093463),
+            id: const IdUid(4, 3832043596242740024),
             name: 'filePath',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 4011826619568277350),
+            id: const IdUid(5, 3162488193741356555),
             name: 'createdDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 2843465248907091237),
+            id: const IdUid(6, 79557407714511038),
             name: 'modifiedDate',
             type: 10,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 4709636709119030346),
+            id: const IdUid(7, 4888643812190865875),
             name: 'metadataId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(5, 235655519406377623),
+            indexId: const IdUid(5, 4267648960968033182),
             relationTarget: 'Metadata')
       ],
       relations: <ModelRelation>[
         ModelRelation(
-            id: const IdUid(2, 6423600076939425364),
-            name: 'annotations',
-            targetId: const IdUid(1, 3965493186035185519)),
-        ModelRelation(
-            id: const IdUid(3, 7180562354932414813),
+            id: const IdUid(7, 736704424284867315),
             name: 'tags',
-            targetId: const IdUid(6, 5013042518281969629))
+            targetId: const IdUid(6, 7745127723979849109))
       ],
-      backlinks: <ModelBacklink>[]),
+      backlinks: <ModelBacklink>[
+        ModelBacklink(
+            name: 'annotations', srcEntity: 'Annotation', srcField: '')
+      ]),
   ModelEntity(
-      id: const IdUid(6, 5013042518281969629),
+      id: const IdUid(6, 7745127723979849109),
       name: 'Tag',
-      lastPropertyId: const IdUid(3, 103376511721398340),
+      lastPropertyId: const IdUid(3, 6491802480317500378),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 7948500334679202558),
+            id: const IdUid(1, 2525504400457546943),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 8228792869345973332),
+            id: const IdUid(2, 8490710103996500503),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 103376511721398340),
+            id: const IdUid(3, 6491802480317500378),
             name: 'color',
             type: 6,
             flags: 0)
       ],
-      relations: <ModelRelation>[
-        ModelRelation(
-            id: const IdUid(4, 349234033409775690),
-            name: 'resources',
-            targetId: const IdUid(5, 1975252279855882229)),
-        ModelRelation(
-            id: const IdUid(5, 2165903840679947403),
-            name: 'annotations',
-            targetId: const IdUid(1, 3965493186035185519))
-      ],
-      backlinks: <ModelBacklink>[])
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[
+        ModelBacklink(
+            name: 'resources', srcEntity: 'ResourceModel', srcField: ''),
+        ModelBacklink(
+            name: 'annotations', srcEntity: 'Annotation', srcField: '')
+      ])
 ];
 
 /// Shortcut for [Store.new] that passes [getObjectBoxModel] and for Flutter
@@ -310,14 +309,19 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(6, 5013042518281969629),
-      lastIndexId: const IdUid(5, 235655519406377623),
-      lastRelationId: const IdUid(5, 2165903840679947403),
+      lastEntityId: const IdUid(6, 7745127723979849109),
+      lastIndexId: const IdUid(5, 4267648960968033182),
+      lastRelationId: const IdUid(7, 736704424284867315),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
       retiredIndexUids: const [],
       retiredPropertyUids: const [],
-      retiredRelationUids: const [],
+      retiredRelationUids: const [
+        6282465596016082636,
+        6045032964059790288,
+        4107451646589352694,
+        7132129752650486374
+      ],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
@@ -327,8 +331,10 @@ ModelDefinition getObjectBoxModel() {
         model: _entities[0],
         toOneRelations: (Annotation object) =>
             [object.bounds, object.comment, object.resource],
-        toManyRelations: (Annotation object) =>
-            {RelInfo<Annotation>.toMany(1, object.id!): object.backlinks},
+        toManyRelations: (Annotation object) => {
+              RelInfo<Annotation>.toMany(5, object.id!): object.outlinks,
+              RelInfo<Annotation>.toMany(6, object.id!): object.tag
+            },
         getId: (Annotation object) => object.id,
         setId: (Annotation object, int id) {
           object.id = id;
@@ -342,11 +348,11 @@ ModelDefinition getObjectBoxModel() {
           fbb.addOffset(2, keyWordsOffset);
           fbb.addInt64(3, object.createdDate.millisecondsSinceEpoch);
           fbb.addInt64(4, object.modifiedDate.millisecondsSinceEpoch);
-          fbb.addInt64(5, object.bounds.targetId);
-          fbb.addInt64(6, object.comment.targetId);
-          fbb.addInt64(7, object.resource.targetId);
-          fbb.addInt64(8, object.dbColor);
-          fbb.addInt64(9, object.page);
+          fbb.addInt64(5, object.page);
+          fbb.addInt64(6, object.bounds.targetId);
+          fbb.addInt64(7, object.comment.targetId);
+          fbb.addInt64(8, object.resource.targetId);
+          fbb.addInt64(9, object.dbColor);
           fbb.finish(fbb.endTable());
           return object.id ?? 0;
         },
@@ -364,7 +370,7 @@ ModelDefinition getObjectBoxModel() {
           final modifiedDateParam = DateTime.fromMillisecondsSinceEpoch(
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0));
           final pageParam =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 22, 0);
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0);
           final object = Annotation(
               id: idParam,
               text: textParam,
@@ -373,18 +379,20 @@ ModelDefinition getObjectBoxModel() {
               modifiedDate: modifiedDateParam,
               page: pageParam)
             ..dbColor =
-                const fb.Int64Reader().vTableGet(buffer, rootOffset, 20, 0);
+                const fb.Int64Reader().vTableGet(buffer, rootOffset, 22, 0);
           object.bounds.targetId =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0);
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
           object.bounds.attach(store);
           object.comment.targetId =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0);
           object.comment.attach(store);
           object.resource.targetId =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0);
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 20, 0);
           object.resource.attach(store);
-          InternalToManyAccess.setRelInfo<Annotation>(object.backlinks, store,
-              RelInfo<Annotation>.toMany(1, object.id!));
+          InternalToManyAccess.setRelInfo<Annotation>(object.outlinks, store,
+              RelInfo<Annotation>.toMany(5, object.id!));
+          InternalToManyAccess.setRelInfo<Annotation>(
+              object.tag, store, RelInfo<Annotation>.toMany(6, object.id!));
           return object;
         }),
     AnnotationBounds: EntityDefinition<AnnotationBounds>(
@@ -520,8 +528,10 @@ ModelDefinition getObjectBoxModel() {
         model: _entities[4],
         toOneRelations: (ResourceModel object) => [object.metadata],
         toManyRelations: (ResourceModel object) => {
-              RelInfo<ResourceModel>.toMany(2, object.id!): object.annotations,
-              RelInfo<ResourceModel>.toMany(3, object.id!): object.tags
+              RelInfo<ResourceModel>.toMany(7, object.id!): object.tags,
+              RelInfo<Annotation>.toOneBacklink(9, object.id!,
+                      (Annotation srcObject) => srcObject.resource):
+                  object.annotations
             },
         getId: (ResourceModel object) => object.id,
         setId: (ResourceModel object, int id) {
@@ -567,18 +577,23 @@ ModelDefinition getObjectBoxModel() {
           object.metadata.targetId =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
           object.metadata.attach(store);
-          InternalToManyAccess.setRelInfo<ResourceModel>(object.annotations,
-              store, RelInfo<ResourceModel>.toMany(2, object.id!));
           InternalToManyAccess.setRelInfo<ResourceModel>(
-              object.tags, store, RelInfo<ResourceModel>.toMany(3, object.id!));
+              object.tags, store, RelInfo<ResourceModel>.toMany(7, object.id!));
+          InternalToManyAccess.setRelInfo<ResourceModel>(
+              object.annotations,
+              store,
+              RelInfo<Annotation>.toOneBacklink(
+                  9, object.id!, (Annotation srcObject) => srcObject.resource));
           return object;
         }),
     Tag: EntityDefinition<Tag>(
         model: _entities[5],
         toOneRelations: (Tag object) => [],
         toManyRelations: (Tag object) => {
-              RelInfo<Tag>.toMany(4, object.id!): object.resources,
-              RelInfo<Tag>.toMany(5, object.id!): object.annotations
+              RelInfo<ResourceModel>.toManyBacklink(7, object.id!):
+                  object.resources,
+              RelInfo<Annotation>.toManyBacklink(6, object.id!):
+                  object.annotations
             },
         getId: (Tag object) => object.id,
         setId: (Tag object, int id) {
@@ -603,10 +618,10 @@ ModelDefinition getObjectBoxModel() {
           final colorParam =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
           final object = Tag(id: idParam, name: nameParam, color: colorParam);
-          InternalToManyAccess.setRelInfo<Tag>(
-              object.resources, store, RelInfo<Tag>.toMany(4, object.id!));
-          InternalToManyAccess.setRelInfo<Tag>(
-              object.annotations, store, RelInfo<Tag>.toMany(5, object.id!));
+          InternalToManyAccess.setRelInfo<Tag>(object.resources, store,
+              RelInfo<ResourceModel>.toManyBacklink(7, object.id!));
+          InternalToManyAccess.setRelInfo<Tag>(object.annotations, store,
+              RelInfo<Annotation>.toManyBacklink(6, object.id!));
           return object;
         })
   };
@@ -636,29 +651,33 @@ class Annotation_ {
   static final modifiedDate =
       QueryIntegerProperty<Annotation>(_entities[0].properties[4]);
 
+  /// see [Annotation.page]
+  static final page =
+      QueryIntegerProperty<Annotation>(_entities[0].properties[5]);
+
   /// see [Annotation.bounds]
   static final bounds = QueryRelationToOne<Annotation, AnnotationBounds>(
-      _entities[0].properties[5]);
+      _entities[0].properties[6]);
 
   /// see [Annotation.comment]
   static final comment =
-      QueryRelationToOne<Annotation, Comment>(_entities[0].properties[6]);
+      QueryRelationToOne<Annotation, Comment>(_entities[0].properties[7]);
 
   /// see [Annotation.resource]
   static final resource =
-      QueryRelationToOne<Annotation, ResourceModel>(_entities[0].properties[7]);
+      QueryRelationToOne<Annotation, ResourceModel>(_entities[0].properties[8]);
 
   /// see [Annotation.dbColor]
   static final dbColor =
-      QueryIntegerProperty<Annotation>(_entities[0].properties[8]);
-
-  /// see [Annotation.page]
-  static final page =
       QueryIntegerProperty<Annotation>(_entities[0].properties[9]);
 
-  /// see [Annotation.backlinks]
-  static final backlinks =
+  /// see [Annotation.outlinks]
+  static final outlinks =
       QueryRelationToMany<Annotation, Annotation>(_entities[0].relations[0]);
+
+  /// see [Annotation.tag]
+  static final tag =
+      QueryRelationToMany<Annotation, Tag>(_entities[0].relations[1]);
 }
 
 /// [AnnotationBounds] entity fields to define ObjectBox queries.
@@ -753,13 +772,9 @@ class ResourceModel_ {
   static final metadata =
       QueryRelationToOne<ResourceModel, Metadata>(_entities[4].properties[6]);
 
-  /// see [ResourceModel.annotations]
-  static final annotations =
-      QueryRelationToMany<ResourceModel, Annotation>(_entities[4].relations[0]);
-
   /// see [ResourceModel.tags]
   static final tags =
-      QueryRelationToMany<ResourceModel, Tag>(_entities[4].relations[1]);
+      QueryRelationToMany<ResourceModel, Tag>(_entities[4].relations[0]);
 }
 
 /// [Tag] entity fields to define ObjectBox queries.
@@ -772,12 +787,4 @@ class Tag_ {
 
   /// see [Tag.color]
   static final color = QueryIntegerProperty<Tag>(_entities[5].properties[2]);
-
-  /// see [Tag.resources]
-  static final resources =
-      QueryRelationToMany<Tag, ResourceModel>(_entities[5].relations[0]);
-
-  /// see [Tag.annotations]
-  static final annotations =
-      QueryRelationToMany<Tag, Annotation>(_entities[5].relations[1]);
 }

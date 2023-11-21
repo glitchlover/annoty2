@@ -2,8 +2,8 @@
 import 'dart:convert';
 
 import 'package:annoty/app/database/models/annotation_bounds.dart';
+import 'package:annoty/app/database/models/tag.dart';
 import 'package:objectbox/objectbox.dart';
-
 import 'package:annoty/app/core/resources/enum/highlight.dart';
 import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/comment.dart';
@@ -24,7 +24,13 @@ class Annotation {
   final ToOne<AnnotationBounds> bounds = ToOne<AnnotationBounds>();
   final ToOne<Comment> comment = ToOne<Comment>();
   final ToOne<ResourceModel> resource = ToOne<ResourceModel>();
-  final ToMany<Annotation> backlinks = ToMany<Annotation>();
+  final ToMany<Annotation> outlinks = ToMany<Annotation>();
+  final ToMany<Tag> tag = ToMany<Tag>();
+
+  // Future<List<Annotation>?> get inlinks =>
+  //     AnnotationUseCase().getInlinkedAnnotatons();
+
+  // Future<List<Annotation>> get links async => (await AnnotationUseCase().getOutlinkedAnnotations()).addAll(await inlinks);
 
   Annotation({
     this.id,

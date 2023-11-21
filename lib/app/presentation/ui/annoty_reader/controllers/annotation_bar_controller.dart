@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 class AnnotationSideBarController extends GetxController {
   final RxBool isAnnoBarOpen = false.obs;
   final Rx<Future<List<Annotation>>> annotations = LocalAnnotatonRepository()
-      .getFilteredAnnotation(FileUtils.getFolderPath(
+      .getResourceFilteredAnnotation(FileUtils.getFolderPath(
           Get.find<AnnotyStudyEngineController>().pdfFile.path))
       .obs;
   final RxInt annotationLength = 0.obs;

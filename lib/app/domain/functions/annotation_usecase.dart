@@ -8,9 +8,13 @@ import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_stud
 import 'package:get/get.dart';
 
 class AnnotationUseCase {
+  // Future<List<Annotation>?> getInlinkedAnnotations(Annotation annotation) {
+  //   return LocalAnnotatonRepository().getLinkedAnnotation();
+  // }
+
   Future<Annotation> addAnnotation(String text, int page) async {
     AnnotationController getAnno = Get.find<AnnotationController>();
-    return LocalAnnotatonRepository().saveAnnotation(
+    return LocalAnnotatonRepository().addAnnotation(
         Annotation(
           text: text,
           keyWords: "",
@@ -25,8 +29,7 @@ class AnnotationUseCase {
             xOffset1: getAnno.xOffset1.value,
             xOffset2: getAnno.xOffset2.value,
             yOffset1: getAnno.yOffset1.value,
-            yOffset2: getAnno.yOffset2.value
-            ));
+            yOffset2: getAnno.yOffset2.value));
   }
 
   Future<void> editAnnotation(Annotation annotation) async {}
