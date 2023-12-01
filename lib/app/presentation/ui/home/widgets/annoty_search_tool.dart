@@ -1,5 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
+import 'package:annoty/app/presentation/shared/widget/my_box_decoration.dart';
 import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/shared/widget/my_text_field.dart';
 import 'package:annoty/app/presentation/ui/home/controllers/home_controller.dart';
@@ -43,10 +44,7 @@ class _AnnotySearchBarState extends State<AnnotySearchBar> {
         padding: EdgeInsets.symmetric(vertical: SpaceSizing.secondaryPadding),
         margin: const EdgeInsets.all(8),
         height: 35,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.transparent),
-                color: ConstColorMain.black,
-            borderRadius: BorderRadius.circular(10)),
+            decoration: MyBoxDecoration().uncontrasted(),
         child: const MyTextField(
               preffixIcon: Icon(Icons.search, color: ConstColorMain.muteGrey),
           hintText: "Search",
@@ -54,4 +52,6 @@ class _AnnotySearchBarState extends State<AnnotySearchBar> {
       )
     );
   }
+
+
 }

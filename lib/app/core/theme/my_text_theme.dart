@@ -1,4 +1,3 @@
-import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/color/text.dart';
 import 'package:annoty/app/core/constants/misc/is_it.dart';
 import 'package:flutter/material.dart';
@@ -15,17 +14,44 @@ class MyTextTheme extends TextTheme {
       fontWeight: FontWeight.w700,
       color: color);
   @override
-  TextStyle? get headlineLarge => MyTextStyle(fontSize: 24);
+  TextStyle? get headlineLarge => MyTextStyle(
+      fontSize: 24,
+      fontFamily: fontFace ?? "Quicksand Bold",
+      fontWeight: FontWeight.w700,
+      color: color
+    );
   @override
-  TextStyle? get headlineMedium => MyTextStyle(fontSize: 20);
+  TextStyle? get headlineMedium => MyTextStyle(
+      fontSize: 20,
+      fontFamily: fontFace ?? "Quicksand Bold",
+      fontWeight: FontWeight.w700,
+      color: color);
   @override
-  TextStyle? get headlineSmall => MyTextStyle(fontSize: 18);
+  TextStyle? get headlineSmall => MyTextStyle(
+    fontSize: 18,
+    fontFamily: fontFace ?? "Quicksand Bold",
+    fontWeight: FontWeight.w700,
+    color: color);
   @override
   TextStyle? get bodyMedium =>
-      MyTextStyle(fontSize: 16, color: ConstColorMain.white);
+      MyTextStyle(
+        fontSize: 16,
+        fontFamily: fontFace ?? "Quicksand",
+        fontWeight: FontWeight.normal,
+        color: color);
   @override
-  TextStyle? get labelSmall => MyTextStyle(fontSize: 10);
+  TextStyle? get bodySmall => MyTextStyle(
+      fontSize: 12,
+      fontFamily: fontFace ?? "Quicksand",
+      fontWeight: FontWeight.normal,
+      color: color);
 
+  @override
+  TextStyle? get labelSmall => MyTextStyle(
+      fontSize: 12,
+      fontFamily: fontFace ?? "Quicksand",
+      fontWeight: FontWeight.normal,
+      color: color);
   const MyTextTheme._(
       {this.fontFace = "QuickSand", this.color, this.fontWeight});
   factory MyTextTheme(

@@ -1,3 +1,5 @@
+import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/app/core/constants/color/text.dart';
 import 'package:annoty/app/core/theme/my_text_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -39,11 +41,17 @@ class MyText extends Text {
       style: MyTextTheme().bodyMedium,
     );
   }
+  Text paragraphSmall() {
+    return Text(
+      text,
+      style: MyTextTheme(color: ConstColorText.secondryDark).bodySmall,
+    );
+  }
 
   Text captions() {
     return Text(
       text,
-      style: MyTextTheme().labelSmall,
+      style: MyTextTheme(color: ConstColorMain.muteGrey).labelSmall,
     );
   }
 }

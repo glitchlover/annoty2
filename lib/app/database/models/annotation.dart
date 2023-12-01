@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/tag.dart';
+import 'package:annoty/app/domain/functions/annotation_usecase.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:annoty/app/core/resources/enum/highlight.dart';
 import 'package:annoty/app/core/resources/logger/logger.dart';
@@ -27,8 +27,8 @@ class Annotation {
   final ToMany<Annotation> outlinks = ToMany<Annotation>();
   final ToMany<Tag> tag = ToMany<Tag>();
 
-  // Future<List<Annotation>?> get inlinks =>
-  //     AnnotationUseCase().getInlinkedAnnotatons();
+  Future<List<Annotation>?> get inlinks =>
+      AnnotationUseCase().getOutlinkedAnnotations(this);
 
   // Future<List<Annotation>> get links async => (await AnnotationUseCase().getOutlinkedAnnotations()).addAll(await inlinks);
 

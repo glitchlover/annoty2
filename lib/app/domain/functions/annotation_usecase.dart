@@ -8,9 +8,10 @@ import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_stud
 import 'package:get/get.dart';
 
 class AnnotationUseCase {
-  // Future<List<Annotation>?> getInlinkedAnnotations(Annotation annotation) {
-  //   return LocalAnnotatonRepository().getLinkedAnnotation();
-  // }
+  Future<List<Annotation>?> getOutlinkedAnnotations(Annotation annotation) {
+    return LocalAnnotatonRepository()
+        .getAnnotaitonFilteredAnnotations(annotation);
+  }
 
   Future<Annotation> addAnnotation(String text, int page) async {
     AnnotationController getAnno = Get.find<AnnotationController>();

@@ -5,6 +5,7 @@ import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_card_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/widgets/annotation_card_tool.dart';
+import 'package:annoty/app/presentation/ui/annoty_reader/widgets/annotation_outlink_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -35,9 +36,10 @@ class AnnotationCard extends GetView<AnnotationCardController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyText(snapshot.data![index].text).paragraph(),
+                        MyText(snapshot.data![index].text).paragraph(),
                 SizedBox(height: ConstSizing.size_4_2),
-                AnnotationCardTool(index)
+                        AnnotationCardTool(index),
+                        AnnotationOutlinkCardList(index: index),
               ],
             ),
           ),

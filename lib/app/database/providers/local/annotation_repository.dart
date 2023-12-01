@@ -16,17 +16,21 @@ class LocalAnnotatonRepository extends AnnotationRepository {
   Future<List<Annotation>> getResourceFilteredAnnotation(
       String filePath) async {
     Flog.info(filePath);
-    var unbuilded = annotationBox.query();
+    QueryBuilder<dynamic> unbuilded = annotationBox.query();
     unbuilded.link(Annotation_.resource,
         ResourceModel_.filePath.equals(filePath, caseSensitive: true));
     return unbuilded.build().findAsync() as Future<List<Annotation>>;
   }
 
+  Future<List<Annotation>> getAnnotaitonFilteredAnnotations(
+          Annotation annotation) async =>
+      (await getAllAnnotation()) .where((element) => element.outlinks.contains(annotation)) as List<Annotation>;
+
   // Future<List<Annotation>> getOutlinkedAnnotation(Annotation annotation) =>
   //   return annotationBox
 
   @override
-  Future<List<Annotation>>? getAllAnnotation() =>
+  Future<List<Annotation>> getAllAnnotation() =>
       annotationBox.getAllAsync() as Future<List<Annotation>>;
 
   @override

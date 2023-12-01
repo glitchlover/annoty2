@@ -3,6 +3,7 @@ import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/misc/is_it.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_card_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:get/get.dart';
 
 class AnnotationCardTool extends GetView<AnnotationCardController> {
@@ -12,15 +13,20 @@ class AnnotationCardTool extends GetView<AnnotationCardController> {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-      MyMinimalIconButton(icon: Icons.arrow_downward, onTap: () {}),
+      MyMinimalIconButton(icon: Iconsax.arrow_down_1, onTap: () {}),
+      const Spacer(),
       MyMinimalIconButton(
-          icon: Icons.center_focus_strong_rounded, onTap: () {}),
-      MyMinimalIconButton(icon: Icons.comment_bank_rounded, onTap: () {}),
-      MyMinimalIconButton(icon: Icons.tag_rounded, onTap: () {}),
-      MyMinimalIconButton(icon: Icons.link_rounded, onTap: () {}),
-      MyMinimalIconButton(icon: Icons.edit_rounded, onTap: () {}),
+          icon: Iconsax.maximize_21, onTap: () {}),
+      //TODO(later): MyMinimalIconButton(icon: Icons.comment_bank_rounded, onTap: () {}),
+      MyMinimalIconButton(icon: Iconsax.tag_2, onTap: () {}),
       MyMinimalIconButton(
-          icon: Icons.delete, onTap: () => controller.deleteCard(index)),
+        icon: Iconsax.link_2,
+        onTap: () => controller.toggleOutlinkCard(index),
+      ),
+      MyMinimalIconButton(icon: Iconsax.edit_2, onTap: () {}),
+      MyMinimalIconButton(
+          icon: Iconsax.trash,
+          onTap: () async => await controller.deleteCard(index)),
     ]);
   }
 }
