@@ -55,6 +55,10 @@ class MyMinimalIconButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(padding),
       child: InkWell(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onTap: onTap,
         child: Icon(
           icon,

@@ -1,5 +1,4 @@
 import 'package:annoty/app/core/resources/enum/highlight.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/comment.dart';
@@ -15,7 +14,6 @@ class LocalAnnotatonRepository extends AnnotationRepository {
   @override
   Future<List<Annotation>> getResourceFilteredAnnotation(
       String filePath) async {
-    Flog.info(filePath);
     QueryBuilder<dynamic> unbuilded = annotationBox.query();
     unbuilded.link(Annotation_.resource,
         ResourceModel_.filePath.equals(filePath, caseSensitive: true));

@@ -21,15 +21,15 @@ class LocalResourceRepository extends ResourceRepository {
 
   @override
   Future deleteResourceModel(String filePath) async {
-    Flog.info(filePath);
+    // Flog.info(filePath);
     ResourceModel getresource = await getResource(filePath);
-    Flog.info(getresource.name);
+    // Flog.info(getresource.name);
     await resourceBox.removeAsync(getresource.id!);
   }
 
   @override
   Future<int> saveResourceModel(String filePath) async {
-    Flog.info(filePath);
+    // Flog.info(filePath);
     return await resourceBox.putAsync(ResourceModel(
         name: FileUtils.getFilename(filePath),
         customName: "",

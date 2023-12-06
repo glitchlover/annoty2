@@ -8,6 +8,7 @@ class ConstSizing {
   static double size_4_4 = 16;
   static double size_4_5 = 20;
   static double size_4_7 = 28;
+  static double size_4_8 = 32;
   static double size_4_11 = 44;
   static double size_4_13 = 52;
 }

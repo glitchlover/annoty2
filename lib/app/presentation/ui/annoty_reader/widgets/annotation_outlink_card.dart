@@ -1,13 +1,13 @@
-import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/core/theme/my_text.dart';
 import 'package:annoty/app/database/models/annotation.dart';
-import 'package:annoty/app/presentation/shared/dialogs/add_outlink_dialog.dart';
 import 'package:annoty/app/presentation/shared/widget/my_box_decoration.dart';
-import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_card_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:searchfield/searchfield.dart';
 
 class AnnotationOutlinkCardList extends GetView<AnnotationCardController> {
   final int index;
@@ -33,14 +33,18 @@ class AnnotationOutlinkCardList extends GetView<AnnotationCardController> {
                             ? const NoDataWidget()
                             : const CircularProgressIndicator();
                   }),
-              MyIconButton(
-                  icon: const Icon(Icons.add),
-                  color: ConstColorMain.activeGrey,
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (_) => AddOutlinkDialog(index: index));
-                  }).paint(size: 25)
+              SearchField<Annotation>(
+                onSearchTextChanged: controller.handleSearch,
+                onTapOutside: (p0) => Flog.debug(controller.expectedResult),
+                suggestionState: Suggestion.expand,
+                suggestions: controller.expectedResult.map((e) {
+                  controller.getExpectedResult();
+                  return SearchFieldListItem(e.text, item: e);
+                }).toList(),
+              ),
+              SizedBox(
+                height: ConstSizing.size_4_2,
+              )
             ],
           ));
     });

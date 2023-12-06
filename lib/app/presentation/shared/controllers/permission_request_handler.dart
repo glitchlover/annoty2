@@ -8,11 +8,11 @@ class PermissionRequestHandler {
     ].request();
 
     if (status[Permission.storage] == PermissionStatus.granted) {
-      Flog.info(status[Permission.storage]);
+      // Flog.info(status[Permission.storage]);
       perform;
       return;
     } else {
-      Flog.error(status[Permission.storage]);
+      // Flog.error(status[Permission.storage]);
     }
   }
 }

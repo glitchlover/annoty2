@@ -76,7 +76,7 @@ class Tool extends GetView<ToolBoxMenuController> {
             Get.find<AnnotationSideBarController>().isAnnoBarOpen.toggle();
             break;
           default:
-            Flog.info(toolItem);
+            // Flog.info(toolItem);
         }
       },
       child: SizedBox(

@@ -45,7 +45,7 @@ class TextPopUpWidgetController extends GetxController {
 
   OverlayEntry createOverlayEntryWidgetAsTextPopUp(
       PdfTextSelectionChangedDetails details) {
-    Flog.mark("");
+    // Flog.mark("");
     final List<BoxShadow> boxShadow = ConstUiMisc().shadow;
     final (top, left) = getPosition(details);
     final AnnotyStudyEngineController annotyReaderController =

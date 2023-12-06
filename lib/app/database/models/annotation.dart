@@ -54,7 +54,7 @@ class Annotation {
 
   void _ensureStableEnumValues(int value) {
     assert(0 <= value && value <= 7);
-    Flog.debug(mapHighlightToName[value]);
+    // Flog.debug(mapHighlightToName[value]);
   }
 
   Map<String, dynamic> toMap() {

@@ -29,7 +29,7 @@ class AnnotationController extends GetxController {
       required PdfTextSelectionChangedDetails details,
       required Color color}) async {
     this.color = color;
-    Flog.mark("adding annotaion");
+    // Flog.mark("adding annotaion");
     await preTextAnnotationProcessor(details, annotyReaderController);
     await annotationGenerator(annotyReaderController);
     await postTextAnnotationProcessor(annotyReaderController);
@@ -50,7 +50,7 @@ class AnnotationController extends GetxController {
   Future annotationGenerator(
       AnnotyStudyEngineController annotyReaderController) async {
     currentState!.getSelectedTextLines().forEach((line) async {
-      Flog.info(line.text);
+      // Flog.info(line.text);
       pagenumber = line.pageNumber;
       currentPage = document.pages[pagenumber];
       final PdfRectangleAnnotation rectangleAnnotation = PdfRectangleAnnotation(

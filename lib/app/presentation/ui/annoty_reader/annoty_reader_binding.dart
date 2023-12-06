@@ -1,3 +1,4 @@
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_card_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
@@ -15,5 +16,6 @@ class AnnotyReaderBinding extends Bindings {
     Get.lazyPut(() => ToolBoxMenuController());
     Get.lazyPut(() => AnnotationSideBarController());
     Get.lazyPut(() => AnnotationCardController());
+    Flog.success("Engine initialized");
   }
 }
