@@ -13,7 +13,7 @@ class AnnotyStudyEngineController extends GetxController {
   final Rx<PdfTextSelectionChangedDetails> lastDetails =
       PdfTextSelectionChangedDetails(null, null).obs;
   final PdfViewerController pdfViewerController =
-      ConstObject().pdfViewerController;
+      ConstObject.pdfViewerController;
   final TextPopUpWidgetController popUpWidgetController =
       Get.find<TextPopUpWidgetController>();
   late final File pdfFile;
