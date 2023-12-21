@@ -1,7 +1,6 @@
 import 'package:annoty/app/core/constants/color/core.dart';
 import 'package:annoty/app/core/constants/ui/sizing.dart';
 import 'package:annoty/app/core/constants/ui/tool_box.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/tool_box_menu_controller.dart';
 import 'package:flutter/material.dart';

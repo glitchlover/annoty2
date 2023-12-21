@@ -1,6 +1,7 @@
-import 'package:annoty/app/database/providers/theme_service.dart';
+import 'package:annoty/app/database/repositories/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class ThemeToggleController extends GetxController {
   ThemeService get service => ThemeService.instance;
   ThemeMode get mode => ThemeService.instance.themeMode;

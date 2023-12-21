@@ -1,5 +1,5 @@
 import 'package:annoty/app/database/models/metadata.dart';
-import 'package:annoty/app/domain/providers/metadata_repository.dart';
+import 'package:annoty/app/domain/repositories/metadata_repository.dart';
 
 class MetadataCrud extends MetadataRepository{
   @override

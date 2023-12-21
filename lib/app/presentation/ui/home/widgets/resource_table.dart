@@ -3,7 +3,7 @@ import 'package:annoty/app/presentation/ui/home/widgets/resource_note_book_card.
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ResourceTable extends StatelessWidget {
+class ResourceTable extends GetView<ResourceDirectorySystemController> {
   const ResourceTable({
     super.key,
   });
@@ -11,11 +11,12 @@ class ResourceTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: GetBuilder<ResourceDirectorySystemController>(
-            builder: (controller) => ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (_, index) => ResourceNoteBookCard(
-                    entity: controller.resourceList[index]),
-                itemCount: controller.resourceListSize.value)));
+        child: Obx(() => ListView.builder(
+            shrinkWrap: true,
+            itemBuilder: (_, index) => Obx(() {
+                  return ResourceNoteBookCard(
+                      entity: controller.resourceList[index]);
+                }),
+            itemCount: controller.resourceListSize.value)));
   }
 }

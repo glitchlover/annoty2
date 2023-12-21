@@ -1,8 +1,8 @@
-import 'package:annoty/app/core/resources/logger/logger.dart';
+import 'package:annoty/app/core/constants/misc/objects.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/annotation.dart';
-import 'package:annoty/app/database/providers/local/annotation_repository.dart';
-import 'package:annoty/app/domain/functions/annotation_usecase.dart';
+import 'package:annoty/app/database/repositories/local/annotation_repository.dart';
+import 'package:annoty/app/domain/usecases/annotation_usecase.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:flutter/material.dart';
@@ -11,35 +11,52 @@ import 'package:searchfield/searchfield.dart';
 
 class AnnotationCardController extends GetxController {
   RxList<bool> showOutlinkCard = List.filled(0, false).obs;
-  SearchController searchController = SearchController();
-  RxBool isAllCards = false.obs;
-  List<Annotation> expectedResult = <Annotation>[];
-  RxList<Annotation> filteredResult = <Annotation>[].obs;
+  RxList<bool> isEditCard = List.filled(0, false).obs;
+  TextEditingController searchController = SearchController();
+  RxBool isAllCards = false.obs; //
+  List<Annotation> allPossibleSuggestion = <Annotation>[];
+  RxList<Annotation> suggestion = <Annotation>[].obs;
+  late TextEditingController textEditingController;
+  TextEditingController getTextEditingController(String text) =>
+      textEditingController = TextEditingController(text: text);
 
-  Future<List<Annotation>> getExpectedResult() async {
-    String path = FileUtils.getFolderPath(Get.find<AnnotyStudyEngineController>().pdfFile.path);
-    Flog.info(await LocalAnnotatonRepository().getResourceFilteredAnnotation(path));
-    return expectedResult = isAllCards.isTrue
+  Future<List<Annotation>> getAllPossibleSuggestion() async {
+    String path = FileUtils.getFolderPath(
+        Get.find<AnnotyStudyEngineController>().pdfFile.path);
+    return allPossibleSuggestion = isAllCards.isTrue
         ? await LocalAnnotatonRepository().getAllAnnotation()
         : await LocalAnnotatonRepository().getResourceFilteredAnnotation(path);
   }
 
   List<SearchFieldListItem<Annotation>> handleSearch(String typedText) {
-    getExpectedResult();
-    filteredResult = expectedResult
+    getAllPossibleSuggestion();
+    suggestion = allPossibleSuggestion
         .where((result) => result.text.toLowerCase().contains(typedText))
         .toList()
         .obs;
-
-    Flog.info(filteredResult);
-    return filteredResult
-        .map((e) => SearchFieldListItem(e.text, item: e))
-        .toList();
+    return suggestion.map((e) => SearchFieldListItem(e.text, item: e)).toList();
   }
+
+  submitOutlink(int sourceIndex, Annotation? p0) async {
+    p0 != null
+        ? AnnotationUseCase().linkAnnotation(
+            sourceAnnotation: (await annotations).elementAt(sourceIndex),
+            linkedAnnotation: p0)
+        : null;
+    searchController.clear();
+  }
+
+  Future locateAnnotation(int index) async =>
+    ConstObject().pdfViewerController
+        .jumpToPage((await annotations)[index].page);
 
   @override
   void onInit() async {
     showOutlinkCard.value = List.filled(
+        (await Get.find<AnnotationSideBarController>().annotations.value)
+            .length,
+        false);
+    isEditCard.value = List.filled(
         (await Get.find<AnnotationSideBarController>().annotations.value)
             .length,
         false);
@@ -55,6 +72,14 @@ class AnnotationCardController extends GetxController {
   Future deleteCard(index) async {
     await AnnotationUseCase().deleteAnnotation(await annotations, index);
     Get.find<AnnotationSideBarController>().delAnnotationCard(index);
+  }
+
+  Future editCard(index) async {
+    isEditCard[index] == true
+        ? (await annotations)[index] = await AnnotationUseCase().editAnnotation(
+            (await annotations).elementAt(index), textEditingController.text)
+        : null;
+    isEditCard[index] = !isEditCard[index];
   }
 
   toggleOutlinkCard(int index) {

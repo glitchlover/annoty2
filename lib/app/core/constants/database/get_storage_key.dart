@@ -1,4 +1,3 @@
-class GetStorageKey {
+class ConstKeys {
   String themeStorageKey = "ThemeMode";
-  String dirStorageKey = "ResourcePdfPath";
 }

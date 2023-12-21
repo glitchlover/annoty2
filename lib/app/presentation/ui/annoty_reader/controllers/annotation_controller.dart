@@ -1,7 +1,6 @@
 import 'package:annoty/app/core/constants/misc/key.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/annotation.dart';
-import 'package:annoty/app/domain/functions/annotation_usecase.dart';
+import 'package:annoty/app/domain/usecases/annotation_usecase.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_bar_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:flutter/services.dart';
@@ -78,8 +77,11 @@ class AnnotationController extends GetxController {
   }
 
   Future deleteAnnotationFromPdf(Annotation annotation) async {
-    // PdfAnnotationCollection collection = Get.find<AnnotyStudyEngineController>().currentPage.annotations;
-    // collection.remove(PdfRectangleAnnotation(
+    // Todo: make annotation object have a real string
+    Get.find<AnnotyStudyEngineController>()
+        .pdfViewerController
+        .jumpToPage(annotation.page+1);
+    // PdfAnnotationCollection(Get.find<AnnotationController>().currentPage).remove(PdfRectangleAnnotation(
     //     Rect.fromPoints(
     //         Offset(annotation.bounds.target!.xOffset1,
     //             annotation.bounds.target!.yOffset1),

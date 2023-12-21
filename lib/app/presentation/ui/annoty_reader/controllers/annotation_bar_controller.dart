@@ -1,6 +1,6 @@
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/annotation.dart';
-import 'package:annoty/app/database/providers/local/annotation_repository.dart';
+import 'package:annoty/app/database/repositories/local/annotation_repository.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:get/get.dart';

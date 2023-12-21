@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
-import 'package:annoty/app/database/providers/local/resource_repository.dart';
-import 'package:annoty/app/database/providers/old_document_service.dart';
+import 'package:annoty/app/database/repositories/local/resource_repository.dart';
+import 'package:annoty/app/database/repositories/old_document_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -16,13 +15,14 @@ class ResourceDirectorySystemController extends GetxController {
       .obs;
   Rx<int> get resourceListSize => resourceList.length.obs;
 
-  pickPdf() async {
+  Future pickPdf() async {
     FilePickerResult? pick = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ['pdf']);
     if (pick == null) return;
+    addResource(newFile: File(pick.files.first.path!));
     String outputPath = await makeResourceFolder(pick);
-    pdfService.copyFile(outputPath, File(pick.files.first.path!));
-    updateResources();
+    await pdfService.copyFile(outputPath, File(pick.files.first.path!));
+    await LocalResourceRepository().saveResourceModel(outputPath);
   }
 
   Future<String> makeResourceFolder(FilePickerResult pick) async {
@@ -30,10 +30,16 @@ class ResourceDirectorySystemController extends GetxController {
         FileUtils.getFileNameWithoutExt(pick.files.first.path!);
     String destinationFolderPath =
         "${pdfService.documentFolder.path}\\$destinationFolderName";
-    Flog.info(destinationFolderName);
-    Flog.info(await LocalResourceRepository().saveResourceModel(destinationFolderPath));
     await pdfService.mkFolder(destinationFolderName, pdfService.documentFolder);
+    Flog.success(destinationFolderPath, description: "successfully created");
     return destinationFolderPath;
+  }
+
+  void addResource({required File newFile}) {
+    resourceList.add(newFile);
+    resourceListSize.value += 1;
+    resourceListSize.refresh();
+    resourceList.refresh();
   }
 
   updateResources() async {

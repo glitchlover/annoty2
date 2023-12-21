@@ -3,9 +3,9 @@ import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/comment.dart';
 import 'package:annoty/app/database/models/tag.dart';
-import 'package:annoty/app/database/providers/local/resource_repository.dart';
+import 'package:annoty/app/database/repositories/local/resource_repository.dart';
 import 'package:annoty/app/database/sources/local/objectbox.dart';
-import 'package:annoty/app/domain/providers/annotation_repository.dart';
+import 'package:annoty/app/domain/repositories/annotation_repository.dart';
 import 'package:annoty/objectbox.g.dart';
 
 class LocalAnnotatonRepository extends AnnotationRepository {
@@ -22,7 +22,7 @@ class LocalAnnotatonRepository extends AnnotationRepository {
 
   Future<List<Annotation>> getAnnotaitonFilteredAnnotations(
           Annotation annotation) async =>
-      (await getAllAnnotation()) .where((element) => element.outlinks.contains(annotation)) as List<Annotation>;
+      annotation.outlinks;
 
   // Future<List<Annotation>> getOutlinkedAnnotation(Annotation annotation) =>
   //   return annotationBox
@@ -60,10 +60,8 @@ class LocalAnnotatonRepository extends AnnotationRepository {
   }
 
   @override
-  Future<void> updateAnnotation(Annotation annotation) {
-    // TODO: implement updateAnnotation
-    throw UnimplementedError();
-  }
+  Future<void> updateAnnotation(Annotation annotation) =>
+      annotationBox.putAsync(annotation, mode: PutMode.update);
 
   Future<void> updateColor(Highlight color) {
     // TODO: implement updateAnnotation

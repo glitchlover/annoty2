@@ -1,5 +1,4 @@
 enum AnnotationType {
-  highlight,
-  comment,
-  note,
+  annote,
+  unnote,
 }

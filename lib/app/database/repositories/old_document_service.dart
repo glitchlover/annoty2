@@ -11,7 +11,7 @@ class DocumentServices {
   late Directory documentFolder;
   final String documentType;
   late String _homePath;
-  late List<FileSystemEntity> entities;
+  late List<FileSystemEntity> entities;//todo
 
   //........................___constructor___........................
   //todo - change it to asynchronous factory and singleton constructor
@@ -69,9 +69,8 @@ class DocumentServices {
   }
 
   // ....................Copying files and folders................
-  void copyFile(String path, File file) {
-    file.copy("$path\\${file.path.split("\\").last}");
-  }
+  Future copyFile(String path, File file) async =>
+    await file.copy("$path\\${file.path.split("\\").last}");
 
   Directory updateFolder(String name, Directory thisDir){
     String newPath = "${thisDir.parent.path}\\$name";

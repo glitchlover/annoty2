@@ -5,14 +5,9 @@ import 'package:get_storage/get_storage.dart';
 import 'app/app.dart';
 
 void main() async {
-  Flog.init();
   await GetStorage.init();
   await ObjectBoxDB.init();
-  // await DocumentServices(
-  //         documentFolderName: ResourceFolderTreeConst.main,
-  //         documentType: "pdf"
-  //     ).init();
+  Flog.init();
   WidgetsFlutterBinding.ensureInitialized();
-  WidgetsBinding.instance.waitUntilFirstFrameRasterized;
   runApp(const App());
 }

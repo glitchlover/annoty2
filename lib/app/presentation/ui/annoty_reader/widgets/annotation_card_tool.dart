@@ -13,17 +13,18 @@ class AnnotationCardTool extends GetView<AnnotationCardController> {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-      MyMinimalIconButton(icon: Iconsax.arrow_down_1, onTap: () {}),
-      const Spacer(),
       MyMinimalIconButton(
-          icon: Iconsax.maximize_21, onTap: () {}),
+          icon: Iconsax.maximize_21,
+          onTap: () async => await controller.locateAnnotation(index)),
       //TODO(later): MyMinimalIconButton(icon: Icons.comment_bank_rounded, onTap: () {}),
       MyMinimalIconButton(icon: Iconsax.tag_2, onTap: () {}),
       MyMinimalIconButton(
         icon: Iconsax.link_2,
         onTap: () => controller.toggleOutlinkCard(index),
       ),
-      MyMinimalIconButton(icon: Iconsax.edit_2, onTap: () {}),
+      MyMinimalIconButton(
+          icon: Iconsax.edit_2,
+          onTap: () async => await controller.editCard(index)),
       MyMinimalIconButton(
           icon: Iconsax.trash,
           onTap: () async => await controller.deleteCard(index)),

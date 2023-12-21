@@ -2,30 +2,29 @@
 import 'dart:convert';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/tag.dart';
-import 'package:annoty/app/domain/functions/annotation_usecase.dart';
+import 'package:annoty/app/domain/usecases/annotation_usecase.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:annoty/app/core/resources/enum/highlight.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/comment.dart';
 import 'package:annoty/app/database/models/resource_model.dart';
 
 @Entity()
 class Annotation {
   int? id;
-  final String text;
-  final String keyWords;
+  String text;
+  String keyWords;
   @Transient()
   Highlight color;
   @Property(type: PropertyType.date)
-  final DateTime createdDate;
+  DateTime createdDate;
   @Property(type: PropertyType.date)
-  final DateTime modifiedDate;
-  final int page;
-  final ToOne<AnnotationBounds> bounds = ToOne<AnnotationBounds>();
-  final ToOne<Comment> comment = ToOne<Comment>();
-  final ToOne<ResourceModel> resource = ToOne<ResourceModel>();
-  final ToMany<Annotation> outlinks = ToMany<Annotation>();
-  final ToMany<Tag> tag = ToMany<Tag>();
+  DateTime modifiedDate;
+  int page;
+  ToOne<AnnotationBounds> bounds = ToOne<AnnotationBounds>();
+  ToOne<Comment> comment = ToOne<Comment>();
+  ToOne<ResourceModel> resource = ToOne<ResourceModel>();
+  ToMany<Annotation> outlinks = ToMany<Annotation>();
+  ToMany<Tag> tag = ToMany<Tag>();
 
   Future<List<Annotation>?> get inlinks =>
       AnnotationUseCase().getOutlinkedAnnotations(this);

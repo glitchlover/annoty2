@@ -17,7 +17,7 @@ class MyFloatingActionButton
           Icons.add,
           color: ConstColorMain.activeBlack,
         ),
-        onPressed: () => PermissionRequestHandler()
-            .requestPermissions(perform: controller.pickPdf()));
+        onPressed: () async => PermissionRequestHandler()
+            .requestPermissions(perform: await controller.pickPdf()));
   }
 }

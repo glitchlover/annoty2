@@ -2,7 +2,7 @@ import 'package:annoty/app/core/resources/enum/highlight.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
-import 'package:annoty/app/database/providers/local/annotation_repository.dart';
+import 'package:annoty/app/database/repositories/local/annotation_repository.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
 import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:get/get.dart';
@@ -31,11 +31,34 @@ class AnnotationUseCase {
             xOffset2: getAnno.xOffset2.value,
             yOffset1: getAnno.yOffset1.value,
             yOffset2: getAnno.yOffset2.value));
+        
   }
 
-  Future<void> editAnnotation(Annotation annotation) async {}
+  Future<Annotation> editAnnotation(Annotation annotation, String text) async {
+    Annotation update = Annotation(
+      id: annotation.id,
+      text: text,
+      keyWords: annotation.keyWords,
+      createdDate: annotation.createdDate,
+      modifiedDate: DateTime.now(),
+      page: annotation.page,
+      color: annotation.color,
+    );
+    update.bounds.target = annotation.bounds.target;
+    update.comment.target = annotation.comment.target;
+    update.resource.target = annotation.resource.target;
+    update.outlinks.assignAll(annotation.outlinks.toList());
+    update.tag.assignAll(annotation.tag.toList());
+    LocalAnnotatonRepository().updateAnnotation(update);
+    return update;
+  }
 
-  Future<void> linkAnnotation(Annotation annotation) async {}
+  Future<void> linkAnnotation(
+      {required Annotation sourceAnnotation,
+      required Annotation linkedAnnotation}) async {
+    sourceAnnotation.outlinks.add(linkedAnnotation);
+    return LocalAnnotatonRepository().updateAnnotation(sourceAnnotation);
+  }
 
   Future<void> deleteAnnotation(List<Annotation> annotations, index) async {
     await LocalAnnotatonRepository().deleteAnnotation(annotations[index]);

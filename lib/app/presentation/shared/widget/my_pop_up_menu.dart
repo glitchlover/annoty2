@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:annoty/app/core/theme/my_text.dart';
-import 'package:annoty/app/database/providers/local/resource_repository.dart';
+import 'package:annoty/app/database/repositories/local/resource_repository.dart';
 import 'package:annoty/app/presentation/shared/controllers/permission_request_handler.dart';
 import 'package:annoty/app/presentation/shared/controllers/resource_directory_system_controller.dart';
 import 'package:annoty/app/presentation/shared/dialogs/my_entity_rename_dialog.dart';

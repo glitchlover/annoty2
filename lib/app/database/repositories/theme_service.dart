@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 
 class ThemeService extends GetxController {
   final _getStorage = GetStorage();
-  final _storageKey = GetStorageKey().themeStorageKey;
+  final _storageKey = ConstKeys().themeStorageKey;
   static ThemeService instance = ThemeService._();
 
   ThemeService._();
+  
   set themeMode(ThemeMode themeMode) {
     if (themeMode == ThemeMode.system) {
       _getStorage.remove(_storageKey);

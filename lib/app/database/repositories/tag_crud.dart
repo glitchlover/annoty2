@@ -1,5 +1,5 @@
 import 'package:annoty/app/database/models/tag.dart';
-import 'package:annoty/app/domain/providers/tag_repository.dart';
+import 'package:annoty/app/domain/repositories/tag_repository.dart';
 
 class TagCrud implements TagRepository{
   @override

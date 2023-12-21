@@ -6,7 +6,7 @@ import 'package:annoty/app/presentation/ui/splash_screen/splash_screen_page.dart
 class SplashScreenRoutes {
   SplashScreenRoutes._();
 
-  static const splashScreen = '/splash-screen';
+  static const splashScreen = '/';
 
   static final routes = [
     GetPage(
