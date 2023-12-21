@@ -1,5 +1,4 @@
 import 'package:annoty/app/core/constants/ui/assets.dart';
-import 'package:annoty/app/presentation/ui/home/home_page.dart';
 import 'package:annoty/app/presentation/ui/unknown/unknown_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
