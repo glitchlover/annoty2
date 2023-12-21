@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/repositories/local/resource_repository.dart';
-import 'package:annoty/app/database/repositories/old_document_service.dart';
+import 'package:annoty/app/core/services/old_document_service.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
