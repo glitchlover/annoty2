@@ -13,10 +13,10 @@ class ResourceTable extends GetView<ResourceDirectorySystemController> {
     return Expanded(
         child: Obx(() => ListView.builder(
             shrinkWrap: true,
+            itemCount: controller.resourceListSize.value,
             itemBuilder: (_, index) => Obx(() {
                   return ResourceNoteBookCard(
                       entity: controller.resourceList[index]);
-                }),
-            itemCount: controller.resourceListSize.value)));
+                }))));
   }
 }

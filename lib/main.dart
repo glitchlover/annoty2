@@ -8,7 +8,7 @@ import 'app/app.dart';
 void main() async {
   await GetStorage.init();
   await ObjectBoxDB.init();
-  await ConstObject.pdfFileSercices.init();
+  await ConstObject.resourceService.init();
   Flog.init();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());

@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:annoty/app/core/theme/my_text.dart';
-import 'package:annoty/app/database/repositories/local/resource_repository.dart';
-import 'package:annoty/app/presentation/shared/controllers/permission_request_handler.dart';
 import 'package:annoty/app/presentation/shared/controllers/resource_directory_system_controller.dart';
 import 'package:annoty/app/presentation/shared/dialogs/my_entity_rename_dialog.dart';
 import 'package:flutter/material.dart';
@@ -31,14 +29,9 @@ class MyPopUpMenu extends StatelessWidget {
               PopupMenuItem<String>(
                 value: 'delete',
                 child: const MyText('Delete'),
-                onTap: () async {
-                  await PermissionRequestHandler().requestPermissions(
-                      perform: await entity.delete(recursive: true));
-                  await LocalResourceRepository()
-                      .deleteResourceModel(entity.path);
+                onTap: () =>
                   Get.find<ResourceDirectorySystemController>()
-                      .updateResources();
-                },
+                      .delResources(file: entity as File)
               ),
             ]);
   }

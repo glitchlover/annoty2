@@ -3,6 +3,6 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class ConstObject {
   static final PdfViewerController pdfViewerController = PdfViewerController();
-  static final AppFileServices pdfFileSercices =
-      AppFileServices(documentName: "Resource", documentType: "pdf");
+  static final AppFileService resourceService =
+      AppFileService(documentName: "Resource", documentType: "pdf");
 }
