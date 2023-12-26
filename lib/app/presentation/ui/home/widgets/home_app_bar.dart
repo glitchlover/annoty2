@@ -1,14 +1,4 @@
-import 'package:annoty/app/core/constants/color/core.dart';
-import 'package:annoty/app/core/constants/color/highlights.dart';
-import 'package:annoty/app/core/constants/ui/assets.dart';
-import 'package:annoty/app/core/constants/ui/sizing.dart';
-import 'package:annoty/app/presentation/shared/controllers/theme_toggle_controller.dart';
-import 'package:annoty/app/core/theme/my_text.dart';
-import 'package:annoty/app/core/theme/my_text_theme.dart';
-import 'package:annoty/app/presentation/shared/widget/my_app_bar.dart';
-import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+part of home;
 
 class HomeAppBar {
   AppBar paint() {
@@ -21,27 +11,25 @@ class HomeAppBar {
 
   List<Widget> myIconActions(ThemeToggleController thmCtrl) {
     return [
-        Obx(() {
-          return MyIconButton(
-              onPressed: () {
-                thmCtrl.toggle();
-              },
-              icon: Icon(thmCtrl.icon.value),
+      Obx(() {
+        return MyIconButton(
+            onPressed: () {
+              thmCtrl.toggle();
+            },
+            icon: Icon(thmCtrl.icon.value),
             color: ConstColorHighlight.yellow);
-        }),
-        MyIconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_outlined,
+      }),
+      MyIconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.notifications_outlined,
               color: ConstColorHighlight.orange)),
-        MyIconButton(
-            onPressed: () {},
-          icon: const Icon(Icons.face_outlined, color: ConstColorHighlight.green))
-      ];
+      MyIconButton(
+          onPressed: () {},
+          icon:
+              const Icon(Icons.face_outlined, color: ConstColorHighlight.green))
+    ];
   }
 }
-
-
-
 
 class TitleWidget extends StatelessWidget {
   const TitleWidget({
@@ -50,12 +38,11 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyText("Annoty").temp(MyTextTheme(
-                color: ConstColorMain.accent, fontFace: "Quicksand Bold")
+    return const MyText("Annoty").temp(
+        MyTextTheme(color: ConstColorMain.accent, fontFace: "Quicksand Bold")
             .titleLarge);
   }
 }
-
 
 class Leading extends StatelessWidget {
   const Leading({

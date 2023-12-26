@@ -1,8 +1,6 @@
-import 'package:annoty/app/core/services/document_service_repository.dart';
+import 'package:annoty/app/core/services/app_file_service.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class ConstObject {
-  static final PdfViewerController pdfViewerController = PdfViewerController();
-  static final AppFileService resourceService =
-      AppFileService(documentName: "Resource", documentType: "pdf");
-}
+final PdfViewerController kpdfViewerController = PdfViewerController();
+final AppFileService kAppFileService = AppFileService();
+

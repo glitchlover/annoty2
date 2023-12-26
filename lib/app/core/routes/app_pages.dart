@@ -12,7 +12,7 @@ class AppPages {
   static final List<GetPage> routes = [
     ...SplashScreenRoutes.routes,
     ...HomeRoutes.routes,
-		...UnknownRoutes.routes,
     ...PdfReaderRoutes.routes,
+		...UnknownRoutes.routes,
   ];
 }

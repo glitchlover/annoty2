@@ -1,3 +1,4 @@
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/resource_model.dart';
 import 'package:annoty/app/database/sources/local/objectbox.dart';
@@ -28,9 +29,9 @@ class LocalResourceRepository extends ResourceRepository {
 
   @override
   Future<int> saveResourceModel(String filePath) async {
-    // Flog.info(filePath);
+    Flog.info(filePath);
     return await resourceBox.putAsync(ResourceModel(
-        name: FileUtils.getFilename(filePath),
+        name: FileUtils.getEntityName(filePath),
         customName: "",
         filePath: filePath,
         createdDate: DateTime.now(),
@@ -38,8 +39,17 @@ class LocalResourceRepository extends ResourceRepository {
   }
 
   @override
-  Future updateResourceModel(String resourceName) {
-    // TODO: implement updateResourceModel
-    throw UnimplementedError();
+  Future updateResourceModel(String filePath, String? newFilePath) async {
+    ResourceModel resource = await getResource(filePath);
+    if (newFilePath != null) {
+      resource.filePath = newFilePath;
+      resource.customName = FileUtils.getEntityName(newFilePath);
+    }
+    return await resourceBox.putAsync(ResourceModel(
+        name: resource.name,
+        customName: resource.customName,
+        filePath: resource.filePath,
+        createdDate: resource.createdDate,
+        modifiedDate: DateTime.now()));
   }
 }

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MyPopUpMenu extends StatelessWidget {
-  final FileSystemEntity entity;
+  final Directory entity;
   const MyPopUpMenu(this.entity, {super.key});
 
   @override
@@ -29,9 +29,11 @@ class MyPopUpMenu extends StatelessWidget {
               PopupMenuItem<String>(
                 value: 'delete',
                 child: const MyText('Delete'),
-                onTap: () =>
-                  Get.find<ResourceDirectorySystemController>()
-                      .delResources(file: entity as File)
+                onTap: () async => await Get.find<
+                        ResourceDirectorySystemController>()
+                    .updateResource(
+                        dir: entity,
+                        op: 1),
               ),
             ]);
   }

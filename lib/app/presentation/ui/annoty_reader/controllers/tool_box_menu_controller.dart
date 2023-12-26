@@ -23,7 +23,7 @@ class ToolBoxMenuController extends GetxController {
   final bool isWeb = false;
   final bool showTooltip = true;
   final PdfViewerController pdfViewerController =
-      ConstObject.pdfViewerController;
+      kpdfViewerController;
   final SfPdfViewerState? currentPdfViewerState = ConstKey.pdfKey.currentState;
 
   toggleBookmark() {

@@ -10,17 +10,17 @@ import 'package:annoty/app/database/models/tag.dart';
 @Entity()
 class ResourceModel {
   int? id;
-  final String name;
-  final String customName;
-  final String filePath;
+  String name;
+  String customName;
+  String filePath;
   @Property(type: PropertyType.date)
-  final DateTime createdDate;
+  DateTime createdDate;
   @Property(type: PropertyType.date)
-  final DateTime modifiedDate;
-  final ToOne<Metadata> metadata = ToOne<Metadata>();
+  DateTime modifiedDate;
+  ToOne<Metadata> metadata = ToOne<Metadata>();
   @Backlink()
-  final ToMany<Annotation> annotations = ToMany<Annotation>();
-  final ToMany<Tag> tags = ToMany<Tag>();
+  ToMany<Annotation> annotations = ToMany<Annotation>();
+  ToMany<Tag> tags = ToMany<Tag>();
 
   ResourceModel({
     this.id,

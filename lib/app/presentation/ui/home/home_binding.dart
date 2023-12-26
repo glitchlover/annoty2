@@ -1,4 +1,4 @@
-import 'package:get/get.dart';
+part of home;
 
 class HomeBinding extends Bindings {
   @override

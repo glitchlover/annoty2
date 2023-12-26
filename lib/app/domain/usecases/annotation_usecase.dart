@@ -1,4 +1,5 @@
 import 'package:annoty/app/core/resources/enum/highlight.dart';
+import 'package:annoty/app/core/resources/logger/logger.dart';
 import 'package:annoty/app/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
@@ -15,6 +16,8 @@ class AnnotationUseCase {
 
   Future<Annotation> addAnnotation(String text, int page) async {
     AnnotationController getAnno = Get.find<AnnotationController>();
+    String filePath = Get.find<AnnotyStudyEngineController>().pdfFile.path;
+    Flog.info(filePath);
     return LocalAnnotatonRepository().addAnnotation(
         Annotation(
           text: text,
@@ -24,14 +27,12 @@ class AnnotationUseCase {
           page: page,
           color: mapColorToHighlight[getAnno.color]!,
         ),
-        FileUtils.getFolderPath(
-            Get.find<AnnotyStudyEngineController>().pdfFile.path),
+        filePath,
         AnnotationBounds(
             xOffset1: getAnno.xOffset1.value,
             xOffset2: getAnno.xOffset2.value,
             yOffset1: getAnno.yOffset1.value,
             yOffset2: getAnno.yOffset2.value));
-        
   }
 
   Future<Annotation> editAnnotation(Annotation annotation, String text) async {

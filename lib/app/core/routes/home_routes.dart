@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
-import 'package:annoty/app/presentation/ui/home/home_binding.dart';
-import 'package:annoty/app/presentation/ui/home/home_page.dart';
+import 'package:annoty/app/presentation/ui/home/home.dart';
 
 class HomeRoutes {
   HomeRoutes._();

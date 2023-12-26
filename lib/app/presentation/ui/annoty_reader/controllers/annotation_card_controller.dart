@@ -47,7 +47,7 @@ class AnnotationCardController extends GetxController {
   }
 
   Future locateAnnotation(int index) async =>
-    ConstObject.pdfViewerController
+    kpdfViewerController
         .jumpToPage((await annotations)[index].page);
 
   @override
