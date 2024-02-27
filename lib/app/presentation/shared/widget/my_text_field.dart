@@ -1,7 +1,7 @@
 import 'package:annoty/app/presentation/shared/widget/my_icon_button.dart';
 import 'package:flutter/material.dart';
 
-import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/core/constants/color/core.dart';
 
 class MyTextField extends TextField {
   final Icon? suffixIcon;

@@ -1,5 +1,5 @@
-import 'package:annoty/app/core/constants/color/core.dart';
-import 'package:annoty/app/core/constants/misc/is_it.dart';
+import 'package:annoty/core/constants/color/core.dart';
+import 'package:annoty/core/constants/misc/is_it.dart';
 import 'package:flutter/material.dart';
 
 class MyIconButton extends IconButton {

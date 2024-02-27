@@ -1,4 +1,4 @@
-import 'package:annoty/app/core/resources/enum/highlight.dart';
+import 'package:annoty/core/resources/enum/highlight.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/comment.dart';

@@ -1,11 +1,10 @@
-import 'package:annoty/app/core/resources/enum/highlight.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
-import 'package:annoty/app/core/utils/file_utils.dart';
+import 'package:annoty/core/constants/misc/controllers.dart';
+import 'package:annoty/core/resources/enum/highlight.dart';
+import 'package:annoty/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/models/annotation.dart';
 import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/repositories/local/annotation_repository.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annotation_controller.dart';
-import 'package:annoty/app/presentation/ui/annoty_reader/controllers/annoty_study_engine_controller.dart';
+import 'package:annoty/app/presentation/pages/annoty_reader/controllers/annoty_study_engine_controller.dart';
 import 'package:get/get.dart';
 
 class AnnotationUseCase {
@@ -16,7 +15,7 @@ class AnnotationUseCase {
 
   Future<Annotation> addAnnotation(String text, int page) async {
     AnnotationController getAnno = Get.find<AnnotationController>();
-    String filePath = Get.find<AnnotyStudyEngineController>().pdfFile.path;
+    String filePath = kcAnnotyStudyEngine.pdfFile.path;
     Flog.info(filePath);
     return LocalAnnotatonRepository().addAnnotation(
         Annotation(
@@ -50,7 +49,7 @@ class AnnotationUseCase {
     update.resource.target = annotation.resource.target;
     update.outlinks.assignAll(annotation.outlinks.toList());
     update.tag.assignAll(annotation.tag.toList());
-    LocalAnnotatonRepository().updateAnnotation(update);
+    await LocalAnnotatonRepository().updateAnnotation(update);
     return update;
   }
 

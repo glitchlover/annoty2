@@ -1,4 +1,4 @@
-import 'package:annoty/app/core/constants/color/core.dart';
+import 'package:annoty/core/constants/color/core.dart';
 import 'package:flutter/material.dart';
 
 class MyBoxDecoration {

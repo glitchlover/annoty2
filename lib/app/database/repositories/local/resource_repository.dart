@@ -1,5 +1,5 @@
-import 'package:annoty/app/core/resources/logger/logger.dart';
-import 'package:annoty/app/core/utils/file_utils.dart';
+import 'package:annoty/core/resources/logger/logger.dart';
+import 'package:annoty/core/utils/file_utils.dart';
 import 'package:annoty/app/database/models/resource_model.dart';
 import 'package:annoty/app/database/sources/local/objectbox.dart';
 import 'package:annoty/app/domain/repositories/resource_repository.dart';

@@ -1,11 +1,12 @@
 
-import 'package:annoty/app/app_binding.dart';
-import 'package:annoty/app/core/routes/app_pages.dart';
-import 'package:annoty/app/core/routes/splash_screen_routes.dart';
-import 'package:annoty/app/core/theme/my_theme_data.dart';
-import 'package:annoty/app/database/repositories/theme_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:annoty/app/database/repositories/theme_service.dart';
+import 'package:annoty/core/routes/app_pages.dart';
+import 'package:annoty/core/routes/splash_screen_routes.dart';
+import 'package:annoty/core/services/app_binding.dart';
+import 'package:annoty/core/theme/my_theme_data.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

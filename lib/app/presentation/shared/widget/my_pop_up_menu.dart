@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:annoty/app/core/theme/my_text.dart';
+import 'package:annoty/core/theme/my_text.dart';
 import 'package:annoty/app/presentation/shared/controllers/resource_directory_system_controller.dart';
 import 'package:annoty/app/presentation/shared/dialogs/my_entity_rename_dialog.dart';
 import 'package:flutter/material.dart';

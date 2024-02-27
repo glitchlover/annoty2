@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:annoty/app/core/constants/database/resource_file_tree.dart';
+import 'package:annoty/core/constants/database/resource_file_tree.dart';
 import 'package:annoty/app/presentation/shared/controllers/resource_directory_system_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:annoty/app/core/theme/my_text.dart';
+import 'package:annoty/core/theme/my_text.dart';
 import 'package:get/get.dart';
 
 class MyEntityRenameDialog extends StatelessWidget {

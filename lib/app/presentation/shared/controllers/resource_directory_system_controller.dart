@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:annoty/app/core/constants/database/resource_file_tree.dart';
-import 'package:annoty/app/core/constants/misc/objects.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
-import 'package:annoty/app/core/utils/file_utils.dart';
+import 'package:annoty/core/constants/database/resource_file_tree.dart';
+import 'package:annoty/core/constants/misc/objects.dart';
+import 'package:annoty/core/resources/logger/logger.dart';
+import 'package:annoty/core/utils/file_utils.dart';
 import 'package:annoty/app/database/repositories/local/resource_repository.dart';
 import 'package:annoty/app/domain/usecases/resource_usecase.dart';
 import 'package:file_picker/file_picker.dart';

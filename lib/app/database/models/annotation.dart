@@ -4,7 +4,7 @@ import 'package:annoty/app/database/models/annotation_bounds.dart';
 import 'package:annoty/app/database/models/tag.dart';
 import 'package:annoty/app/domain/usecases/annotation_usecase.dart';
 import 'package:objectbox/objectbox.dart';
-import 'package:annoty/app/core/resources/enum/highlight.dart';
+import 'package:annoty/core/resources/enum/highlight.dart';
 import 'package:annoty/app/database/models/comment.dart';
 import 'package:annoty/app/database/models/resource_model.dart';
 

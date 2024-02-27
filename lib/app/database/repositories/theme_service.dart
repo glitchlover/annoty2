@@ -1,4 +1,4 @@
-import 'package:annoty/app/core/constants/database/get_storage_key.dart';
+import 'package:annoty/core/constants/database/get_storage_key.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

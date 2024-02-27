@@ -1,5 +1,5 @@
-import 'package:annoty/app/core/constants/misc/objects.dart';
-import 'package:annoty/app/core/resources/logger/logger.dart';
+import 'package:annoty/core/constants/misc/objects.dart';
+import 'package:annoty/core/resources/logger/logger.dart';
 import 'package:annoty/app/database/sources/local/objectbox.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';

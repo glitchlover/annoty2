@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:annoty/app/core/utils/file_utils.dart';
+import 'package:annoty/core/utils/file_utils.dart';
 import 'package:annoty/app/database/repositories/local/resource_repository.dart';
 import 'package:annoty/app/presentation/shared/controllers/permission_request_handler.dart';
 
